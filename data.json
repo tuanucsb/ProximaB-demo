@@ -1,0 +1,808 @@
+{
+  "generated_date": "2026-11-25",
+  "summary_metrics": {
+    "executable_suites": 16,
+    "executable_questions": 12089,
+    "ingested_suites": 26,
+    "cataloged_suites": 34,
+    "cataloged_questions": 13095,
+    "published_baselines": 25,
+    "unit_tests_passing": 466,
+    "defense_faults_tested": 90,
+    "defense_faults_caught": 90,
+    "false_positive_clean_vetoes": 0
+  },
+  "trustworthiness_audit": {
+    "floor_suites_above_chance": {
+      "before": 10,
+      "after": 0,
+      "target": 0
+    },
+    "wrong_probes_accepted": {
+      "before": "14 / 15",
+      "after": "0 / 15",
+      "target": "0 / 15"
+    },
+    "symbolic_equiv_probe": {
+      "before": "FAIL (substring)",
+      "after": "PASS (AST 12-pt)",
+      "target": "PASS"
+    },
+    "thermoqa_fidelity_non_empty": {
+      "before": "62.3%",
+      "after": "99.8% (1,605 / 1,608)",
+      "raw_all_rows": "97.9% (1,710 / 1,747; 35 upstream empty-text rows)"
+    },
+    "matscibench_power_of_ten_fixed": {
+      "before": "0 / 26",
+      "after": "26 / 26"
+    }
+  },
+  "suites": [
+    {
+      "suite_id": "supergpqa_eng",
+      "short_name": "SuperGPQA Eng",
+      "name": "SuperGPQA: Graduate-Level Multidisciplinary Engineering Suite",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "mcq"
+      ],
+      "executable": true,
+      "ingested_count": 6616,
+      "total_reported_tasks": 6616,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/m-a-p/SuperGPQA",
+      "license": "Apache-2.0 / ODC-By",
+      "description": "6,616 graduate-level 10-option (A-J) engineering questions extracted from the 285-discipline SuperGPQA corpus spanning Nuclear Science & Technology, Aeronautical & Astronautical Engineering, Control Science, Biomedical Engineering, Power & Engineering Thermophysics, Mechanics, Civil/Hydraulic, Chemical, Materials/Metallurgy, Naval/Ocean, and Electrical/Electronic Engineering.",
+      "grading_methodology": "Exact 10-choice option verification across calculation and conceptual graduate tasks.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 6616,
+        "passed": 715,
+        "pct": 10.8,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "ugphysics_eng",
+      "short_name": "UGPhysics Eng",
+      "name": "UGPhysics: University Applied Mechanics, Thermodynamics & Solid-State Suite",
+      "primary_discipline": "thermodynamics",
+      "eval_types": [
+        "numeric",
+        "formula_symbolic"
+      ],
+      "executable": true,
+      "ingested_count": 1150,
+      "total_reported_tasks": 2600,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/UGPhysics/ugphysics",
+      "license": "Apache-2.0 / Open",
+      "description": "1,150 single-answer numerical and short-formula English problems ingested from the ~2,600 entries across 8 engineering-relevant UGPhysics subjects (Thermodynamics, Statistical Mechanics, Classical & Theoretical Mechanics, Electrodynamics, Electromagnetism, Semiconductor, and Solid-State Physics; multi-part and unparseable items excluded).",
+      "grading_methodology": "Rational/decimal/scientific numerical tolerance and algebraic symbolic formula equivalence.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 1150,
+        "passed": 44,
+        "pct": 3.8,
+        "note": "0/504 nonzero passed; 44 literal \\boxed{0} ground truths (3.8% suite-wide)"
+      }
+    },
+    {
+      "suite_id": "matscibench",
+      "short_name": "MatSciBench",
+      "name": "MatSciBench: Materials Science & Engineering Reasoning Suite (Text Subset)",
+      "primary_discipline": "materials_engineering",
+      "eval_types": [
+        "numeric",
+        "numeric_tuple",
+        "formula_symbolic"
+      ],
+      "executable": true,
+      "ingested_count": 1023,
+      "total_reported_tasks": 1340,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/JunkaiZ/MatSciBench",
+      "license": "MIT / Academic",
+      "description": "1,023 text-self-contained Materials Science & Engineering problems ingested from the 1,340-item MatSciBench corpus (317 items requiring embedded bitmap figures or non-numeric NUM labels excluded).",
+      "grading_methodology": "Single numerical, multi-value tuple numerical, and algebraic symbolic formula equivalence grading.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 1023,
+        "passed": 2,
+        "pct": 0.2,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "mmlu_pro_eng",
+      "short_name": "MMLU-Pro Eng",
+      "name": "MMLU-Pro Engineering (10-Choice Professional & Textbook Suite)",
+      "primary_discipline": "electrical_rtl",
+      "eval_types": [
+        "mcq"
+      ],
+      "executable": true,
+      "ingested_count": 969,
+      "total_reported_tasks": 969,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro",
+      "license": "Apache-2.0",
+      "description": "969 10-option engineering problems across Thermodynamics, Transport Phenomena, Fluid Mechanics, Heat Transfer, Machine Design, and Electrical Engineering.",
+      "grading_methodology": "Exact 10-choice option selection (A-J).",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 969,
+        "passed": 109,
+        "pct": 11.2,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "chembench_tech",
+      "short_name": "ChemBench Tech",
+      "name": "ChemBench: Technical Chemical Engineering, Materials & Process Safety",
+      "primary_discipline": "chemical_process",
+      "eval_types": [
+        "mcq",
+        "numeric"
+      ],
+      "executable": true,
+      "ingested_count": 798,
+      "total_reported_tasks": 798,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/jablonkagroup/ChemBench",
+      "license": "MIT",
+      "description": "798 chemical process engineering, unit operations, materials chemistry, and process hazard/toxicity safety tasks (792 multiple-choice + 6 numerical).",
+      "grading_methodology": "Exact multiple-choice option selection and numerical tolerance evaluation.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 798,
+        "passed": 209,
+        "pct": 26.2,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "scibench_eng",
+      "short_name": "SciBench Eng",
+      "name": "SciBench: College Textbook Thermodynamics, Mechanics & Physical Chemistry",
+      "primary_discipline": "thermodynamics",
+      "eval_types": [
+        "numeric"
+      ],
+      "executable": true,
+      "ingested_count": 384,
+      "total_reported_tasks": 384,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/xw27/scibench",
+      "license": "MIT",
+      "description": "Open-ended numerical calculation problems from university textbooks (thermo, atkins, stat, class, matter, chemmc).",
+      "grading_methodology": "Unit-aware numerical relative tolerance verification (+/-5%).",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 384,
+        "passed": 7,
+        "pct": 1.8,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "thermoqa",
+      "short_name": "ThermoQA",
+      "name": "ThermoQA: Three-Tier Engineering Thermodynamics Benchmark",
+      "primary_discipline": "thermodynamics",
+      "eval_types": [
+        "multi_numeric"
+      ],
+      "executable": true,
+      "ingested_count": 293,
+      "total_reported_tasks": 293,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/olivenet/thermoqa",
+      "license": "MIT / Open",
+      "description": "293 open-ended engineering thermodynamics calculation problems across Tier 1 (fluid properties), Tier 2 (turbines, compressors, nozzles, heat exchangers), and Tier 3 (Rankine, Brayton, Otto, Diesel, VCR cycles).",
+      "grading_methodology": "Deterministic CoolProp ground-truth multi-property numerical verification.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 293,
+        "passed": 0,
+        "pct": 0.0,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "pychronobench",
+      "short_name": "PyChronoBench",
+      "name": "PyChronoBench: Multibody Dynamics & Mechatronics Simulation QA",
+      "primary_discipline": "control_robotics",
+      "eval_types": [
+        "mcq"
+      ],
+      "executable": true,
+      "ingested_count": 280,
+      "total_reported_tasks": 280,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/uwsbel/PyChronoBench",
+      "license": "BSD-3-Clause",
+      "description": "280 4-choice engineering questions testing PyChrono multibody contact mechanics (NSC/SMC), vehicle dynamics, FEA beams/shells, sensors, and ROS mechatronics.",
+      "grading_methodology": "Exact 4-choice API & physics formulation verification.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 280,
+        "passed": 68,
+        "pct": 24.3,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "cvdp_rtl",
+      "short_name": "CVDP Open",
+      "name": "NVIDIA CVDP: Comprehensive Verilog Design & Verification Open Suite",
+      "primary_discipline": "electrical_rtl",
+      "eval_types": [
+        "verilog_rtl",
+        "design_rubric"
+      ],
+      "executable": false,
+      "ingested_count": 215,
+      "total_reported_tasks": 215,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/NVlabs/cvdp_benchmark",
+      "license": "Apache-2.0 / NVIDIA Dataset License",
+      "description": "215 silicon design & verification tasks from NVIDIA CVDP (92 non-commercial agentic RTL code generation tasks + 123 RTL/testbench comprehension tasks).",
+      "grading_methodology": "Non-executable until CVDP Dockerized Verilator/cocotb testbench runner is wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "sysml_v2_bench",
+      "short_name": "SysML-v2-Bench",
+      "name": "SysML v2 Systems-Engineering Model Reasoning Benchmark",
+      "primary_discipline": "systems_engineering",
+      "eval_types": [
+        "sysml_schema"
+      ],
+      "executable": true,
+      "ingested_count": 175,
+      "total_reported_tasks": 175,
+      "source_type": "local_pinned",
+      "source_url": "https://huggingface.co/datasets/nomograph/sysml-v2-reasoning-benchmark",
+      "license": "MIT",
+      "description": "Priority-1 systems-engineering model benchmark evaluating requirement queries, import/dependency graph cycle detection, port/interface reasoning, mass/power budget rollups, and structural trace traversal across SysML v2 system models.",
+      "grading_methodology": "Deterministic typed schema assertions (Bool, Float/Int tolerance, Str, ListStr set matching).",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 175,
+        "passed": 0,
+        "pct": 0.0,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "verilog_eval",
+      "short_name": "VerilogEval",
+      "name": "VerilogEval: SystemVerilog Digital Hardware & RTL Design Suite",
+      "primary_discipline": "electrical_rtl",
+      "eval_types": [
+        "verilog_rtl"
+      ],
+      "executable": false,
+      "ingested_count": 156,
+      "total_reported_tasks": 156,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/NVlabs/verilog-eval",
+      "license": "MIT",
+      "description": "156 specification-to-RTL SystemVerilog hardware tasks with module interfaces, golden reference RTL, and testbenches.",
+      "grading_methodology": "Icarus Verilog (`iverilog` + `vvp`) testbench simulation; non-executable when `iverilog` is not installed.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "structureclaw_bench",
+      "short_name": "StructureClaw",
+      "name": "StructureClaw-Bench: Structural Engineering & OpenSees Scenarios",
+      "primary_discipline": "structural_civil",
+      "eval_types": [
+        "structural_spec"
+      ],
+      "executable": false,
+      "ingested_count": 150,
+      "total_reported_tasks": 150,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/structureclaw/structureclaw-benchmark",
+      "license": "MIT",
+      "description": "150 controlled structural engineering scenarios testing OpenSees static/modal/seismic analysis and rejection of contradictory/unphysical structural inputs.",
+      "grading_methodology": "Non-executable until live OpenSees runtime validation is wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "cfdllmbench_foam",
+      "short_name": "FoamBench",
+      "name": "CFDLLMBench — FoamBench (OpenFOAM Basic & Advanced Case Generation)",
+      "primary_discipline": "fluid_cfd",
+      "eval_types": [
+        "openfoam_spec"
+      ],
+      "executable": false,
+      "ingested_count": 126,
+      "total_reported_tasks": 126,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/NLR-Theseus/cfdllmbench",
+      "license": "BSD-3-Clause",
+      "description": "126 OpenFOAM simulation tasks (110 Basic + 16 Advanced) with ground-truth OpenFOAM case dictionaries.",
+      "grading_methodology": "Non-executable until live OpenFOAM solver execution & residual check is wired in.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "chronobench",
+      "short_name": "ChronoBench",
+      "name": "ChronoBench (SimBench): Multi-Turn Digital-Twin Simulation Synthesis",
+      "primary_discipline": "control_robotics",
+      "eval_types": [
+        "chrono_sim"
+      ],
+      "executable": false,
+      "ingested_count": 102,
+      "total_reported_tasks": 102,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/uwsbel/ChronoBench",
+      "license": "BSD-3-Clause",
+      "description": "102 turn-level digital-twin tasks across 34 physical systems (wheeled/tracked vehicles, robotic manipulators, FEA buckling, sensors, fluid-solid coupling).",
+      "grading_methodology": "Non-executable until PyChrono multibody physics simulation execution is wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "proximab_engsafe",
+      "short_name": "ProximaB EngSafe",
+      "name": "ProximaB Safety-Gates Case-File Hazard Audit Suite (r0 + r0.2)",
+      "primary_discipline": "engineering_safety",
+      "eval_types": [
+        "safety_gate_review"
+      ],
+      "executable": true,
+      "ingested_count": 102,
+      "total_reported_tasks": 102,
+      "source_type": "local_workspace",
+      "source_url": "engsafe/tasks",
+      "license": "ProximaB Safety Gates v0.2",
+      "description": "102 safety-critical engineering calculation & multi-document case-file audits (34 tasks x clean/hazard/pressure variants) testing hazard detection and schedule-pressure resistance.",
+      "grading_methodology": "Exact sign-off classification (approve vs hold), False-Approval hazard tracking, and governing-limit citation.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 102,
+        "passed": 68,
+        "pct": 66.7,
+        "note": "0/68 unsafe approved, 34/34 safe held (matches always-hold)"
+      }
+    },
+    {
+      "suite_id": "engdesign",
+      "short_name": "EngDesign",
+      "name": "EngDesign: Holistic Multi-Domain Engineering Design Benchmark",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "design_rubric"
+      ],
+      "executable": false,
+      "ingested_count": 101,
+      "total_reported_tasks": 101,
+      "source_type": "local_pinned",
+      "source_url": "https://huggingface.co/datasets/opt1zer/EngDesign",
+      "license": "MIT",
+      "description": "101 structured engineering synthesis tasks across Mechanical Systems, Control Design, Robotics, Structure Design, Analog IC, Digital Hardware, and Signal Processing.",
+      "grading_methodology": "Non-executable until per-task MATLAB/Spice/Python simulation scripts from EngDesign are wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "eng_num_methods",
+      "short_name": "EngNumMethods",
+      "name": "Engineering Numerical Methods & Transcendental Equations Benchmark",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "numeric"
+      ],
+      "executable": true,
+      "ingested_count": 100,
+      "total_reported_tasks": 100,
+      "source_type": "huggingface",
+      "source_url": "https://huggingface.co/datasets/sportsvision/Engineering-Numerical-Methods-Benchmark",
+      "license": "Apache-2.0 / Open",
+      "description": "100 implicit nonlinear and transcendental engineering root-finding problems (Colebrook friction, Kepler orbits, radiation balances, buckling, nonlinear circuits).",
+      "grading_methodology": "Strict numerical root verification within 2% relative error.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 100,
+        "passed": 0,
+        "pct": 0.0,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "cfdllmbench_query",
+      "short_name": "CFDQuery",
+      "name": "CFDLLMBench — CFDQuery (Graduate CFD & Numerical Schemes QA)",
+      "primary_discipline": "fluid_cfd",
+      "eval_types": [
+        "mcq"
+      ],
+      "executable": true,
+      "ingested_count": 90,
+      "total_reported_tasks": 90,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/NLR-Theseus/cfdllmbench",
+      "license": "BSD-3-Clause",
+      "description": "90 graduate-level CFD numerical schemes, stability, turbulence, and shock-capturing questions.",
+      "grading_methodology": "Exact multiple-choice PDE discretization verification.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 90,
+        "passed": 30,
+        "pct": 33.3,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "frontier_eng",
+      "short_name": "Frontier-Eng",
+      "name": "Frontier-Eng: Generative Engineering Optimization Suite",
+      "primary_discipline": "aerospace_astrodynamics",
+      "eval_types": [
+        "code_python"
+      ],
+      "executable": false,
+      "ingested_count": 73,
+      "total_reported_tasks": 77,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/Einsia/Frontier-Engineering",
+      "license": "UNSPECIFIED (Local Evaluation Only)",
+      "description": "73 physical engineering optimization tasks ingested from the 77-task Frontier-Engineering suite spanning Additive Manufacturing thermal control, Aircraft & Car Aerodynamics, Manned Lunar Landing, EDA, Communications, and Robotics.",
+      "grading_methodology": "Non-executable until per-domain Frontier-Engineering simulator evaluators are wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "scicode_eng",
+      "short_name": "SciCode",
+      "name": "SciCode: Executable Physical & Numerical Scientific Function Synthesis",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "scicode_unit"
+      ],
+      "executable": true,
+      "ingested_count": 54,
+      "total_reported_tasks": 280,
+      "source_type": "local_pinned",
+      "source_url": "https://huggingface.co/datasets/SciCode1/SciCode",
+      "license": "Apache-2.0",
+      "description": "54 standalone entry-step (`.1`) scientific & physical computing function-synthesis subproblems ingested from the 280 multi-step SciCode subproblems (steps requiring prior-step helper context excluded).",
+      "grading_methodology": "Sandboxed Python execution against official `assert np.allclose(...)` numerical test cases.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 54,
+        "passed": 0,
+        "pct": 0.0,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "rtllm_rtl",
+      "short_name": "RTLLM",
+      "name": "RTLLM: Open-Source Natural-Language-to-RTL Hardware Benchmark",
+      "primary_discipline": "electrical_rtl",
+      "eval_types": [
+        "verilog_rtl"
+      ],
+      "executable": false,
+      "ingested_count": 50,
+      "total_reported_tasks": 50,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/hkust-zhiyao/RTLLM",
+      "license": "MIT",
+      "description": "50 complex RTL hardware modules across Arithmetic (adders, Booth/pipelined multipliers, dividers, FP), Control, Memory (FIFOs, shifters, LFSR), and Miscellaneous controllers.",
+      "grading_methodology": "Icarus Verilog (`iverilog` + `vvp`) testbench simulation; non-executable when `iverilog` is not installed.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "cfdllmbench_code",
+      "short_name": "CFDCodeBench",
+      "name": "CFDLLMBench — CFDCodeBench (Executable PDE & Navier-Stokes Solvers)",
+      "primary_discipline": "fluid_cfd",
+      "eval_types": [
+        "code_python"
+      ],
+      "executable": false,
+      "ingested_count": 24,
+      "total_reported_tasks": 24,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/NLR-Theseus/cfdllmbench",
+      "license": "BSD-3-Clause",
+      "description": "24 PDE numerical coding tasks requiring Python solvers for Burgers, Heat, Poisson, Navier-Stokes Cavity/Channel, and Rayleigh-Benard.",
+      "grading_methodology": "Non-executable until official CFDCodeBench per-case reference field error evaluator is wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "proximab_oversight",
+      "short_name": "ProximaB Oversight",
+      "name": "ProximaB Engineering Change Control & Release Oversight Benchmark",
+      "primary_discipline": "systems_engineering",
+      "eval_types": [
+        "safety_gate_review"
+      ],
+      "executable": true,
+      "ingested_count": 24,
+      "total_reported_tasks": 24,
+      "source_type": "local_workspace",
+      "source_url": "proximab_benchmarks/ingestors_v2.py",
+      "license": "ProximaB Open Benchmark Standard",
+      "description": "24 systems-engineering project-oversight & baseline-release cases testing stale-approval invalidation, missing/disputed dependency trace links, separation-of-duties self-approval, concurrent baseline races, contradictory supplier ICD mass revisions, and revoked AI configuration promotion boundaries.",
+      "grading_methodology": "Deterministic release-gate classification (approve vs hold) and governance failure-mode citation.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 24,
+        "passed": 16,
+        "pct": 66.7,
+        "note": "0/16 unsafe approved, 8/8 safe held (matches always-hold)"
+      }
+    },
+    {
+      "suite_id": "proximab_physics",
+      "short_name": "ProximaB Physics",
+      "name": "ProximaB Execution-Verified Regulated Physics & Perturbation Battery",
+      "primary_discipline": "nuclear_engineering",
+      "eval_types": [
+        "proximab_solver"
+      ],
+      "executable": true,
+      "ingested_count": 17,
+      "total_reported_tasks": 17,
+      "source_type": "local_workspace",
+      "source_url": "proximab_harness/benchmarks",
+      "license": "ProximaB Open Benchmark Standard",
+      "description": "17 multi-turn regulated physical engineering tasks (SMR Transients/PRHRS/Xenon, Multi-Layer Gamma/Neutron Shielding, ASME V&V 40 Stent Fatigue & Hemodialysis, LEO-GEO Orbital Transfer, Spacecraft OSR Thermal, Equipment-Support Vibration, Haber-Bosch Loop, Rankine Cycles) graded across +/-4% perturbations.",
+      "grading_methodology": "Dual-channel deterministic physics solvers + 5-Level Defense-in-Depth gates + Pass@1 & Pass^k.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": true,
+      "floor": {
+        "n": 17,
+        "passed": 0,
+        "pct": 0.0,
+        "note": "Multi-trial solver harness"
+      }
+    },
+    {
+      "suite_id": "feabench_gold",
+      "short_name": "FEABench Gold",
+      "name": "FEABench Gold: Multiphysics Finite Element Analysis Benchmark",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "numeric"
+      ],
+      "executable": true,
+      "ingested_count": 14,
+      "total_reported_tasks": 15,
+      "source_type": "local_pinned",
+      "source_url": "https://github.com/google/feabench",
+      "license": "Apache-2.0",
+      "description": "14 scalar-target multiphysics FEA problems ingested from the 15-problem FEABench Gold COMSOL reference suite (1 non-scalar entry excluded), with exact geometry, material properties, and boundary conditions.",
+      "grading_methodology": "Quantitative physical target value verification against reference FEA solution.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": {
+        "n": 14,
+        "passed": 0,
+        "pct": 0.0,
+        "note": ""
+      }
+    },
+    {
+      "suite_id": "terminal_bench_science",
+      "short_name": "TB-Science Eng",
+      "name": "Terminal-Bench-Science 0.1 — Engineering Workflows Subset",
+      "primary_discipline": "control_robotics",
+      "eval_types": [
+        "code_python"
+      ],
+      "executable": false,
+      "ingested_count": 9,
+      "total_reported_tasks": 70,
+      "source_type": "local_pinned",
+      "source_url": "https://tbench.ai",
+      "license": "Apache-2.0",
+      "description": "9 official Engineering-Sciences workflows selected from the 70-task Terminal-Bench-Science 0.1 suite: exothermic reactor safety control, rolling-shutter operational modal analysis, guided-wave structural localization, inelastic constitutive discovery, TAMP robotics planning, sensor calibration, and microarchitecture modeling.",
+      "grading_methodology": "Non-executable until containerized Harbor per-task pytest graders are wired in.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "design_qa",
+      "short_name": "DesignQA",
+      "name": "DesignQA: Multimodal Engineering Requirements & FSAE Rule Compliance",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "multimodal_rule_qa"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 1446,
+      "source_type": "catalog_only",
+      "source_url": "https://anniedoris.github.io/design_qa/",
+      "license": "MIT",
+      "description": "Multimodal benchmark pairing the 140-page Formula SAE technical specification with CAD views and compliance checks.",
+      "grading_methodology": "F1 rule retrieval, exact numerical dimension check, and compliance accuracy.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "engibench",
+      "short_name": "EngiBench",
+      "name": "EngiBench: Hierarchical Data-Driven Inverse Engineering Design",
+      "primary_discipline": "mechanical_fea_design",
+      "eval_types": [
+        "inverse_design_sim"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 20,
+      "source_type": "catalog_only",
+      "source_url": "https://github.com/IDEALLab/EngiBench",
+      "license": "GPL-3.0 (code) / CC-BY-NC-SA-4.0 (datasets)",
+      "description": "17 local surrogate/inverse-design datasets (~8.8 GiB in `benchmarks/datasets/IDEALLab__*`) spanning 2D/3D FEA beams, SU2 transonic airfoils, heat conduction, thermoelasticity, photonics, and power electronics.",
+      "grading_methodology": "FEniCS / SU2 / Ceviche simulator objective & constraint violation evaluation.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "esa_gtop_psplib",
+      "short_name": "ESA GTOP / PSPLIB",
+      "name": "ESA GTOP Interplanetary Trajectory & PSPLIB Resource-Scheduling Reference",
+      "primary_discipline": "aerospace_astrodynamics",
+      "eval_types": [
+        "trajectory_and_schedule_opt"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 75,
+      "source_type": "catalog_only",
+      "source_url": "https://www.esa.int/gsp/ACT/projects/gtop/",
+      "license": "Mixed Academic Reference",
+      "description": "75 SHA-256 verified ESA Advanced Concepts Team global trajectory optimization cases (Cassini, Rosetta, Messenger, TandEM) and PSPLIB resource-constrained project scheduling benchmarks.",
+      "grading_methodology": "Global delta-V objective (km/s) and makespan constraint verification.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "mdgym",
+      "short_name": "MDGym",
+      "name": "MDGym: Molecular Dynamics Simulation Workflows (LAMMPS & GROMACS)",
+      "primary_discipline": "materials_engineering",
+      "eval_types": [
+        "md_simulation"
+      ],
+      "executable": true,
+      "ingested_count": 0,
+      "total_reported_tasks": 169,
+      "source_type": "catalog_only",
+      "source_url": "https://arxiv.org",
+      "license": "Academic",
+      "description": "169 LAMMPS and GROMACS atomistic/materials simulation workflows demonstrating the Physical Correctness Gap (84-98% code execution vs 21% physical accuracy).",
+      "grading_methodology": "Physical observable verification (radial distribution, diffusivity, elastic moduli, free energy).",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "mdgym_mdarena",
+      "short_name": "MDGym / MDArena",
+      "name": "MDGym & MDArena: Molecular Dynamics Simulation Workflows",
+      "primary_discipline": "materials_engineering",
+      "eval_types": [
+        "md_simulation"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 219,
+      "source_type": "catalog_only",
+      "source_url": "https://github.com/weitse-hsu/MDArena",
+      "license": "MIT",
+      "description": "LAMMPS, GROMACS & OpenMM biomolecular/materials simulation workflows (`benchmarks/sources/weitse-hsu__MDArena` + MDGym reference).",
+      "grading_methodology": "Physical observable verification (RDF, diffusivity, free energy) & strict Pass@1.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "mobstr_traceability",
+      "short_name": "MobSTr Trace",
+      "name": "MobSTr: ISO 26262 Safety Assurance & Heterogeneous Traceability Corpus",
+      "primary_discipline": "systems_engineering",
+      "eval_types": [
+        "traceability_corpus"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 45,
+      "source_type": "catalog_only",
+      "source_url": "https://github.com/panorama-research/mobstr-dataset",
+      "license": "EPL-2.0",
+      "description": "Heterogeneous requirements, hazard analyses, Amalthea architecture, and assurance-case traceability links locally mirrored in `benchmarks/sources/panorama-research__mobstr-dataset`.",
+      "grading_methodology": "Reference corpus for authoring heterogeneous traceability & missing-link detection cases.",
+      "evaluates_physical_correctness": false,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "nasa_tmr_cfd",
+      "short_name": "NASA TMR",
+      "name": "NASA Turbulence Modeling Resource (TMR) CFD Verification & Validation",
+      "primary_discipline": "fluid_cfd",
+      "eval_types": [
+        "cfd_validation_case"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 35,
+      "source_type": "catalog_only",
+      "source_url": "https://tmbwg.github.io/turbmodels/",
+      "license": "CC0-1.0",
+      "description": "Canonical RANS/turbulence model verification & experimental validation reference cases locally mirrored with verified LFS grids in `benchmarks/sources/tmbwg__turbmodels`.",
+      "grading_methodology": "Grid-converged skin-friction, pressure-coefficient & velocity-profile validation against wind-tunnel data.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    },
+    {
+      "suite_id": "nuclear_beavrs_openmc",
+      "short_name": "BEAVRS / OpenMC",
+      "name": "MIT BEAVRS & OpenMC Civil Reactor Neutronics Validation Suite",
+      "primary_discipline": "nuclear_engineering",
+      "eval_types": [
+        "neutronics_validation_case"
+      ],
+      "executable": false,
+      "ingested_count": 0,
+      "total_reported_tasks": 25,
+      "source_type": "catalog_only",
+      "source_url": "https://github.com/mit-crpg/BEAVRS",
+      "license": "MIT / UNSPECIFIED",
+      "description": "Full-core PWR measured zero-power physics, boron letdown, and detector tilt validation benchmark (`benchmarks/sources/mit-crpg__BEAVRS` & `openmc-dev__validation`).",
+      "grading_methodology": "OpenMC Monte Carlo k-eff, control-bank worth, and assembly power distribution vs plant measurements.",
+      "evaluates_physical_correctness": true,
+      "supports_perturbation_pass_k": false,
+      "floor": null
+    }
+  ]
+}

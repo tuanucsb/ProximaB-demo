@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <script>try{document.querySelector('meta[name="color-scheme"]').content=localStorage.getItem("color-scheme")??"light dark";}catch{}</script>
+  <title>ProximaB — How Physical AI Qualification, Trustworthy Benchmarks &amp; Controlled Engineering Change Work</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-group">
+        <div class="brand-mark" aria-hidden="true">PB</div>
+        <div>
+          <h1 class="brand-title">ProximaB</h1>
+          <p class="brand-sub">Defense-in-Depth Physical AI Verification · Trustworthy Benchmark Arena · Controlled Change Brain</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="btn" title="Toggle light or dark appearance">
+          <span class="theme-opt-dark">◑ <span>Dark theme</span></span>
+          <span class="theme-opt-light">☀ <span>Light theme</span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" aria-label="Overview metrics">
+      <div class="notice-banner">
+        <strong>Interactive Research Showcase (Static Client-Side Simulation):</strong>
+        Explore how ProximaB gates AI-generated engineering calculations with independent physics solvers, validates benchmark graders before trusting model scores, and enforces separation-of-duties on baseline changes. Runs on synthetic reference models and public benchmark metadata — not operational plant or clinical control software.
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Executable Benchmarks</div>
+          <div class="kpi-value" id="kpi-exec-q">12,089</div>
+          <div class="kpi-note" id="kpi-exec-s">Across 16 validated suites</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Cataloged Corpus</div>
+          <div class="kpi-value" id="kpi-cat-q">13,095</div>
+          <div class="kpi-note" id="kpi-cat-s">26 ingested / 34 cataloged suites</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Know-Nothing Floor</div>
+          <div class="kpi-value">0 Suites</div>
+          <div class="kpi-note">Above chance (down from 10)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Wrong-Answer Probes</div>
+          <div class="kpi-value">0 / 15</div>
+          <div class="kpi-note">Accepted (down from 14 / 15)</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">ThermoQA Fidelity</div>
+          <div class="kpi-value">99.8%</div>
+          <div class="kpi-note">1,605 / 1,608 non-empty logs</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Barrier Fault Battery</div>
+          <div class="kpi-value" id="kpi-did">90 / 90</div>
+          <div class="kpi-note">Injected faults vetoed (0 FP)</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tabs-shell">
+      <div class="tablist scroller" focusgroup="tablist nomemory" role="tablist" aria-label="ProximaB interactive walkthrough">
+        <button type="button" role="tab" id="tab-overview" aria-selected="true" focusgroupstart>1. How ProximaB Works</button>
+        <button type="button" role="tab" id="tab-simulator" aria-selected="false">2. Live Physics Barrier Simulator</button>
+        <button type="button" role="tab" id="tab-benchmarks" aria-selected="false">3. Trustworthy Benchmark Arena</button>
+        <button type="button" role="tab" id="tab-brain" aria-selected="false">4. Controlled Change &amp; SHA-256 Ledger</button>
+      </div>
+
+      <div class="tabpanels-stack">
+        <!-- TAB PANEL 1: ARCHITECTURE -->
+        <section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+          <div class="panel-inner">
+            <h2 class="section-title">Six-Layer Defense-in-Depth + Two Governed Workflows</h2>
+            <p class="section-lead">
+              Language models can write fluent prose around dimensional errors, non-physical efficiencies, unconverged meshes, or buried safety-limit violations. ProximaB never trusts self-reported reasoning: every candidate output must clear six independent deterministic barriers before an Arena qualification or baseline release can proceed. Click any barrier stage below to inspect how it works.
+            </p>
+
+            <div class="stage-rail" id="stage-rail" role="group" aria-label="Defense-in-depth barrier stages"></div>
+
+            <div class="two-col">
+              <div class="subcard" id="stage-detail-card"></div>
+              <div class="subcard">
+                <h3>Workflow A (Arena) &rarr; Promotion Boundary (<code>AR07</code>) &rarr; Workflow B (Brain)</h3>
+                <p style="font-size:0.84rem;color:var(--muted);margin-top:0;">
+                  ProximaB separates open-ended AI benchmarking from controlled engineering project delivery across an explicit cryptographic boundary:
+                </p>
+                <pre class="code-box">[Workflow A: Engineering Arena (AR01-AR08)]
+  ├─ Frozen Manifest: Model × Skill Pack × Tool Harness
+  ├─ Deterministic Split: 70% dev / 15% val / 15% holdout_sealed
+  ├─ Strict 7-Key Agent Allow-List (opaque ID, zero label leak)
+  └─ Dual Safety Reporting:
+       • Unsafe Approvals / Unsafe Cases   (must be 0 to promote)
+       • Wrongly Held / Safe Cases         (measures over-conservatism)
+                     │
+                     ▼  AR07 Promotion Gate
+        Requires: run_complete == True (0 agent/timeout errors)
+                  safety_false_approvals == 0
+                  reviewer_id != author_id (separation of duties)
+                     │
+                     ▼
+[Workflow B: Engineering Brain (B1 -> B2)]
+  ├─ Immutable Baseline B1 (entities + typed SI units + edges)
+  ├─ Bounded Impact Graph (exact reason_paths + coverage_gaps)
+  ├─ Idempotent Reference Solvers (preserves failed attempts)
+  └─ Independent Review + Optimistic Stale-Baseline Guard -> B2</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB PANEL 2: LIVE PHYSICS BARRIER SIMULATOR -->
+        <section role="tabpanel" id="panel-simulator" aria-labelledby="tab-simulator" hidden="until-found">
+          <div class="panel-inner">
+            <h2 class="section-title">Interactive Barrier Simulator — Try Breaking the Gates</h2>
+            <p class="section-lead">
+              Select a reference engineering model below, inject a realistic AI failure mode (or drag the sliders yourself), and watch each independent ProximaB barrier compute exact physical bounds, 7D SI unit compatibility, mesh convergence, and coupled subsystem limits in real time.
+            </p>
+
+            <div class="preset-row" aria-label="Simulation presets">
+              <button type="button" class="btn btn-primary" data-sim-preset="ccgt_clean">CCGT: Valid Upgrade (B1 &rarr; B2)</button>
+              <button type="button" class="btn btn-danger" data-sim-preset="ccgt_carnot">Inject FM-1.1: Second-Law Violation</button>
+              <button type="button" class="btn btn-danger" data-sim-preset="ccgt_unit">Inject FM-1.3: psi Passed as MPa</button>
+              <button type="button" class="btn btn-danger" data-sim-preset="ccgt_gci">Inject FM-2.1: Unconverged Coarse Mesh</button>
+              <button type="button" class="btn btn-danger" data-sim-preset="ccgt_2ppc">Inject FM-3.1: Coupled HRSG Creep Breach</button>
+              <button type="button" class="btn" data-sim-preset="stent_clean">Vascular Stent: Valid 92 &micro;m Strut</button>
+              <button type="button" class="btn btn-danger" data-sim-preset="stent_fatigue">Inject Stent Goodman Fatigue Breach</button>
+            </div>
+
+            <div class="two-col">
+              <div class="subcard">
+                <div class="control-group">
+                  <label for="sim-domain"><span>Reference Engineering Domain</span></label>
+                  <select id="sim-domain" class="select-field">
+                    <option value="ccgt">PRJ-CCGT-450 — Combined-Cycle Gas Turbine (Brayton + HRSG)</option>
+                    <option value="stent">PRJ-STENT-VV40 — Pulsatile CoCr L605 Vascular Stent (ASME V&amp;V 40)</option>
+                  </select>
+                </div>
+                <div id="sim-controls"></div>
+              </div>
+
+              <div class="subcard">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:0.75rem;margin-bottom:0.75rem;">
+                  <h3 style="margin:0;">Live Gate Verdict Trace</h3>
+                  <span id="sim-overall-badge" class="badge badge-ok">ALL BARRIERS PASSED</span>
+                </div>
+                <div id="sim-gate-results" class="gate-list"></div>
+                <h4 style="margin:0.95rem 0 0.4rem;">Dissimilar Solver Equations &amp; Telemetry</h4>
+                <pre id="sim-telemetry" class="code-box"></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB PANEL 3: TRUSTWORTHY BENCHMARK ARENA -->
+        <section role="tabpanel" id="panel-benchmarks" aria-labelledby="tab-benchmarks" hidden="until-found">
+          <div class="panel-inner">
+            <h2 class="section-title">Make Benchmark Scoring Trustworthy Before Running Any Model</h2>
+            <p class="section-lead">
+              Before trusting any LLM score, ProximaB subjects its own benchmark package to three adversarial checks: a <strong>Know-Nothing Floor Responder</strong> (fixed strings, no engineering), <strong>15 Wrong-Answer Grader Probes</strong>, and <strong>1,747 Official ThermoQA Scorer Comparisons</strong>. Suites whose official simulator (OpenFOAM, Verilog testbench, CAD/Chrono runtime) is not installed are marked <code>executable=False</code> and refused by <code>run_evaluation</code> rather than graded with keyword heuristics.
+            </p>
+
+            <div class="two-col" style="margin-bottom:1.35rem;">
+              <div class="subcard">
+                <h3>Interactive Single-Question Grader Sandbox</h3>
+                <p style="font-size:0.8rem;color:var(--muted);margin-top:0;">
+                  Test how the hardened deterministic graders handle unit conversions, small scientific targets, specific volume tolerances, algebraic formulas, and safety-gate sign-off cases:
+                </p>
+                <div class="control-group">
+                  <label for="grader-case"><span>Benchmark Probe Case</span></label>
+                  <select id="grader-case" class="select-field"></select>
+                </div>
+                <div class="preset-row" id="grader-sample-btns"></div>
+                <div class="control-group">
+                  <label for="grader-reply"><span>Candidate Agent Reply (Editable)</span></label>
+                  <textarea id="grader-reply" class="textarea-field"></textarea>
+                </div>
+                <div id="grader-verdict-box" class="gate-item pass"></div>
+              </div>
+
+              <div class="subcard">
+                <h3>Before vs. After Grader Hardening Audit</h3>
+                <div class="gate-list">
+                  <div class="gate-item pass">
+                    <div>
+                      <strong>1. Know-Nothing Floor Responder</strong>
+                      <div style="font-size:0.78rem;color:var(--muted);">10 heuristic suites passed 40%–100% on <code>x = 1</code> or prompt echoes; <code>proximab_engsafe</code> leaked <code>(`hazard` case)</code> in title.</div>
+                    </div>
+                    <span class="badge badge-ok">10 &rarr; 0 Suites</span>
+                  </div>
+                  <div class="gate-item pass">
+                    <div>
+                      <strong>2. Wrong-Answer Grader Probes</strong>
+                      <div style="font-size:0.78rem;color:var(--muted);">Adjacent-only unit conversion, relative-only small-target tolerance, strict MCQ choice parse, AST 12-point symbolic equivalence.</div>
+                    </div>
+                    <span class="badge badge-ok">14/15 &rarr; 0/15 Accepted</span>
+                  </div>
+                  <div class="gate-item pass">
+                    <div>
+                      <strong>3. Official ThermoQA Scorer Fidelity</strong>
+                      <div style="font-size:0.78rem;color:var(--muted);">Unicode subscripts/overdots, <code>phase_name</code> text match, specific-volume guard, and IEEE-754 First-Law cycle residual recomputation.</div>
+                    </div>
+                    <span class="badge badge-ok">62.3% &rarr; 99.8%</span>
+                  </div>
+                  <div class="gate-item pass">
+                    <div>
+                      <strong>4. Power-of-Ten Import Integrity &amp; Sandboxing</strong>
+                      <div style="font-size:0.78rem;color:var(--muted);">26 MatSciBench + 170 UGPhysics <code>a &times; 10^b</code> keys verified; <code>python3 -E</code> clean-env no-socket execution; <code>x-goog-api-key</code> header auth.</div>
+                    </div>
+                    <span class="badge badge-ok">196 / 196 Verified</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin:0 0 0.35rem;font-size:1rem;">34-Suite Engineering Benchmark Catalog (Click Any Row to Inspect)</h3>
+            <div class="filter-bar">
+              <input type="search" id="suite-search" class="input-field" placeholder="Search suite, discipline, or evaluation type (e.g. thermoqa, nuclear, sysml, fem)...">
+              <select id="suite-status-filter" class="select-field">
+                <option value="all">All 34 Cataloged Suites (16 Executable + 18 Gated/Catalog)</option>
+                <option value="executable">Executable Validated Suites Only (16 Suites · 12,089 Tasks)</option>
+                <option value="gated">Non-Executable / Simulator-Gated Suites (18 Suites)</option>
+              </select>
+            </div>
+
+            <div tabindex="0" role="region" aria-labelledby="bench-table-caption" class="table-wrapper">
+              <table>
+                <caption id="bench-table-caption">Showing <span id="suite-shown-count">34</span> benchmark suites — executable question totals count validated runnable suites only</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Suite</th>
+                    <th scope="col">Primary Discipline</th>
+                    <th scope="col">Eval Types</th>
+                    <th scope="col">Tasks (Ingested / Reported)</th>
+                    <th scope="col">Runnable Status</th>
+                    <th scope="col">Know-Nothing Floor</th>
+                  </tr>
+                </thead>
+                <tbody id="suite-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB PANEL 4: CONTROLLED ENGINEERING CHANGE & SHA-256 LEDGER -->
+        <section role="tabpanel" id="panel-brain" aria-labelledby="tab-brain" hidden="until-found">
+          <div class="panel-inner">
+            <h2 class="section-title">Controlled Engineering Change (<code>B1 &rarr; B2</code>) &amp; Tamper-Evident <code>SHA-256</code> Ledger</h2>
+            <p class="section-lead">
+              In Workflow B (<strong>Engineering Brain</strong>), AI agents never overwrite an active baseline directly. Every proposed parameter change creates a new immutable entity revision, traverses the dependency graph to surface coupled impacts and missing-link coverage gaps, runs deterministic solvers, enforces separation-of-duties (<code>reviewer_id != proposer_id</code>), and seals every event into a <code>SHA-256</code> hash chain.
+            </p>
+
+            <div class="two-col">
+              <div class="subcard">
+                <h3>Step-Through Baseline Change Simulator (<code>PRJ-CCGT-450</code>)</h3>
+                <div class="control-group">
+                  <label for="brain-proposer"><span>Proposing Analyst</span></label>
+                  <select id="brain-proposer" class="select-field">
+                    <option value="t.carnot">t.carnot (Thermal Analyst)</option>
+                    <option value="s.lindholm">s.lindholm (Systems Lead)</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="brain-reviewer"><span>Independent Reviewer (Separation of Duties)</span></label>
+                  <select id="brain-reviewer" class="select-field">
+                    <option value="m.patel">m.patel (Independent QA Reviewer)</option>
+                    <option value="t.carnot">t.carnot (Same as Proposer — Triggers SoD Veto!)</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="brain-expected-base"><span>Expected Baseline Lock (Optimistic Concurrency)</span></label>
+                  <select id="brain-expected-base" class="select-field">
+                    <option value="PRJ-CCGT-450:B1">PRJ-CCGT-450:B1 (Current Active Baseline)</option>
+                    <option value="PRJ-CCGT-450:B0-STALE">PRJ-CCGT-450:B0-STALE (Stale Baseline — Triggers Drift Veto!)</option>
+                  </select>
+                </div>
+                <button type="button" id="btn-run-brain" class="btn btn-primary" style="width:100%;margin-bottom:0.85rem;">Execute Controlled Change Lifecycle</button>
+                <div id="brain-steps-output" class="gate-list"></div>
+              </div>
+
+              <div class="subcard">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:0.6rem;flex-wrap:wrap;">
+                  <h3 style="margin:0;">Live Web Crypto <code>SHA-256</code> Hash Chain</h3>
+                  <span id="ledger-chain-badge" class="badge badge-ok">CHAIN VERIFIED</span>
+                </div>
+                <p style="font-size:0.79rem;color:var(--muted);margin:0.4rem 0 0.7rem;">
+                  Each block hashes <code>prev_hash || canonical_json(payload)</code> using your browser's native <code>crypto.subtle.digest("SHA-256")</code>. Try mutating Block #2 to watch downstream hashes invalidate:
+                </p>
+                <div class="preset-row">
+                  <button type="button" id="btn-tamper-ledger" class="btn btn-danger">Tamper With Block #2 Payload</button>
+                  <button type="button" id="btn-restore-ledger" class="btn">Restore Original Chain</button>
+                </div>
+                <div id="ledger-blocks" class="ledger-chain"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <strong>ProximaB</strong> — Defense-in-Depth Physical AI Verification, Trustworthy Benchmark Arena &amp; Controlled Engineering Change Brain · MIT License · Copyright &copy; 2026 Tuan Anh Dinh.
+    </div>
+  </footer>
+
+  <!-- Light-dismiss modal dialog (`modern-web-guidance: light-dismiss-a-dialog`) -->
+  <dialog id="suite-dialog" closedby="any" aria-labelledby="suite-dialog-title">
+    <form method="dialog">
+      <div class="dialog-header">
+        <h2 id="suite-dialog-title">Benchmark Suite Details</h2>
+        <button type="submit" class="btn">Close</button>
+      </div>
+      <div id="suite-dialog-body" style="font-size:0.85rem;display:grid;gap:0.65rem;"></div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
