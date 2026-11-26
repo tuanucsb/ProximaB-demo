@@ -153,6 +153,45 @@ const GRADER_CASES = [
 ];
 
 // ============================================================================
+// 0. RANGE SLIDER & SWITCH HELPERS (`modern-web-guidance: slider` & `switch`)
+// ============================================================================
+function syncSliderVars(slider, valueText) {
+  if (!slider) return;
+  slider.style.setProperty("--attr-min", slider.min || "0");
+  slider.style.setProperty("--attr-max", slider.max || "100");
+  slider.style.setProperty("--control-value", slider.value);
+  if (valueText !== undefined) {
+    slider.setAttribute("aria-valuetext", String(valueText));
+  }
+}
+
+function bindAllRangeSliders(root = document) {
+  root.querySelectorAll('input[type="range"]').forEach((sl) => {
+    syncSliderVars(sl);
+    if (!sl.dataset.mwgSliderBound) {
+      sl.dataset.mwgSliderBound = "1";
+      sl.addEventListener("input", () => syncSliderVars(sl));
+    }
+  });
+}
+
+function initSwitchFallback() {
+  if (!("switch" in HTMLInputElement.prototype)) {
+    import("https://esm.sh/input-switch-polyfill").catch(() => {});
+  }
+}
+
+let announceTimer = null;
+function announcePolite(msg) {
+  const box = document.getElementById("live-announcer");
+  if (!box) return;
+  if (announceTimer) clearTimeout(announceTimer);
+  announceTimer = setTimeout(() => {
+    box.textContent = msg;
+  }, 180);
+}
+
+// ============================================================================
 // 1. DARK-MODE TOGGLE (`modern-web-guidance: dark-mode` & `dark-mode-toggle`)
 // ============================================================================
 function initThemeToggle() {
@@ -240,6 +279,36 @@ async function initTabs() {
     tab.addEventListener("focus", () => selectTab(tab));
     panels[i].addEventListener("beforematch", () => selectTab(tab));
   });
+
+  function applyHashRoute() {
+    const h = (window.location.hash || "").replace(/^#/, "").trim().toLowerCase();
+    if (!h) return;
+    const target = tabs.find((t) => (t.dataset.hash || "").toLowerCase() === h || t.id === `tab-${h}`);
+    if (target) selectTab(target);
+  }
+  window.addEventListener("hashchange", applyHashRoute);
+  applyHashRoute();
+
+  const copyBtn = document.getElementById("btn-copy-reactor-link");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const reactorTab = document.getElementById("tab-ai-reactor");
+      if (reactorTab) selectTab(reactorTab);
+      const url = new URL(window.location.href);
+      url.hash = "ai-reactor";
+      try {
+        await navigator.clipboard.writeText(url.toString());
+        copyBtn.textContent = "Copied #ai-reactor Link!";
+        announcePolite("Copied direct AI Reactor Control Room link to clipboard.");
+      } catch {
+        window.location.hash = "ai-reactor";
+        copyBtn.textContent = "Link Ready in URL Bar (#ai-reactor)";
+      }
+      setTimeout(() => {
+        copyBtn.textContent = "Copy AI Reactor Demo Link";
+      }, 2400);
+    });
+  }
 
   // Scroll-driven animation fallback using IntersectionObserver
   if (!CSS.supports("animation-timeline", "scroll()")) {
@@ -586,6 +655,7 @@ function initBarrierSimulator() {
   domainSel.addEventListener("change", () => {
     simState.domain = domainSel.value;
     buildControls();
+    bindAllRangeSliders(controlsBox);
     evaluateSim();
   });
 
@@ -616,11 +686,13 @@ function initBarrierSimulator() {
       }
       domainSel.value = simState.domain;
       buildControls();
+      bindAllRangeSliders(controlsBox);
       evaluateSim();
     });
   });
 
   buildControls();
+  bindAllRangeSliders(controlsBox);
   evaluateSim();
 }
 
@@ -1106,6 +1178,9 @@ function initNamDinhLabAndCorpus() {
     vFfcm.textContent = `${Math.round(pCov * 100)}%`;
     vPirt.textContent = `${Math.round(pPirt * 100)}%`;
     vDisc.textContent = `${discK.toFixed(1)} K`;
+    syncSliderVars(ffcmIn, `${Math.round(pCov * 100)} percent in-domain coverage`);
+    syncSliderVars(pirtIn, `${Math.round(pPirt * 100)} percent PIRT completeness`);
+    syncSliderVars(discIn, `${discK.toFixed(1)} Kelvin discrepancy`);
 
     const pSensor = Math.max(0.05, 1.0 - discK / 75.0);
     const pVer = sciml === "type_i_unguarded" ? 0.35 : 0.96;
@@ -1351,13 +1426,839 @@ function initNamDinhLabAndCorpus() {
       searchIn.addEventListener("input", renderPapers);
       pillarSel.addEventListener("change", renderPapers);
       renderPapers();
+
+      // Populate 2024-2026 Recent Talks & Highlights table in Tab 1
+      const talksBody = document.getElementById("rx-talks-tbody");
+      const talks = nd.recent_talks_2024_2026 || [];
+      if (talksBody && talks.length) {
+        talksBody.innerHTML = "";
+        for (const t of talks) {
+          const tr = document.createElement("tr");
+          tr.style.cursor = "pointer";
+          tr.addEventListener("click", (ev) => {
+            if (ev.target.closest("a")) return;
+            dialogTitle.textContent = `[${t.year}] ${t.title}`;
+            dialogBody.innerHTML = "";
+            for (const [k, v] of [
+              ["Date", t.year],
+              ["Format & Venue", `${t.kind} — ${t.venue}`],
+              ["Authors", t.authors],
+              ["Role in AI Reactor Control Room", t.demo_role],
+            ]) {
+              const d = document.createElement("div");
+              const st = document.createElement("strong");
+              st.textContent = `${k}: `;
+              const sp = document.createElement("span");
+              sp.style.color = "var(--muted)";
+              sp.textContent = v;
+              d.append(st, sp);
+              dialogBody.appendChild(d);
+            }
+            if (t.url) {
+              const linkDiv = document.createElement("div");
+              const a = document.createElement("a");
+              a.href = t.url;
+              a.target = "_blank";
+              a.rel = "noopener noreferrer";
+              a.textContent = `Open Verified Source (${t.url}) ↗`;
+              linkDiv.appendChild(a);
+              dialogBody.appendChild(linkDiv);
+            }
+            dialog.showModal();
+          });
+
+          const th = document.createElement("th");
+          th.scope = "row";
+          th.style.whiteSpace = "normal";
+          th.style.minInlineSize = "220px";
+          th.textContent = t.title;
+
+          const tdDate = document.createElement("td");
+          tdDate.className = "mono";
+          tdDate.style.whiteSpace = "nowrap";
+          tdDate.textContent = t.year;
+
+          const tdVen = document.createElement("td");
+          const kb = document.createElement("span");
+          kb.className = "badge";
+          kb.textContent = t.kind;
+          const vSub = document.createElement("div");
+          vSub.style.fontSize = "0.73rem";
+          vSub.style.color = "var(--muted)";
+          vSub.style.marginTop = "0.2rem";
+          vSub.textContent = t.venue;
+          tdVen.append(kb, vSub);
+
+          const tdAuth = document.createElement("td");
+          tdAuth.textContent = t.authors;
+
+          const tdRole = document.createElement("td");
+          tdRole.textContent = t.demo_role;
+
+          const tdLink = document.createElement("td");
+          const a = document.createElement("a");
+          a.href = t.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "Verify ↗";
+          tdLink.appendChild(a);
+
+          tr.append(th, tdDate, tdVen, tdAuth, tdRole, tdLink);
+          talksBody.appendChild(tr);
+        }
+      }
     })
     .catch(() => {});
 }
 
 // ============================================================================
+// 9. TAB 1: AI-OPERATED NUCLEAR REACTOR CONTROL ROOM (`NAMAC × ProximaB`)
+// ============================================================================
+const KEEPIN_BETA_REL = [0.033, 0.219, 0.196, 0.395, 0.115, 0.042];
+const KEEPIN_LAMBDA = [0.0124, 0.0305, 0.111, 0.301, 1.14, 3.01];
+
+const RX_SCENARIO_META = {
+  nominal_load_follow: {
+    title: "1. Nominal AI Load-Following (100% → 80% → 100% Rated Power)",
+    context: "Grid dispatch requests 80% load between t = 8 s and t = 26 s; primary pump at 100%.",
+    aiIntent: "Modulate control drums smoothly (±18 pcm) to track 240 MWth → 300 MWth demand.",
+  },
+  lofa_trustworthy_namac: {
+    title: "2. Partial Loss-of-Flow (52% Pump) — Trustworthy NAMAC Autonomous Mitigation",
+    context: "Primary coolant pump P1 coasts down to 52% starting at t = 5.0 s (inside D1 training hull).",
+    aiIntent: "Insert -38 pcm/s negative reactivity trim and open PRHRS natural-circulation heat exchanger.",
+  },
+  lofa_hallucinating_ai: {
+    title: "3. Hallucinating AI in LOFA (+0.85 $ vs +0.85 pcm Confusion / Rod Withdrawal)",
+    context: "Primary pump coasts down to 32% at t = 5.0 s; unverified LLM planner confuses $ and pcm units.",
+    aiIntent: "Withdraws control drums (+85 pcm/s toward +552.5 pcm = 0.85 $) during loss of coolant flow!",
+  },
+  false_sensor_spoof_2025: {
+    title: "4. False / Spoofed Thermocouple Drift (-58 K Cold Bias · 2025 IJPVP Sensor Gate)",
+    context: "Post-hazard pump coastdown to 35% accompanied by -58 K cold thermocouple drift/spoofing.",
+    aiIntent: "Misled by spoofed cold sensor reading, naive AI withdraws control rods (+38 pcm/s) into overheating core!",
+  },
+  ood_stratification_laddr: {
+    title: "5. Out-of-Distribution Natural-Circulation Stratification (2024 RESS LADDR Gate)",
+    context: "Severe pump coastdown to 22% enters uncalibrated 3D thermal stratification regime (Set D2).",
+    aiIntent: "Extrapolating FNN surrogate mispredicts plenum state (22 K error) and commands +28 pcm withdrawal!",
+  },
+};
+
+function simulateReactorTrajectory(scenarioId, bypassGates, extraSensorBiasK, extraRodDeltaPcm) {
+  const pRated = 300.0;
+  const betaEff = 0.0065;
+  const genTime = 25.0e-6;
+  const alphaFuel = -2.8;
+  const alphaCool = -1.4;
+  const cFuel = 18.5;
+  const cCool = 42.0;
+  const tInlet = 555.0;
+  const tCool0 = 585.0;
+  const tFuel0 = 865.0;
+  const safetyLimitK = 1477.0;
+
+  const h = 0.1;
+  const nSteps = 400; // 40.0 s at 0.1 s Backward-Euler step
+  const betaGroups = KEEPIN_BETA_REL.map((f) => betaEff * f);
+  const betaTilde = betaGroups.reduce((acc, b, i) => acc + b / (1.0 + h * KEEPIN_LAMBDA[i]), 0.0);
+  let precursors = betaGroups.map((b, i) => (b / (genTime * KEEPIN_LAMBDA[i])) * pRated);
+
+  let powerMw = pRated;
+  let tFuel = tFuel0;
+  let tCool = tCool0;
+  let rhoRodPcm = 0.0;
+  let prhrsFrac = 0.0;
+  let simplexEngaged = false;
+  let tripTimeS = null;
+  let firstVetoReasons = [];
+  let peakCladK = 0.0;
+
+  const frames = [];
+
+  for (let step = 0; step <= nSteps; step++) {
+    const tS = Math.round(step * h * 10) / 10;
+    let pumpFlow = 1.0;
+    let baseSensorBias = 0.0;
+    let oodRatio = 0.03;
+    let isLofa = false;
+    let demandFrac = 1.0;
+
+    if (scenarioId === "nominal_load_follow") {
+      demandFrac = tS >= 8.0 && tS <= 26.0 ? 0.80 : 1.0;
+      oodRatio = 0.03;
+    } else if (scenarioId === "lofa_trustworthy_namac") {
+      if (tS >= 5.0) {
+        pumpFlow = Math.max(0.52, 1.0 - 0.48 * Math.min(1.0, (tS - 5.0) / 6.0));
+        isLofa = true;
+        oodRatio = 0.05;
+      }
+    } else if (scenarioId === "lofa_hallucinating_ai") {
+      if (tS >= 5.0) {
+        pumpFlow = Math.max(0.32, 1.0 - 0.68 * Math.min(1.0, (tS - 5.0) / 6.0));
+        isLofa = true;
+        oodRatio = 0.06;
+      }
+    } else if (scenarioId === "false_sensor_spoof_2025") {
+      if (tS >= 5.0) {
+        pumpFlow = Math.max(0.35, 1.0 - 0.65 * Math.min(1.0, (tS - 5.0) / 7.0));
+        baseSensorBias = -58.0 * Math.min(1.0, (tS - 5.0) / 4.0);
+        isLofa = true;
+        oodRatio = 0.06;
+      }
+    } else {
+      if (tS >= 5.0) {
+        pumpFlow = Math.max(0.22, 1.0 - 0.78 * Math.min(1.0, (tS - 5.0) / 5.0));
+        isLofa = true;
+        oodRatio = 1.35;
+      }
+    }
+
+    const sensorBiasK = baseSensorBias + (tS >= 5.0 ? extraSensorBiasK : 0.0);
+    const hFcFrac = 0.28 + 0.72 * Math.pow(pumpFlow, 0.85);
+    const trueCladK =
+      tCool + (165.0 * (powerMw / pRated)) / Math.max(hFcFrac, 0.22) + 0.42 * (tFuel - tFuel0);
+    const measuredCladK = trueCladK + sensorBiasK;
+    const diagnosisDtCladK = trueCladK + (oodRatio < 1.0 ? 3.0 : -22.0);
+
+    // AI candidate control proposal
+    let aiDeltaPcm = 0.0;
+    let aiPrhrsCmd = 0.0;
+    let unitConfusion = false;
+
+    if (scenarioId === "nominal_load_follow") {
+      const errMw = pRated * demandFrac - powerMw;
+      aiDeltaPcm = Math.max(-18.0, Math.min(18.0, 0.45 * errMw));
+    } else if (scenarioId === "lofa_trustworthy_namac") {
+      aiDeltaPcm = tS >= 5.2 && powerMw > 95.0 ? -38.0 : 0.0;
+      aiPrhrsCmd = tS >= 5.2 ? 1.0 : 0.0;
+    } else if (scenarioId === "lofa_hallucinating_ai") {
+      aiDeltaPcm = tS >= 5.2 ? 85.0 : 0.0;
+      if (tS >= 5.2) unitConfusion = true;
+    } else if (scenarioId === "false_sensor_spoof_2025") {
+      aiDeltaPcm = tS >= 5.5 ? 38.0 : 0.0;
+    } else {
+      aiDeltaPcm = tS >= 5.5 ? 28.0 : 0.0;
+    }
+    if (tS >= 5.2) aiDeltaPcm += extraRodDeltaPcm;
+    if (extraRodDeltaPcm > 0 && pumpFlow < 0.95) isLofa = true;
+
+    const netCool = pumpFlow + 0.38 * Math.max(prhrsFrac, aiPrhrsCmd);
+    const projPower = Math.max(0.06, (powerMw / pRated) * (1.0 + 0.008 * aiDeltaPcm));
+    const prognosisCladK = trueCladK + 340.0 * Math.max(0.0, projPower - netCool);
+
+    // 5-Gate Evaluation (Chang-Dinh + LADDR + 2025 Sensor + NAMAC Discrepancy + PCMQ-BN)
+    const ln5 = Math.log(5.0);
+    const rmsRatio = Math.sqrt((oodRatio * oodRatio + Math.pow(0.9 * oodRatio, 2)) / 2.0);
+    const laddrRel = Math.exp(-ln5 * rmsRatio);
+    const innovZ = Math.abs(sensorBiasK) / 2.0;
+    const sensorRel = Math.max(0.02, Math.exp(-0.18 * Math.max(0.0, innovZ - 1.0)));
+
+    const pModel = 0.97 * 0.96 * (1.0 - 0.65 * 0.04);
+    const pData = laddrRel * sensorRel;
+    const posterior =
+      0.99 * pModel * pData +
+      0.12 * pModel * (1.0 - pData) +
+      0.08 * (1.0 - pModel) * pData +
+      0.01 * (1.0 - pModel) * (1.0 - pData);
+
+    const diagErrK = Math.abs(measuredCladK - diagnosisDtCladK);
+    const energyResPct = oodRatio < 1.0 ? 0.35 : 2.4;
+    const thermalMarginK = safetyLimitK - prognosisCladK;
+
+    const unitOk = !unitConfusion;
+    const laddrOk = laddrRel >= 0.50;
+    const sensorOk = innovZ <= 3.5;
+    const namacOk =
+      diagErrK <= 15.0 &&
+      energyResPct <= 1.5 &&
+      !(isLofa && aiDeltaPcm > 0.0) &&
+      thermalMarginK >= 25.0;
+    const pcmqOk = posterior >= 0.80;
+
+    const stepVetoes = [];
+    if (!unitOk) stepVetoes.push("FM-1.5: 7D SI UnitGate ($ vs pcm 650× reactivity scale error)");
+    if (!laddrOk) stepVetoes.push(`FM-1.6: LADDR reliability ${laddrRel.toFixed(2)} < 0.50 (D2 OOD extrapolation)`);
+    if (!sensorOk) stepVetoes.push(`FM-3.6: 2025 IJPVP Sensor Guard z=${innovZ.toFixed(1)} (spoof/drift ${sensorBiasK.toFixed(0)} K)`);
+    if (isLofa && aiDeltaPcm > 0.0) stepVetoes.push(`FM-3.3: NAMAC Discrepancy Checker (+${aiDeltaPcm.toFixed(0)} pcm during LOFA)`);
+    else if (!namacOk) stepVetoes.push(`FM-2.5: NAMAC Discrepancy (${diagErrK.toFixed(1)} K / margin ${thermalMarginK.toFixed(0)} K)`);
+    if (!pcmqOk) stepVetoes.push(`FM-1.6: PCMQ-BN Posterior P(Trust)=${posterior.toFixed(3)} < 0.800`);
+
+    if (stepVetoes.length > 0 && firstVetoReasons.length === 0) {
+      firstVetoReasons = [...stepVetoes];
+      if (!bypassGates) {
+        simplexEngaged = true;
+        tripTimeS = tS;
+      }
+    }
+
+    if (simplexEngaged && !bypassGates) {
+      const targetRod = -650.0;
+      const rodStep = Math.max(-95.0 * h * 10.0, targetRod - rhoRodPcm);
+      rhoRodPcm = Math.max(targetRod, rhoRodPcm + rodStep);
+      prhrsFrac = Math.min(1.0, prhrsFrac + 0.35 * h * 10.0);
+    } else {
+      rhoRodPcm = Math.max(-700.0, Math.min(552.5, rhoRodPcm + aiDeltaPcm * h * 2.5));
+      prhrsFrac = Math.max(0.0, Math.min(1.0, aiPrhrsCmd));
+    }
+
+    if (trueCladK > peakCladK) peakCladK = trueCladK;
+
+    if (step % 5 === 0) {
+      // Store every 0.5 s frame (81 frames over 40.0 s)
+      frames.push({
+        tS,
+        powerMw,
+        powerPct: (100.0 * powerMw) / pRated,
+        pumpPct: 100.0 * pumpFlow,
+        rhoRodPcm,
+        prhrsPct: 100.0 * prhrsFrac,
+        tFuelK: tFuel,
+        tCoolK: tCool,
+        trueCladK,
+        measuredCladK,
+        diagnosisDtCladK,
+        prognosisCladK,
+        aiDeltaPcm,
+        laddrRel,
+        innovZ,
+        sensorRel,
+        posterior,
+        unitOk,
+        laddrOk,
+        sensorOk,
+        namacOk,
+        pcmqOk,
+        simplexEngaged,
+        vetoes: stepVetoes,
+      });
+    }
+
+    if (step === nSteps) break;
+
+    const rhoFeedbackPcm = alphaFuel * (tFuel - tFuel0) + alphaCool * (tCool - tCool0);
+    const rhoTotal = (rhoRodPcm + rhoFeedbackPcm) * 1e-5;
+    let sourceN = powerMw;
+    for (let i = 0; i < 6; i++) {
+      sourceN += (h * (KEEPIN_LAMBDA[i] * precursors[i])) / (1.0 + h * KEEPIN_LAMBDA[i]);
+    }
+    const denom = Math.max(1e-6, 1.0 - (h / genTime) * (rhoTotal - betaTilde));
+    let powerNext = Math.max(0.04 * pRated, sourceN / denom);
+    if (simplexEngaged && !bypassGates) {
+      powerNext = Math.max(0.055 * pRated, powerNext);
+    }
+    precursors = precursors.map(
+      (c, i) => (c + h * (betaGroups[i] / genTime) * powerNext) / (1.0 + h * KEEPIN_LAMBDA[i])
+    );
+
+    const uaFc = (pRated / (tFuel0 - tCool0)) * hFcFrac;
+    const qFc = uaFc * (tFuel - tCool);
+    const qSink = pRated * pumpFlow * ((tCool - tInlet) / (tCool0 - tInlet));
+    const qPrhrs = 28.0 * prhrsFrac * Math.max(0.0, (tCool - 315.0) / (tCool0 - 315.0));
+
+    tFuel += (h / cFuel) * (powerNext - qFc);
+    tCool += (h / cCool) * (qFc - qSink - qPrhrs);
+    powerMw = powerNext;
+  }
+
+  return {
+    frames,
+    peakCladK,
+    safetyLimitK,
+    breached: peakCladK > safetyLimitK,
+    simplexEngaged,
+    tripTimeS,
+    firstVetoReasons,
+  };
+}
+
+function initAIReactorControlRoom() {
+  const playBtn = document.getElementById("rx-play-btn");
+  const stepBtn = document.getElementById("rx-step-btn");
+  const resetBtn = document.getElementById("rx-reset-btn");
+  const bypassSwitch = document.getElementById("rx-bypass-switch");
+  const switchWrap = document.getElementById("rx-switch-wrap");
+  const timeSlider = document.getElementById("rx-time-slider");
+  const vTime = document.getElementById("v-rx-time");
+  const biasSlider = document.getElementById("rx-sensor-bias");
+  const vBias = document.getElementById("v-rx-bias");
+  const rodBiasSlider = document.getElementById("rx-rod-bias");
+  const vRodBias = document.getElementById("v-rx-rodbias");
+
+  const authBadge = document.getElementById("rx-authority-badge");
+  const tripPill = document.getElementById("rx-trip-pill");
+  const miniKpis = document.getElementById("rx-mini-kpis");
+  const schemSvg = document.getElementById("rx-schematic-svg");
+  const chartTemp = document.getElementById("rx-chart-temp");
+  const chartPower = document.getElementById("rx-chart-power");
+  const chartTrust = document.getElementById("rx-chart-trust");
+  const gatesList = document.getElementById("rx-gates-list");
+  const kgBox = document.getElementById("rx-kg-explanation");
+  const telTbody = document.getElementById("rx-telemetry-tbody");
+
+  if (!playBtn || !schemSvg) return;
+
+  const state = {
+    scenarioId: "lofa_hallucinating_ai",
+    cursorS: 40.0,
+    playing: false,
+    rafId: null,
+    lastTs: 0,
+    guardedRun: null,
+    unguardedRun: null,
+  };
+
+  function recomputeRuns() {
+    const extraBias = parseFloat(biasSlider.value) || 0;
+    const extraRod = parseFloat(rodBiasSlider.value) || 0;
+    vBias.textContent = `${extraBias > 0 ? "+" : ""}${extraBias} K`;
+    vRodBias.textContent = `${extraRod > 0 ? "+" : ""}${extraRod} pcm`;
+    syncSliderVars(biasSlider, `${extraBias} Kelvin sensor bias`);
+    syncSliderVars(rodBiasSlider, `${extraRod} pcm reactivity perturbation`);
+
+    state.guardedRun = simulateReactorTrajectory(state.scenarioId, false, extraBias, extraRod);
+    state.unguardedRun = simulateReactorTrajectory(state.scenarioId, true, extraBias, extraRod);
+    renderControlRoom();
+  }
+
+  function svgPathFromFrames(frames, xFn, yFn) {
+    return frames
+      .map((f, i) => `${i === 0 ? "M" : "L"}${xFn(f).toFixed(1)},${yFn(f).toFixed(1)}`)
+      .join(" ");
+  }
+
+  function renderSchematic(f, activeRun) {
+    const bypassed = bypassSwitch.checked;
+    const isSimplex = f.simplexEngaged && !bypassed;
+    const cladHot = f.trueCladK > 1477.0;
+    const coreStroke = cladHot ? "#f87171" : isSimplex ? "#38bdf8" : "#34d399";
+    const sensorStroke = f.sensorOk ? "#34d399" : "#f87171";
+    const dtStroke = f.laddrOk ? "#34d399" : "#fbbf24";
+    const gateStroke = f.namacOk && f.pcmqOk && f.unitOk ? "#34d399" : "#f87171";
+    const switchStroke = bypassed ? "#f87171" : isSimplex ? "#38bdf8" : "#34d399";
+
+    const titleKeep = schemSvg.querySelector("title")?.outerHTML || "";
+    schemSvg.innerHTML = `${titleKeep}
+      <!-- Coolant & Signal Loop Connectors -->
+      <path class="flow-pulse" d="M165,130 L275,130" stroke="#38bdf8" stroke-width="3" fill="none"/>
+      <path class="flow-pulse" d="M275,205 L165,205" stroke="#0ea5e9" stroke-width="3" fill="none"/>
+      <path class="flow-pulse" d="M105,235 L105,318 L245,318" stroke="${f.prhrsPct > 5 ? "#34d399" : "#475569"}" stroke-width="2.6" fill="none"/>
+      <path class="flow-pulse" d="M170,88 L430,88" stroke="${sensorStroke}" stroke-width="2.4" fill="none"/>
+      <path class="flow-pulse" d="M535,138 L535,182" stroke="${dtStroke}" stroke-width="2.4" fill="none"/>
+      <path class="flow-pulse" d="M535,248 L535,288" stroke="${gateStroke}" stroke-width="2.4" fill="none"/>
+      <path class="flow-pulse" d="M430,335 L385,335 L385,175 L170,175" stroke="${switchStroke}" stroke-width="2.8" fill="none"/>
+
+      <!-- 1. SMR Reactor Core -->
+      <rect x="24" y="64" width="146" height="172" rx="10" fill="#111c33" stroke="${coreStroke}" stroke-width="2.4"/>
+      <text x="97" y="86" fill="#f8fafc" font-size="12" font-weight="700" text-anchor="middle">300 MWth SMR Core</text>
+      <text x="97" y="103" fill="#9fb0ca" font-size="10" text-anchor="middle">6-Group PRKE + Doppler</text>
+      <text x="97" y="126" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">P = ${f.powerMw.toFixed(1)} MW (${f.powerPct.toFixed(0)}%)</text>
+      <text x="97" y="146" fill="${cladHot ? "#f87171" : "#e2e8f0"}" font-size="11.5" font-weight="700" text-anchor="middle">T_clad = ${f.trueCladK.toFixed(0)} K</text>
+      <text x="97" y="164" fill="#9fb0ca" font-size="10" text-anchor="middle">Limit: 1477 K (1204 °C)</text>
+      <text x="97" y="184" fill="#38bdf8" font-size="10.5" text-anchor="middle">Rods: ${f.rhoRodPcm > 0 ? "+" : ""}${f.rhoRodPcm.toFixed(0)} pcm</text>
+      <text x="97" y="202" fill="#9fb0ca" font-size="9.5" text-anchor="middle">α_D = −2.8 pcm/K</text>
+      <text x="97" y="222" fill="${cladHot ? "#f87171" : "#34d399"}" font-size="10" font-weight="700" text-anchor="middle">${cladHot ? "SAFETY LIMIT BREACH!" : "CORE MARGIN INTACT"}</text>
+
+      <!-- 2. Primary Coolant Pump & Steam Gen -->
+      <rect x="245" y="112" width="126" height="106" rx="9" fill="#111c33" stroke="#38bdf8" stroke-width="1.8"/>
+      <text x="308" y="133" fill="#f8fafc" font-size="11.5" font-weight="700" text-anchor="middle">Primary Pump P1</text>
+      <text x="308" y="153" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Flow: ${f.pumpPct.toFixed(0)}%</text>
+      <text x="308" y="172" fill="#9fb0ca" font-size="10" text-anchor="middle">T_cool = ${f.tCoolK.toFixed(0)} K</text>
+      <text x="308" y="190" fill="#9fb0ca" font-size="9.5" text-anchor="middle">T_fuel = ${f.tFuelK.toFixed(0)} K</text>
+
+      <!-- 3. PRHRS Passive Decay Heat Removal -->
+      <rect x="245" y="288" width="126" height="84" rx="9" fill="#111c33" stroke="${f.prhrsPct > 5 ? "#34d399" : "#475569"}" stroke-width="1.8"/>
+      <text x="308" y="310" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Passive PRHRS</text>
+      <text x="308" y="330" fill="${f.prhrsPct > 5 ? "#34d399" : "#9fb0ca"}" font-size="11.5" font-weight="700" text-anchor="middle">${f.prhrsPct > 5 ? `OPEN (${f.prhrsPct.toFixed(0)}%)` : "STANDBY (0%)"}</text>
+      <text x="308" y="349" fill="#9fb0ca" font-size="9.5" text-anchor="middle">Natural Circulation HX</text>
+
+      <!-- 4. Sensor Guard + Diagnosis DT + LADDR (2024/2025) -->
+      <rect x="430" y="38" width="226" height="100" rx="9" fill="#111c33" stroke="${sensorStroke}" stroke-width="2"/>
+      <text x="543" y="58" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Diagnosis DT + LADDR &amp; Sensor Guard</text>
+      <text x="543" y="76" fill="#9fb0ca" font-size="9.5" text-anchor="middle">2025 IJPVP LSTM + 2024 RESS LADDR</text>
+      <text x="543" y="95" fill="${f.sensorOk ? "#e2e8f0" : "#f87171"}" font-size="10.5" text-anchor="middle">Sensor T: ${f.measuredCladK.toFixed(0)} K (z = ${f.innovZ.toFixed(1)})</text>
+      <text x="543" y="113" fill="${f.laddrOk ? "#34d399" : "#fbbf24"}" font-size="10.5" font-weight="700" text-anchor="middle">LADDR L(x′,x) = ${f.laddrRel.toFixed(2)} (min 0.50)</text>
+
+      <!-- 5. AI Strategy Planner + Prognosis DT -->
+      <rect x="430" y="168" width="226" height="82" rx="9" fill="#111c33" stroke="#818cf8" stroke-width="1.8"/>
+      <text x="543" y="188" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">AI Strategy + 30s Prognosis DT</text>
+      <text x="543" y="206" fill="#c7d2fe" font-size="10.5" text-anchor="middle">AI Proposal: Δρ = ${f.aiDeltaPcm > 0 ? "+" : ""}${f.aiDeltaPcm.toFixed(0)} pcm/s</text>
+      <text x="543" y="224" fill="#9fb0ca" font-size="10" text-anchor="middle">Prognosis Peak: ${f.prognosisCladK.toFixed(0)} K (2026 OPT-TH)</text>
+
+      <!-- 6. Discrepancy Checker + PCMQ-BN + Simplex Switch -->
+      <rect x="430" y="278" width="226" height="114" rx="9" fill="#111c33" stroke="${switchStroke}" stroke-width="2.2"/>
+      <text x="543" y="298" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">KG-RAG Discrepancy &amp; PCMQ-BN</text>
+      <text x="543" y="317" fill="${f.pcmqOk ? "#34d399" : "#f87171"}" font-size="11" font-weight="700" text-anchor="middle">P(Trustworthy | E_t) = ${f.posterior.toFixed(3)}</text>
+      <text x="543" y="336" fill="#9fb0ca" font-size="9.5" text-anchor="middle">7D SI UnitGate: ${f.unitOk ? "OK" : "VETO ($ vs pcm)"}</text>
+      <rect x="448" y="348" width="190" height="30" rx="6" fill="${bypassed ? "#451a1f" : isSimplex ? "#0c2d48" : "#0d3326"}" stroke="${switchStroke}" stroke-width="1.4"/>
+      <text x="543" y="367" fill="#f8fafc" font-size="10.5" font-weight="700" text-anchor="middle">${
+        bypassed
+          ? "BARRIERS BYPASSED (UNGUARDED)"
+          : isSimplex
+          ? `SIMPLEX FALLBACK (t=${activeRun.tripTimeS}s)`
+          : "AI AUTONOMOUS AUTHORITY"
+      }</text>
+    `;
+  }
+
+  function renderCharts(activeRun, refRun, bypassed, cursorS) {
+    const W = 520;
+    const padL = 44;
+    const padR = 14;
+    const plotW = W - padL - padR;
+    const xOf = (t) => padL + (t / 40.0) * plotW;
+    const curX = xOf(cursorS);
+
+    // Chart 1: Peak Cladding Temperature (550 K to 1750 K)
+    const H1 = 142;
+    const y1Min = 560;
+    const y1Max = 1720;
+    const y1Of = (k) => 12 + (1.0 - (Math.min(y1Max, Math.max(y1Min, k)) - y1Min) / (y1Max - y1Min)) * (H1 - 30);
+    const limitY = y1Of(1477.0);
+    const activeTempPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y1Of(f.trueCladK));
+    const refTempPath = svgPathFromFrames(refRun.frames, (f) => xOf(f.tS), (f) => y1Of(f.trueCladK));
+    const sensTempPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y1Of(f.measuredCladK));
+    const tKeep1 = chartTemp.querySelector("title")?.outerHTML || "";
+    chartTemp.innerHTML = `${tKeep1}
+      <line x1="${padL}" y1="${limitY.toFixed(1)}" x2="${W - padR}" y2="${limitY.toFixed(1)}" stroke="#ef4444" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <text x="${W - padR - 4}" y="${(limitY - 4).toFixed(1)}" fill="#ef4444" font-size="9.5" font-weight="700" text-anchor="end">1477 K (1204 °C) 10 CFR 50.46 Limit</text>
+      <text x="6" y="${y1Of(1600).toFixed(1)}" fill="#64748b" font-size="9.5">1600K</text>
+      <text x="6" y="${y1Of(1100).toFixed(1)}" fill="#64748b" font-size="9.5">1100K</text>
+      <text x="6" y="${y1Of(700).toFixed(1)}" fill="#64748b" font-size="9.5">700K</text>
+      <path d="${refTempPath}" fill="none" stroke="${bypassed ? "#10b981" : "#f87171"}" stroke-width="1.7" stroke-dasharray="4 4" opacity="0.85"/>
+      <path d="${sensTempPath}" fill="none" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="2 3"/>
+      <path d="${activeTempPath}" fill="none" stroke="${bypassed ? "#ef4444" : "#059669"}" stroke-width="2.6"/>
+      <line x1="${curX.toFixed(1)}" y1="8" x2="${curX.toFixed(1)}" y2="${H1 - 16}" stroke="#64748b" stroke-width="1.2"/>
+      <text x="${padL}" y="${H1 - 4}" fill="#64748b" font-size="9">0s</text>
+      <text x="${xOf(20)}" y="${H1 - 4}" fill="#64748b" font-size="9" text-anchor="middle">20s</text>
+      <text x="${W - padR}" y="${H1 - 4}" fill="#64748b" font-size="9" text-anchor="end">40s</text>
+    `;
+
+    // Chart 2: Power % & Pump Flow % (0% to 180%)
+    const H2 = 128;
+    const y2Of = (pct) => 10 + (1.0 - Math.min(185, Math.max(0, pct)) / 185.0) * (H2 - 26);
+    const pwrPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y2Of(f.powerPct));
+    const flwPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y2Of(f.pumpPct));
+    const tKeep2 = chartPower.querySelector("title")?.outerHTML || "";
+    chartPower.innerHTML = `${tKeep2}
+      <text x="6" y="${y2Of(150).toFixed(1)}" fill="#64748b" font-size="9.5">150%</text>
+      <text x="6" y="${y2Of(100).toFixed(1)}" fill="#64748b" font-size="9.5">100%</text>
+      <text x="6" y="${y2Of(20).toFixed(1)}" fill="#64748b" font-size="9.5">20%</text>
+      <path d="${flwPath}" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="5 3"/>
+      <path d="${pwrPath}" fill="none" stroke="#059669" stroke-width="2.4"/>
+      <line x1="${curX.toFixed(1)}" y1="8" x2="${curX.toFixed(1)}" y2="${H2 - 14}" stroke="#64748b" stroke-width="1.2"/>
+      <text x="${padL}" y="${H2 - 3}" fill="#64748b" font-size="9">0s</text>
+      <text x="${W - padR}" y="${H2 - 3}" fill="#64748b" font-size="9" text-anchor="end">40s</text>
+    `;
+
+    // Chart 3: PCMQ-BN Posterior & LADDR (0.0 to 1.05)
+    const H3 = 128;
+    const y3Of = (p) => 10 + (1.0 - Math.min(1.02, Math.max(0, p)) / 1.02) * (H3 - 26);
+    const bbnCutY = y3Of(0.80);
+    const bbnPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y3Of(f.posterior));
+    const laddrPath = svgPathFromFrames(activeRun.frames, (f) => xOf(f.tS), (f) => y3Of(f.laddrRel));
+    const tKeep3 = chartTrust.querySelector("title")?.outerHTML || "";
+    chartTrust.innerHTML = `${tKeep3}
+      <line x1="${padL}" y1="${bbnCutY.toFixed(1)}" x2="${W - padR}" y2="${bbnCutY.toFixed(1)}" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="4 4"/>
+      <text x="${W - padR - 4}" y="${(bbnCutY - 3).toFixed(1)}" fill="#ef4444" font-size="9" text-anchor="end">0.80 Autonomous Threshold</text>
+      <text x="6" y="${y3Of(1.0).toFixed(1)}" fill="#64748b" font-size="9.5">1.00</text>
+      <text x="6" y="${y3Of(0.5).toFixed(1)}" fill="#64748b" font-size="9.5">0.50</text>
+      <text x="6" y="${y3Of(0.1).toFixed(1)}" fill="#64748b" font-size="9.5">0.10</text>
+      <path d="${laddrPath}" fill="none" stroke="#8b5cf6" stroke-width="1.9" stroke-dasharray="4 3"/>
+      <path d="${bbnPath}" fill="none" stroke="#059669" stroke-width="2.4"/>
+      <line x1="${curX.toFixed(1)}" y1="8" x2="${curX.toFixed(1)}" y2="${H3 - 14}" stroke="#64748b" stroke-width="1.2"/>
+      <text x="${padL}" y="${H3 - 3}" fill="#64748b" font-size="9">0s</text>
+      <text x="${W - padR}" y="${H3 - 3}" fill="#64748b" font-size="9" text-anchor="end">40s</text>
+    `;
+  }
+
+  function renderControlRoom() {
+    const bypassed = bypassSwitch.checked;
+    switchWrap.classList.toggle("danger-active", bypassed);
+
+    const activeRun = bypassed ? state.unguardedRun : state.guardedRun;
+    const refRun = bypassed ? state.guardedRun : state.unguardedRun;
+    const idx = Math.min(
+      activeRun.frames.length - 1,
+      Math.max(0, Math.round(state.cursorS / 0.5))
+    );
+    const f = activeRun.frames[idx];
+    const fGuard = state.guardedRun.frames[idx];
+    const fUnguard = state.unguardedRun.frames[idx];
+
+    vTime.textContent = `${f.tS.toFixed(1)} s / 40.0 s`;
+    timeSlider.value = String(f.tS);
+    syncSliderVars(timeSlider, `${f.tS.toFixed(1)} seconds out of 40.0 seconds`);
+
+    if (bypassed) {
+      authBadge.className = "badge badge-fail";
+      authBadge.textContent = activeRun.breached
+        ? "UNGUARDED AI — SAFETY LIMIT BREACHED!"
+        : "UNGUARDED AI (BARRIERS OFF)";
+    } else if (f.simplexEngaged) {
+      authBadge.className = "badge badge-warn";
+      authBadge.textContent = `SIMPLEX FALLBACK ENGAGED (t = ${state.guardedRun.tripTimeS} s)`;
+    } else {
+      authBadge.className = "badge badge-ok";
+      authBadge.textContent = "NAMAC AUTONOMOUS AI ACTIVE";
+    }
+
+    const vetoCount = state.guardedRun.firstVetoReasons.length;
+    tripPill.className = `badge ${vetoCount === 0 ? "badge-ok" : bypassed ? "badge-fail" : "badge-warn"}`;
+    tripPill.textContent =
+      vetoCount === 0
+        ? "ALL 5 GATES CLEAR"
+        : bypassed
+        ? `${vetoCount} GATE VETOES IGNORED`
+        : `${vetoCount} VETO(ES) → SIMPLEX SAFE SCRAM`;
+
+    // Mini KPIs
+    const kpiItems = [
+      ["Core Power", `${f.powerMw.toFixed(1)} MWth (${f.powerPct.toFixed(0)}%)`],
+      ["Peak Cladding T", `${f.trueCladK.toFixed(1)} K ${f.trueCladK > 1477 ? "⚠" : "✓"}`],
+      ["Rod Reactivity", `${f.rhoRodPcm > 0 ? "+" : ""}${f.rhoRodPcm.toFixed(0)} pcm`],
+      ["LADDR L(x′,x)", `${f.laddrRel.toFixed(3)}`],
+      ["PCMQ-BN P(Trust)", `${f.posterior.toFixed(3)}`],
+      ["PRHRS Cooling", f.prhrsPct > 5 ? `ACTIVE (${f.prhrsPct.toFixed(0)}%)` : "STANDBY"],
+    ];
+    miniKpis.innerHTML = kpiItems
+      .map(
+        ([lbl, val]) => `
+        <div class="mini-kpi">
+          <div class="mini-kpi-label">${lbl}</div>
+          <div class="mini-kpi-val">${val}</div>
+        </div>`
+      )
+      .join("");
+
+    renderSchematic(f, activeRun);
+    renderCharts(activeRun, refRun, bypassed, f.tS);
+
+    // 5-Gate Live Stack
+    const gateRows = [
+      {
+        name: "1. 7D SI UnitGate ($ vs. pcm Reactivity Scale)",
+        ok: f.unitOk,
+        msg: f.unitOk
+          ? "Reactivity command supplied in verified dimensionless pcm (10⁻⁵ Δk/k)."
+          : "VETO (FM-1.5): AI confused 0.85 $ (552.5 pcm) with 0.85 pcm (650× prompt-jump hazard).",
+      },
+      {
+        name: "2. LADDR Data Supervisor (Chen, Bao & Dinh, RESS 2024)",
+        ok: f.laddrOk,
+        msg: f.laddrOk
+          ? `Relative training reliability L(x′,x) = ${f.laddrRel.toFixed(3)} ≥ 0.50 (peril f_P minimized).`
+          : `VETO (FM-1.6): L(x′,x) = ${f.laddrRel.toFixed(3)} < 0.50 — untrained stratification regime (Set D2).`,
+      },
+      {
+        name: "3. Statistical + LSTM Sensor Guard (Sandhu et al. & Dinh, IJPVP 2025)",
+        ok: f.sensorOk,
+        msg: f.sensorOk
+          ? `Thermocouple innovation z = ${f.innovZ.toFixed(2)} ≤ 3.5 (measured ${f.measuredCladK.toFixed(1)} K).`
+          : `VETO (FM-3.6): Innovation z = ${f.innovZ.toFixed(1)} > 3.5 — false/spoofed cold sensor bias detected!`,
+      },
+      {
+        name: "4. NAMAC KG-RAG Discrepancy Checker (Athe, Lin, Son & Dinh, 2021–2025)",
+        ok: f.namacOk,
+        msg: f.namacOk
+          ? `Directional rule & Prognosis margin (${(1477 - f.prognosisCladK).toFixed(0)} K to 1477 K) satisfied.`
+          : `VETO (FM-3.3): Unsafe +${f.aiDeltaPcm.toFixed(0)} pcm rod withdrawal or DT divergence during LOFA!`,
+      },
+      {
+        name: "5. PCMQ-BN & GPT/BBN Trustworthiness (Wang et al. 2024; Cittadino et al. 2025)",
+        ok: f.pcmqOk,
+        msg: f.pcmqOk
+          ? `Posterior P(Trustworthy | E_t) = ${f.posterior.toFixed(3)} ≥ 0.800 autonomous authority bound.`
+          : `VETO: Posterior P(Trustworthy | E_t) = ${f.posterior.toFixed(3)} < 0.800 — revoke AI authority!`,
+      },
+    ];
+    gatesList.innerHTML = "";
+    for (const g of gateRows) {
+      const div = document.createElement("div");
+      div.className = `gate-item ${g.ok ? "pass" : "fail"}`;
+      div.innerHTML = `
+        <div>
+          <strong>${g.name}</strong>
+          <div style="font-size:0.77rem;color:var(--muted);margin-top:0.12rem;"></div>
+        </div>
+        <span class="badge ${g.ok ? "badge-ok" : "badge-fail"}">${g.ok ? "PASS" : bypassed ? "BYPASSED" : "VETO"}</span>
+      `;
+      div.querySelector("div > div").textContent = g.msg;
+      gatesList.appendChild(div);
+    }
+
+    // AAAI-25 Knowledge-Graph + RAG Explainable Discrepancy Trace
+    const meta = RX_SCENARIO_META[state.scenarioId];
+    const whyLines = [
+      `[AAAI-25 XAI-ECI Ontology + RAG Explanation @ t = ${f.tS.toFixed(1)} s]`,
+      `Scenario   : ${meta.title}`,
+      `Context c  : ${meta.context}`,
+      `AI Action a: ${meta.aiIntent}`,
+      state.guardedRun.firstVetoReasons.length === 0
+        ? `Decision   : APPROVE AI ACTION — P(Trustworthy)=${f.posterior.toFixed(3)} ≥ 0.80, Peak T_clad=${state.guardedRun.peakCladK.toFixed(1)} K ≤ 1477 K.`
+        : bypassed
+        ? `Decision   : SAFETY BARRIERS BYPASSED — Unguarded AI reaches Peak T_clad = ${state.unguardedRun.peakCladK.toFixed(1)} K (${
+            state.unguardedRun.breached ? "BREACHES 1477 K LIMIT!" : "elevated thermal stress"
+          }).`
+        : `Decision   : VETO AI @ t=${state.guardedRun.tripTimeS} s (${state.guardedRun.firstVetoReasons[0]}) → ASTM F3269 Simplex inserts −650 pcm & opens PRHRS (Peak T_clad capped at ${state.guardedRun.peakCladK.toFixed(1)} K vs. ${state.unguardedRun.peakCladK.toFixed(1)} K unguarded).`,
+    ];
+    kgBox.textContent = whyLines.join("\n");
+
+    // Accessible Semantic Comparison Table
+    const rows = [
+      [
+        "Peak Cladding Temp (t)",
+        `${fGuard.trueCladK.toFixed(1)} K`,
+        `${fUnguard.trueCladK.toFixed(1)} K`,
+        "≤ 1477.0 K (1204 °C)",
+        state.unguardedRun.breached ? "Simplex Prevents Melt Breach" : "Within Cladding Limit",
+        "NAMAC + Simplex",
+      ],
+      [
+        "40s Max Cladding Temp",
+        `${state.guardedRun.peakCladK.toFixed(1)} K`,
+        `${state.unguardedRun.peakCladK.toFixed(1)} K`,
+        "≤ 1477.0 K (10 CFR 50.46)",
+        `ΔT Saved = ${(state.unguardedRun.peakCladK - state.guardedRun.peakCladK).toFixed(1)} K`,
+        "Prognosis DT",
+      ],
+      [
+        "Core Thermal Power (t)",
+        `${fGuard.powerMw.toFixed(1)} MWth (${fGuard.powerPct.toFixed(0)}%)`,
+        `${fUnguard.powerMw.toFixed(1)} MWth (${fUnguard.powerPct.toFixed(0)}%)`,
+        "300.0 MWth Rated",
+        fGuard.simplexEngaged ? "Scrammed to Decay Heat" : "Load-Following",
+        "6-Group PRKE",
+      ],
+      [
+        "Measured vs. True Clad T",
+        `${fGuard.measuredCladK.toFixed(1)} K vs ${fGuard.trueCladK.toFixed(1)} K`,
+        `${fUnguard.measuredCladK.toFixed(1)} K vs ${fUnguard.trueCladK.toFixed(1)} K`,
+        "Innovation z ≤ 3.5",
+        fGuard.sensorOk ? "Sensor Verified" : `Spoof Caught (z=${fGuard.innovZ.toFixed(1)})`,
+        "2025 IJPVP LSTM",
+      ],
+      [
+        "PCMQ-BN P(Trust | E_t)",
+        fGuard.posterior.toFixed(3),
+        fUnguard.posterior.toFixed(3),
+        "≥ 0.800 for AI Autonomy",
+        fGuard.pcmqOk ? "Autonomous Permitted" : "Authority Revoked",
+        "PCMQ-BN + LADDR",
+      ],
+    ];
+    telTbody.innerHTML = "";
+    for (const [qName, gVal, uVal, bound, outcome, gateName] of rows) {
+      const tr = document.createElement("tr");
+      const th = document.createElement("th");
+      th.scope = "row";
+      th.textContent = qName;
+      const td1 = document.createElement("td");
+      td1.className = "mono";
+      td1.textContent = gVal;
+      const td2 = document.createElement("td");
+      td2.className = "mono";
+      td2.textContent = uVal;
+      const td3 = document.createElement("td");
+      td3.textContent = bound;
+      const td4 = document.createElement("td");
+      td4.textContent = outcome;
+      const td5 = document.createElement("td");
+      td5.className = "mono";
+      td5.textContent = gateName;
+      tr.append(th, td1, td2, td3, td4, td5);
+      telTbody.appendChild(tr);
+    }
+  }
+
+  function stopPlayback() {
+    state.playing = false;
+    if (state.rafId) cancelAnimationFrame(state.rafId);
+    state.rafId = null;
+    playBtn.textContent = "Play Live Simulation";
+    schemSvg.classList.remove("is-running");
+  }
+
+  function tickPlayback(ts) {
+    if (!state.playing) return;
+    if (!state.lastTs) state.lastTs = ts;
+    const dtReal = (ts - state.lastTs) / 1000.0;
+    state.lastTs = ts;
+    // 4x real-time speed so 40 s transient plays smoothly in 10 s
+    state.cursorS = Math.min(40.0, state.cursorS + dtReal * 4.0);
+    renderControlRoom();
+    if (state.cursorS >= 40.0) {
+      stopPlayback();
+      announcePolite("Simulation reached 40.0 seconds.");
+      return;
+    }
+    state.rafId = requestAnimationFrame(tickPlayback);
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (state.playing) {
+      stopPlayback();
+    } else {
+      if (state.cursorS >= 39.9) state.cursorS = 0.0;
+      state.playing = true;
+      state.lastTs = 0;
+      playBtn.textContent = "Pause Simulation";
+      schemSvg.classList.add("is-running");
+      state.rafId = requestAnimationFrame(tickPlayback);
+    }
+  });
+
+  stepBtn.addEventListener("click", () => {
+    stopPlayback();
+    state.cursorS = state.cursorS >= 40.0 ? 1.0 : Math.min(40.0, Math.round((state.cursorS + 1.0) * 2) / 2);
+    renderControlRoom();
+  });
+
+  resetBtn.addEventListener("click", () => {
+    stopPlayback();
+    state.cursorS = 40.0;
+    biasSlider.value = "0";
+    rodBiasSlider.value = "0";
+    recomputeRuns();
+  });
+
+  timeSlider.addEventListener("input", () => {
+    stopPlayback();
+    state.cursorS = parseFloat(timeSlider.value) || 0.0;
+    renderControlRoom();
+  });
+
+  bypassSwitch.addEventListener("change", () => {
+    renderControlRoom();
+    announcePolite(
+      bypassSwitch.checked
+        ? "Safety barriers bypassed: displaying unguarded AI reactor trajectory."
+        : "ProximaB and NAMAC safety barriers active."
+    );
+  });
+
+  biasSlider.addEventListener("input", recomputeRuns);
+  rodBiasSlider.addEventListener("input", recomputeRuns);
+
+  document.querySelectorAll("[data-rx-scenario]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      stopPlayback();
+      state.scenarioId = btn.dataset.rxScenario;
+      biasSlider.value = "0";
+      rodBiasSlider.value = "0";
+      state.cursorS = 40.0;
+      recomputeRuns();
+      announcePolite(`Loaded scenario: ${RX_SCENARIO_META[state.scenarioId].title}`);
+    });
+  });
+
+  recomputeRuns();
+}
+
+// ============================================================================
 // BOOTSTRAP
 // ============================================================================
+initSwitchFallback();
 initThemeToggle();
 initTabs();
 initDialogFallback();
@@ -1367,3 +2268,5 @@ initGraderSandbox();
 initCatalogTable();
 initBrainAndLedger();
 initNamDinhLabAndCorpus();
+initAIReactorControlRoom();
+bindAllRangeSliders(document);

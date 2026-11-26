@@ -5,21 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="light dark">
   <script>try{document.querySelector('meta[name="color-scheme"]').content=localStorage.getItem("color-scheme")??"light dark";}catch{}</script>
-  <title>ProximaB — How Physical AI Qualification, Trustworthy Benchmarks &amp; Controlled Engineering Change Work</title>
+  <title>ProximaB — AI-Operated Nuclear System Demo (NAMAC × ProximaB), Trustworthy Benchmarks &amp; Physical AI Verification</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand-group">
         <div class="brand-mark" aria-hidden="true">PB</div>
         <div>
           <h1 class="brand-title">ProximaB</h1>
-          <p class="brand-sub">Defense-in-Depth Physical AI Verification · Trustworthy Benchmark Arena · Controlled Change Brain</p>
+          <p class="brand-sub">AI-Operated Nuclear Reactor Control Room (NAMAC &times; ProximaB) &middot; Defense-in-Depth Verification &middot; Trustworthy Benchmark Arena</p>
         </div>
       </div>
       <div class="header-actions">
-        <button type="button" id="theme-toggle" class="btn" title="Toggle light or dark appearance">
+        <button type="button" id="btn-copy-reactor-link" class="btn btn-primary">Copy AI Reactor Demo Link</button>
+        <button type="button" id="theme-toggle" class="btn">
           <span class="theme-opt-dark">◑ <span>Dark theme</span></span>
           <span class="theme-opt-light">☀ <span>Light theme</span></span>
         </button>
@@ -70,16 +72,163 @@
 
     <div class="tabs-shell">
       <div class="tablist scroller" focusgroup="tablist nomemory" role="tablist" aria-label="ProximaB interactive walkthrough">
-        <button type="button" role="tab" id="tab-overview" aria-selected="true" focusgroupstart>1. How ProximaB Works</button>
-        <button type="button" role="tab" id="tab-simulator" aria-selected="false">2. Live Physics Barrier Simulator</button>
-        <button type="button" role="tab" id="tab-benchmarks" aria-selected="false">3. Trustworthy Benchmark Arena</button>
-        <button type="button" role="tab" id="tab-brain" aria-selected="false">4. Controlled Change &amp; SHA-256 Ledger</button>
-        <button type="button" role="tab" id="tab-namdinh" aria-selected="false">5. Dr. Nam Dinh Nuclear AI Safety (102 Papers)</button>
+        <button type="button" role="tab" id="tab-ai-reactor" data-hash="ai-reactor" aria-selected="true" focusgroupstart>1. AI-Operated Nuclear Reactor Demo</button>
+        <button type="button" role="tab" id="tab-overview" data-hash="overview" aria-selected="false">2. How ProximaB Works</button>
+        <button type="button" role="tab" id="tab-simulator" data-hash="simulator" aria-selected="false">3. Physics Barrier Simulator</button>
+        <button type="button" role="tab" id="tab-benchmarks" data-hash="benchmarks" aria-selected="false">4. Trustworthy Benchmark Arena</button>
+        <button type="button" role="tab" id="tab-brain" data-hash="brain" aria-selected="false">5. Controlled Change &amp; SHA-256 Ledger</button>
+        <button type="button" role="tab" id="tab-namdinh" data-hash="namdinh" aria-selected="false">6. Dr. Nam Dinh Research &amp; 2024–2026 Talks (106 Works)</button>
       </div>
 
       <div class="tabpanels-stack">
-        <!-- TAB PANEL 1: ARCHITECTURE -->
-        <section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview">
+        <!-- TAB PANEL 1: AI-OPERATED NUCLEAR REACTOR CONTROL ROOM (NAMAC × PROXIMAB) -->
+        <section role="tabpanel" id="panel-ai-reactor" aria-labelledby="tab-ai-reactor">
+          <div class="panel-inner">
+            <h2 class="section-title">Autonomous AI-Operated 300 MWth SMR Control Room (<code>NAMAC &times; ProximaB</code>)</h2>
+            <p class="section-lead">
+              Simulates an AI-operated Small Modular Reactor coupling <strong>6-group delayed-neutron Point-Reactor Kinetics (PRKE)</strong>, fuel/coolant thermal-hydraulics, and <strong>PRHRS passive cooling</strong> with Prof. Truc-Nam (Nam T.) Dinh's autonomous stack: <strong>NAMAC Diagnosis &amp; Prognosis Digital Twins</strong>, <strong>AAAI-25 Knowledge-Graph + RAG Discrepancy Checker</strong>, <strong>2024 RESS LADDR Data Supervisor</strong>, <strong>2025 IJPVP LSTM/Statistical False-Sensor Guard</strong>, <strong>NPIC&amp;HMIT 2025 BBN Trustworthiness</strong>, and <strong>ASTM F3269 Simplex Automatic Fallback</strong>.
+            </p>
+
+            <div class="preset-row" aria-label="AI reactor operational and fault scenarios">
+              <button type="button" class="btn btn-primary" data-rx-scenario="nominal_load_follow">1. Nominal AI Load-Follow (100% &rarr; 80% &rarr; 100%)</button>
+              <button type="button" class="btn btn-primary" data-rx-scenario="lofa_trustworthy_namac">2. Loss-of-Flow (52% Pump) — Trustworthy NAMAC</button>
+              <button type="button" class="btn btn-danger" data-rx-scenario="lofa_hallucinating_ai">3. Hallucinating AI ($ vs pcm +85 pcm in LOFA)</button>
+              <button type="button" class="btn btn-danger" data-rx-scenario="false_sensor_spoof_2025">4. False Sensor Spoof (-58 K Drift &middot; 2025 IJPVP)</button>
+              <button type="button" class="btn btn-danger" data-rx-scenario="ood_stratification_laddr">5. Out-of-Distribution Regime (2024 RESS LADDR)</button>
+            </div>
+
+            <div class="reactor-toolbar">
+              <div class="reactor-transport">
+                <button type="button" id="rx-play-btn" class="btn btn-primary">Play Live Simulation</button>
+                <button type="button" id="rx-step-btn" class="btn">Step +1.0 s</button>
+                <button type="button" id="rx-reset-btn" class="btn">Reset (t = 40 s View)</button>
+                <span id="rx-authority-badge" class="badge badge-ok">AUTONOMOUS AI ACTIVE</span>
+              </div>
+              <div class="switch-row" id="rx-switch-wrap">
+                <label for="rx-bypass-switch">Bypass Safety Barriers (Show Unguarded AI)</label>
+                <input id="rx-bypass-switch" type="checkbox" switch>
+              </div>
+            </div>
+
+            <div class="control-group" style="margin-block-end:1rem;">
+              <label for="rx-time-slider">
+                <span>Simulation Inspection Time Cursor (<code>t</code>)</span>
+                <span id="v-rx-time" class="mono">40.0 s / 40.0 s</span>
+              </label>
+              <input id="rx-time-slider" type="range" min="0" max="40" step="0.5" value="40" aria-valuetext="40.0 seconds out of 40.0 seconds">
+            </div>
+
+            <div class="reactor-mini-kpis" id="rx-mini-kpis"></div>
+
+            <div class="reactor-grid">
+              <div class="schematic-card">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;margin-block-end:0.55rem;flex-wrap:wrap;">
+                  <h3 style="margin:0;">Closed-Loop Plant &amp; NAMAC Safety Architecture</h3>
+                  <span id="rx-trip-pill" class="badge badge-ok">0 GATE VETOES</span>
+                </div>
+                <svg id="rx-schematic-svg" class="schematic-svg" role="img" aria-labelledby="rx-schematic-title" viewBox="0 0 680 420">
+                  <title id="rx-schematic-title">Closed-loop schematic of the 300 MWth Small Modular Reactor operated by NAMAC Digital Twins, AI Strategy Planner, LADDR and False-Sensor Guards, Discrepancy Checker, PCMQ Bayesian Network, and ASTM F3269 Simplex Fallback Switch</title>
+                </svg>
+
+                <h3 style="margin:0.95rem 0 0.45rem;">Manual Disturbance &amp; Override Perturbations</h3>
+                <div class="two-col" style="gap:0.75rem;">
+                  <div class="control-group" style="margin-block-end:0;">
+                    <label for="rx-sensor-bias"><span>Extra Thermocouple Bias (&Delta;T<sub>spoof</sub>)</span><span id="v-rx-bias" class="mono">0 K</span></label>
+                    <input id="rx-sensor-bias" type="range" min="-70" max="70" step="2" value="0" aria-valuetext="0 Kelvin sensor bias">
+                  </div>
+                  <div class="control-group" style="margin-block-end:0;">
+                    <label for="rx-rod-bias"><span>Extra AI Rod Perturbation (&Delta;&rho;<sub>AI</sub>)</span><span id="v-rx-rodbias" class="mono">0 pcm</span></label>
+                    <input id="rx-rod-bias" type="range" min="-60" max="90" step="5" value="0" aria-valuetext="0 pcm reactivity perturbation">
+                  </div>
+                </div>
+              </div>
+
+              <div class="charts-stack">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <strong>Peak Hot-Pin Cladding Temperature (K) vs. 1477 K (1204 &deg;C) Limit</strong>
+                    <span id="rx-chart1-legend" class="mono" style="color:var(--muted);font-size:0.72rem;">Solid: Active | Dashed: Guarded/Unguarded Ref</span>
+                  </div>
+                  <svg id="rx-chart-temp" class="chart-svg" role="img" aria-labelledby="rx-chart-temp-title" viewBox="0 0 520 142">
+                    <title id="rx-chart-temp-title">Time-series chart of peak hot-pin cladding temperature in Kelvin compared against the 1477 Kelvin safety limit</title>
+                  </svg>
+                </div>
+
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <strong>Core Thermal Power (%) &amp; Primary Coolant Flow (%)</strong>
+                    <span id="rx-chart2-legend" class="mono" style="color:var(--muted);font-size:0.72rem;">Green: Power % | Sky: Pump Flow %</span>
+                  </div>
+                  <svg id="rx-chart-power" class="chart-svg" role="img" aria-labelledby="rx-chart-power-title" viewBox="0 0 520 128">
+                    <title id="rx-chart-power-title">Time-series chart of reactor thermal power percentage and primary coolant pump flow percentage</title>
+                  </svg>
+                </div>
+
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <strong>PCMQ-BN Trustworthiness <code>P(Trust | E<sub>t</sub>)</code> &amp; LADDR Data Reliability</strong>
+                    <span class="mono" style="color:var(--muted);font-size:0.72rem;">0.80 BBN Cutoff &middot; 0.50 LADDR Cutoff</span>
+                  </div>
+                  <svg id="rx-chart-trust" class="chart-svg" role="img" aria-labelledby="rx-chart-trust-title" viewBox="0 0 520 128">
+                    <title id="rx-chart-trust-title">Time-series chart of PCMQ-BN posterior trustworthiness probability and LADDR relative data reliability</title>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="two-col" style="margin-block-end:1.25rem;">
+              <div class="subcard">
+                <h3 style="margin:0 0 0.5rem;">Live 5-Gate Safety Stack &amp; AAAI-25 KG-RAG Explanation</h3>
+                <div id="rx-gates-list" class="gate-list" style="margin-block-end:0.75rem;"></div>
+                <pre id="rx-kg-explanation" class="code-box"></pre>
+              </div>
+
+              <div class="subcard">
+                <h3 style="margin:0 0 0.5rem;">Accessible Telemetry Comparison at Cursor <code>t</code> (Guarded vs. Unguarded AI)</h3>
+                <div tabindex="0" role="region" aria-labelledby="rx-tel-caption" class="table-wrapper" style="max-block-size:340px;">
+                  <table class="telemetry-table">
+                    <caption id="rx-tel-caption">Quantitative state comparison between ProximaB &times; NAMAC Guarded Control and Unguarded AI Control</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Guarded (NAMAC+Simplex)</th>
+                        <th scope="col">Unguarded AI</th>
+                        <th scope="col">Governing Bound</th>
+                        <th scope="col">Outcome</th>
+                        <th scope="col">Primary Gate</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rx-telemetry-tbody"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin:0 0 0.35rem;font-size:1rem;">Recent Talks, Conference Presentations &amp; Active Research Programs (2024–2026) — Prof. Nam T. Dinh &amp; Collaborators</h3>
+            <p style="font-size:0.82rem;color:var(--muted);margin:0 0 0.65rem;">
+              Every barrier in the AI Reactor Control Room above directly operationalizes recent 2024–2026 talks, conference papers, journal articles, and US NRC / DOE research led by Prof. Truc-Nam (Nam T.) Dinh at NC State University:
+            </p>
+            <div tabindex="0" role="region" aria-labelledby="talks-table-caption" class="table-wrapper">
+              <table class="talks-table">
+                <caption id="talks-table-caption">Verified 2024–2026 conference presentations, bridge talks, journal milestones, and active US NRC research programs</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Format &amp; Venue</th>
+                    <th scope="col">Authors</th>
+                    <th scope="col">Role in AI Reactor Demo</th>
+                    <th scope="col">Verified Link</th>
+                  </tr>
+                </thead>
+                <tbody id="rx-talks-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB PANEL 2: ARCHITECTURE -->
+        <section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" hidden="until-found">
           <div class="panel-inner">
             <h2 class="section-title">Six-Layer Defense-in-Depth + Two Governed Workflows</h2>
             <p class="section-lead">
@@ -306,12 +455,12 @@
           </div>
         </section>
 
-        <!-- TAB PANEL 5: PROF. TRUC-NAM (NAM T.) DINH NUCLEAR AI SAFETY CORPUS & LAB -->
+        <!-- TAB PANEL 6: PROF. TRUC-NAM (NAM T.) DINH NUCLEAR AI SAFETY CORPUS & LAB -->
         <section role="tabpanel" id="panel-namdinh" aria-labelledby="tab-namdinh" hidden="until-found">
           <div class="panel-inner">
-            <h2 class="section-title">Prof. Truc-Nam (Nam T.) Dinh — Nuclear AI Safety, NAMAC, PCMQ-BN &amp; SciML VVUQ</h2>
+            <h2 class="section-title">Prof. Truc-Nam (Nam T.) Dinh — Nuclear AI Safety, NAMAC, LADDR, PCMQ-BN &amp; 2024–2026 Research Corpus</h2>
             <p class="section-lead">
-              Synthesizing <strong>102 verified publications</strong> (OpenAlex <code>A5069550444</code> · NC State University / INL / DOE LWRS &amp; NEAMS · 6,356 career citations) into ProximaB's executable barrier stack: <strong>Chang–Dinh Type I–V SciML coupling</strong>, <strong>FFCM &amp; OOD coverage</strong>, <strong>NAMAC Reasoning-Based Discrepancy Checkers</strong>, <strong>PCMQ-BN Bayesian trustworthiness</strong>, and <strong>STPA/RESHA Digital I&amp;C hazard analysis</strong>.
+              Synthesizing <strong>106 verified publications &amp; conference presentations</strong> (OpenAlex <code>A5069550444</code> &amp; <code>A5160324142</code> &middot; NC State University / INL / US NRC &amp; DOE LWRS/NEAMS &middot; 6,356+ career citations) into ProximaB's executable barrier stack: <strong>Chang–Dinh Type I–V SciML coupling</strong>, <strong>LADDR &amp; FFCM OOD supervision</strong>, <strong>2025 IJPVP False-Sensor Detection</strong>, <strong>AAAI-25 KG-RAG Explainable Discrepancy Checkers</strong>, and <strong>PCMQ-BN Bayesian trustworthiness</strong>.
             </p>
 
             <div class="preset-row" aria-label="NAMAC and PCMQ presets">
@@ -364,17 +513,17 @@
               </div>
             </div>
 
-            <h3 style="margin:0 0 0.35rem;font-size:1rem;">Curated 102-Publication Research Corpus (Click Any Paper to Inspect Abstract &amp; Gate Mapping)</h3>
+            <h3 style="margin:0 0 0.35rem;font-size:1rem;">Curated 106-Publication Research Corpus (Click Any Paper to Inspect Abstract &amp; Gate Mapping)</h3>
             <div class="filter-bar">
-              <input type="search" id="nam-search" class="input-field" placeholder="Search title, co-author, concept, or venue (e.g. NAMAC, PCMQ, STPA, RESHA, EMDAP, Hi2Lo, Generative)...">
+              <input type="search" id="nam-search" class="input-field" placeholder="Search title, co-author, concept, or venue (e.g. NAMAC, LADDR, LSTM, OPT, PCMQ, STPA, RESHA, EMDAP)...">
               <select id="nam-pillar-filter" class="select-field">
-                <option value="all">All 6 Research Pillars (102 Verified Works)</option>
+                <option value="all">All 6 Research Pillars (106 Verified Works)</option>
               </select>
             </div>
 
             <div tabindex="0" role="region" aria-labelledby="nam-table-caption" class="table-wrapper">
               <table class="nam-table">
-                <caption id="nam-table-caption">Showing <span id="nam-shown-count">102</span> publications by Prof. Truc-Nam (Nam T.) Dinh &amp; collaborators (retrieved via OpenAlex &amp; arXiv; check individual publisher/OSTI licenses before redistribution)</caption>
+                <caption id="nam-table-caption">Showing <span id="nam-shown-count">106</span> publications by Prof. Truc-Nam (Nam T.) Dinh &amp; collaborators (retrieved via OpenAlex &amp; arXiv; check individual publisher/OSTI licenses before redistribution)</caption>
                 <thead>
                   <tr>
                     <th scope="col">Publication Title</th>

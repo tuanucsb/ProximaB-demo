@@ -812,7 +812,7 @@
       "openalex_author_id": "https://openalex.org/A5069550444",
       "total_career_works": 298,
       "total_career_citations": 6356,
-      "nuclear_ai_safety_vvuq_works_curated": 102,
+      "nuclear_ai_safety_vvuq_works_curated": 106,
       "retrieved_date": "2026-11-26"
     },
     "pillars": [
@@ -827,7 +827,7 @@
         "id": "pillar_2_trust_ood",
         "short": "II. Trustworthiness, OOD & FFCM Coverage",
         "title": "Quantitative Digital-Twin Trustworthiness, Out-of-Distribution (OOD) Detection & Data Coverage (FFCM)",
-        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "proximab_gate": "LADDRSupervisorAndSensorAnomalyGate, FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-2.5, FM-3.6)",
         "summary": "Quantifies operational reliability of neural closures and digital twins under scarce accident data using Flow/State Feature Coverage Mapping (FFCM), out-of-distribution Mahalanobis/density bounds, dynamic model-agnostic reliability evaluation, and Bayesian Belief Network trustworthiness propagation."
       },
       {
@@ -859,7 +859,116 @@
         "summary": "Establishes the five-type taxonomy for coupling machine learning with conservation equations (Type I black-box vs. Type II–V physics-evaluated/integrated closures), modular Bayesian inverse UQ for boiling/multiphase CFD, and High-to-Low (Hi2Lo) coarse-grid error-correcting thermal-hydraulic solvers."
       }
     ],
+    "recent_talks_2024_2026": [
+      {
+        "year": "2026",
+        "kind": "ANS 2026 Conference Presentation",
+        "title": "Autoregressive Coarse-Grid CFD/TH Forecasting with OPT-Based LLMs",
+        "authors": "Md Dewan & Nam T. Dinh (NC State)",
+        "venue": "Transactions of the American Nuclear Society, Vol. 134 (2026)",
+        "url": "https://doi.org/10.13182/t134-11227",
+        "demo_role": "Grounds fast transformer/coarse-grid thermal-hydraulic lookahead guarded by conservation & GCI checks."
+      },
+      {
+        "year": "2026",
+        "kind": "2026 Agentic AI Preprint",
+        "title": "Generative AI-based Agentic Framework for the Formulation of Phenomena Identification and Ranking Table for Advanced Reactor Application",
+        "authors": "Paridhi Athe & Nam T. Dinh (NC State)",
+        "venue": "SSRN Electronic Journal (2026)",
+        "url": "https://doi.org/10.2139/ssrn.6663737",
+        "demo_role": "Automates PIRT phenomena ranking while enforcing deterministic Stage-1 PIRT pre-flight completeness."
+      },
+      {
+        "year": "2022–2026",
+        "kind": "U.S. NRC R&D Program (Through Mar 2026)",
+        "title": "Trustworthiness of Digital-Twin-based Automation Technology in Nuclear Power Plant Operation (NRC #31310022M0038)",
+        "authors": "PI: Nam T. Dinh (NC State, with NMSU & INL)",
+        "venue": "U.S. Nuclear Regulatory Commission R&D Grant ($500k, 09/2022–03/2026)",
+        "url": "https://ne.ncsu.edu/directory/ntdinh/",
+        "demo_role": "Establishes Trustworthiness, Transparency & Explainability (TTE) requirements for autonomous NPP Digital Twins."
+      },
+      {
+        "year": "Sep 2025",
+        "kind": "Journal Article (Post-Hazard Sensor AI)",
+        "title": "False sensor-data detection strategy for post-hazard condition monitoring of nuclear systems using statistical approaches and long short-term memory",
+        "authors": "H. K. Sandhu, J. Lee, S. S. Bodda, A. Gupta & Nam T. Dinh",
+        "venue": "International Journal of Pressure Vessels and Piping (2025)",
+        "url": "https://doi.org/10.1016/j.ijpvp.2025.105662",
+        "demo_role": "Powers Scenario 4 (False/Spoofed Thermocouple Drift) in the AI Reactor Control Room via innovation z-scores."
+      },
+      {
+        "year": "Aug 2025",
+        "kind": "International Conference Track Leadership",
+        "title": "Digital Technologies for Thermal Hydraulics — NURETH-21 Technical Track (building on NURETH-20 Plenary Lecture)",
+        "authors": "Prof. Nam T. Dinh (ANS Fellow, NC State)",
+        "venue": "21st International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH-21, 2025)",
+        "url": "https://www.ans.org/meetings/nureth20/plenary/speaker/dinh/",
+        "demo_role": "Shapes international VVUQ & SciML standards for reactor thermal-hydraulics digital twins."
+      },
+      {
+        "year": "Jun 2025",
+        "kind": "NPIC&HMIT 2025 Presentation (INL/CON-25-83203)",
+        "title": "A Risk-Informed Approach to Trustworthiness Assessment in Digital Twins-Based Autonomous Control",
+        "authors": "Nicholas Cittadino, Paridhi Athe, Linyu Lin & Nam T. Dinh",
+        "venue": "ANS NPIC&HMIT 2025, Chicago, IL, June 15–18, 2025, pp. 370–379",
+        "url": "https://www.osti.gov/servlets/purl/3024548",
+        "demo_role": "Couples fine-tuned GPT sensor-degradation expert + Bayesian Belief Network (BBN) for live P(Trustworthy) updates."
+      },
+      {
+        "year": "Jun 2025",
+        "kind": "NPIC&HMIT 2025 Presentation (INL/CON-25-83110)",
+        "title": "Multiagent AI Collaboration for Digital Twin Development and Assessment",
+        "authors": "Paridhi Athe, Linyu Lin & Nam T. Dinh",
+        "venue": "ANS NPIC&HMIT 2025, Chicago, IL, June 15–18, 2025, pp. 1792–1800",
+        "url": "https://www.osti.gov/servlets/purl/3024497",
+        "demo_role": "Defines Requirement, Designer & Assessor multi-agent DT-DAP roles with human-in-the-loop grading."
+      },
+      {
+        "year": "Feb 2025",
+        "kind": "AAAI-25 Bridge Presentation (XAI-ECI 2025)",
+        "title": "Trustworthiness of Digital-Twin-based Automation Technology in Nuclear Power Plant Operation",
+        "authors": "P. Athe, N. Cittadino, T. Tran, J. Yoder, Nam T. Dinh & T. C. Son",
+        "venue": "AAAI 2025 Bridge on Explainable AI for Energy & Critical Infrastructure, Philadelphia, PA",
+        "url": "https://www.doc.ic.ac.uk/~fleofant/aaai25-xai-eci/material/XAI-ECI-2025_paper_6.pdf",
+        "demo_role": "Grounds the Knowledge-Graph + RAG Explainable Discrepancy Checker trace in our AI Reactor Control Room."
+      },
+      {
+        "year": "2024 / 2026",
+        "kind": "RESS Journal + INL 2026 Digital Library Release",
+        "title": "Evaluating the reliability of machine-learning-based predictions used in nuclear power plant I&C systems (LADDR)",
+        "authors": "Edward Chen, Han Bao & Nam T. Dinh",
+        "venue": "Reliability Engineering & System Safety (2024) & INL/CON-23-71650 (2026)",
+        "url": "https://doi.org/10.1016/j.ress.2024.110266",
+        "demo_role": "Implements LADDR exponential reliability decay L(x',x)=exp(-2D) minimizing safety peril f_P."
+      },
+      {
+        "year": "Jun 2024",
+        "kind": "ICAPP 2024 & ANS 2024 Presentations",
+        "title": "Using Generative AI to Implement the NAMAC Discrepancy Checker & GPT-Based STPA for Digital I&C",
+        "authors": "Paridhi Athe, Linyu Lin, Han Bao, Edward Chen & Nam T. Dinh",
+        "venue": "ICAPP 2024 (Las Vegas, NV) & ANS Transactions Vol. 130 (2024)",
+        "url": "https://doi.org/10.13182/t130-44545",
+        "demo_role": "Enforces STPA Unsafe Control Action veto against positive reactivity insertion during LOFA (Scenario 3)."
+      }
+    ],
     "works": [
+      {
+        "title": "Autoregressive Coarse-Grid CFD/TH Forecasting with OPT-Based LLMs",
+        "year": 2026,
+        "citations": 0,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "Md Dewan",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/t134-11227",
+        "doi": "https://doi.org/10.13182/t134-11227",
+        "openalex_id": "https://openalex.org/W7225105378",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, ConvergenceGate (FM-1.1, FM-2.1, FM-2.2)",
+        "abstract_excerpt": "Adapts Open Pre-trained Transformer (OPT) large language model architectures for fast autoregressive coarse-grid Computational Fluid Dynamics / Thermal-Hydraulics (CFD/TH) rollout forecasting in nuclear reactor systems."
+      },
       {
         "title": "Generative AI-based Agentic Framework for the Formulation of Phenomena Identification and Ranking Table for Advanced Reactor Application",
         "year": 2026,
@@ -938,6 +1047,47 @@
         "abstract_excerpt": "This report presents the first direct numerical simulations (DNS) of transient mixed convection in an idealized downcomer-like channel (Challenge Problem 1, Phase II). Using the GPU-accelerated NekRS solver, we modeled a sudden decay in driving pressure, mimicking loss-of-flow events, and tracked the resulting evolution of Reynolds number, boundary-layer structure, turbulence statistics, and heat-transfer metrics. Key findings include the systematic thicke…"
       },
       {
+        "title": "False sensor-data detection strategy for post-hazard condition monitoring of nuclear systems using statistical approaches and long short-term memory",
+        "year": 2025,
+        "citations": 0,
+        "venue": "International Journal of Pressure Vessels and Piping",
+        "authors": [
+          "Harleen Kaur Sandhu",
+          "Joomyung Lee",
+          "Saran Srikanth Bodda",
+          "Abhinav Gupta",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ijpvp.2025.105662",
+        "doi": "https://doi.org/10.1016/j.ijpvp.2025.105662",
+        "openalex_id": "https://openalex.org/W4414492030",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "LADDRSupervisorAndSensorAnomalyGate, NAMACDiscrepancyCheckerGate (FM-2.5, FM-3.6)",
+        "abstract_excerpt": "Combines statistical hypothesis/residual monitors with Long Short-Term Memory (LSTM) sequence forecasting to detect false, drifted, or hazard-corrupted sensor signals during post-hazard nuclear plant condition monitoring."
+      },
+      {
+        "title": "Trustworthiness of Digital-Twin-based Automation Technology in Nuclear Power Plant Operation (Extended Abstract)",
+        "year": 2025,
+        "citations": 0,
+        "venue": "AAAI-25 Bridge Program on Explainable AI for Energy and Critical Infrastructure (XAI-ECI 2025, Philadelphia, PA)",
+        "authors": [
+          "Paridhi Athe",
+          "Nicholas Cittadino",
+          "Trang Tran",
+          "Jacob Yoder",
+          "Nam T. Dinh",
+          "Tran Cao Son"
+        ],
+        "url": "https://www.doc.ic.ac.uk/~fleofant/aaai25-xai-eci/material/XAI-ECI-2025_paper_6.pdf",
+        "doi": "",
+        "openalex_id": "",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, EvidenceLedger (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "Integrates ontology-backed knowledge graphs with Retrieval-Augmented Generation (RAG) and LLMs inside NAMAC's Discrepancy Checker to generate transparent, multi-granularity explanations answering why NAMAC recommends action a in plant context c."
+      },
+      {
         "title": "Trustworthiness modeling and evaluation for a nearly autonomous management and control system",
         "year": 2024,
         "citations": 18,
@@ -974,6 +1124,24 @@
         "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
         "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
         "abstract_excerpt": ""
+      },
+      {
+        "title": "Evaluating the reliability of machine-learning-based predictions used in nuclear power plant instrumentation and control systems",
+        "year": 2024,
+        "citations": 5,
+        "venue": "Reliability Engineering & System Safety",
+        "authors": [
+          "Edward Chen",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ress.2024.110266",
+        "doi": "https://doi.org/10.1016/j.ress.2024.110266",
+        "openalex_id": "https://openalex.org/W4399573594",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "LADDRSupervisorAndSensorAnomalyGate, FFCMCoverageAndOODGate (FM-1.6, FM-3.6)",
+        "abstract_excerpt": "Introduces Laplacian Distributed Decay for Reliability (LADDR) as a real-time ML data supervisor in nuclear I&C (demonstrated on EBR-II NAMAC loss-of-flow DTs), optimizing stakeholder peril (f_P), degradation (f_D), and ineptitude (f_f)."
       },
       {
         "title": "An Integrated Framework for Risk Assessment of Safety-related Digital Instrumentation and Control Systems in Nuclear Power Plants: Methodology Advancement and Application",

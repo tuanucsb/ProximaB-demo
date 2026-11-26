@@ -618,7 +618,250 @@ a {
 }
 
 .control-group input[type="range"] {
+  --slider-track-size: 0.45rem;
+  --slider-thumb-size: 1.15rem;
+  --slider-track-radius: 999px;
+  --slider-thumb-radius: 50%;
+  --slider-track-color: var(--border);
+  --slider-fill-color: var(--accent);
+  --slider-thumb-color: var(--slider-fill-color);
+  --slider-direction: to right;
+  --attr-min: attr(min type(<number>), 0);
+  --attr-max: attr(max type(<number>), 100);
+  --control-value: attr(value type(<number>), 50);
+  --slider-progress: calc(
+    progress(var(--control-value), var(--attr-min), var(--attr-max)) * 100%
+  );
+
+  appearance: none;
   inline-size: 100%;
+  block-size: 2.1rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.control-group input[type="range"]:dir(rtl) {
+  --slider-direction: to left;
+}
+
+@supports not (opacity: progress(1, 0, 100)) {
+  .control-group input[type="range"] {
+    --slider-progress: calc(
+      (var(--control-value) - var(--attr-min)) /
+      (var(--attr-max) - var(--attr-min)) * 100%
+    );
+  }
+}
+
+.control-group input[type="range"]::-webkit-slider-runnable-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: linear-gradient(
+    var(--slider-direction),
+    var(--slider-fill-color) var(--slider-progress),
+    var(--slider-track-color) var(--slider-progress)
+  );
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  margin-block-start: calc(
+    (var(--slider-track-size) - var(--slider-thumb-size)) / 2
+  );
+  border: 0;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+}
+
+.control-group input[type="range"]::-moz-range-track {
+  block-size: var(--slider-track-size);
+  border: 0;
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-track-color);
+}
+
+.control-group input[type="range"]::-moz-range-progress {
+  block-size: var(--slider-track-size);
+  border-radius: var(--slider-track-radius);
+  background: var(--slider-fill-color);
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  border: 0;
+  border-radius: var(--slider-thumb-radius);
+  background: var(--slider-thumb-color);
+}
+
+.control-group input[type="range"]:focus-visible {
+  outline: 2px solid var(--slider-fill-color);
+  outline-offset: 4px;
+}
+
+/* Native HTML switch control (`modern-web-guidance: switch`) */
+.switch-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.42rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface-card);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.switch-row.danger-active {
+  border-color: var(--danger);
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+input[type="checkbox"][switch] {
+  accent-color: var(--danger);
+  margin: 0;
+  cursor: pointer;
+  min-inline-size: 1.5rem;
+  min-block-size: 1.15rem;
+}
+
+input[type="checkbox"][switch]:focus-visible {
+  outline: 3px solid var(--danger);
+  outline-offset: 4px;
+}
+
+/* AI-Operated Reactor Control Room Layout & Motion (`modern-web-guidance: motion`) */
+.reactor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--surface-muted);
+  margin-block-end: 1rem;
+}
+
+.reactor-transport {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reactor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  gap: 1.1rem;
+  margin-block-end: 1.15rem;
+}
+
+@media (max-width: 960px) {
+  .reactor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.schematic-card {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  padding: 0.9rem;
+}
+
+.schematic-svg {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: 0.5rem;
+  background: #09101f;
+  border: 1px solid #243352;
+}
+
+.flow-pulse {
+  stroke-dasharray: 7 6;
+}
+
+/* Opt in to continuous flow-dash motion ONLY when running AND reduced-motion is not requested */
+@media (prefers-reduced-motion: no-preference) {
+  .schematic-svg.is-running .flow-pulse {
+    animation: reactor-flow-dash 1.1s linear infinite;
+  }
+}
+
+@keyframes reactor-flow-dash {
+  to {
+    stroke-dashoffset: -26;
+  }
+}
+
+.charts-stack {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.chart-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  padding: 0.65rem 0.8rem;
+}
+
+.chart-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  margin-block-end: 0.35rem;
+}
+
+.chart-svg {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: 0.35rem;
+  background: var(--surface-muted);
+}
+
+.reactor-mini-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 0.55rem;
+  margin-block-end: 1rem;
+}
+
+.mini-kpi {
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.75rem;
+}
+
+.mini-kpi-label {
+  font-size: 0.69rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+.mini-kpi-val {
+  font-size: 1.08rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  margin-block-start: 0.1rem;
 }
 
 .input-field,
@@ -782,6 +1025,22 @@ a {
     --label-4: "Venue";
     --label-5: "Citations";
     --label-6: "Link";
+  }
+
+  .table-wrapper table.talks-table {
+    --label-2: "Date";
+    --label-3: "Format / Venue";
+    --label-4: "Authors";
+    --label-5: "Demo Integration";
+    --label-6: "Source";
+  }
+
+  .table-wrapper table.telemetry-table {
+    --label-2: "Guarded Value";
+    --label-3: "Unguarded AI Value";
+    --label-4: "Governing Limit";
+    --label-5: "Status";
+    --label-6: "Gate";
   }
 
   .table-wrapper td:nth-child(2)::before {
