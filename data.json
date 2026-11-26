@@ -7,7 +7,7 @@
     "cataloged_suites": 34,
     "cataloged_questions": 13095,
     "published_baselines": 25,
-    "unit_tests_passing": 466,
+    "unit_tests_passing": 470,
     "defense_faults_tested": 90,
     "defense_faults_caught": 90,
     "false_positive_clean_vetoes": 0
@@ -804,5 +804,2014 @@
       "supports_perturbation_pass_k": false,
       "floor": null
     }
-  ]
+  ],
+  "nam_dinh_research": {
+    "researcher": {
+      "name": "Prof. Truc-Nam (Nam T.) Dinh",
+      "affiliation": "Department of Nuclear Engineering, North Carolina State University (formerly Idaho National Laboratory, UC Santa Barbara, KTH)",
+      "openalex_author_id": "https://openalex.org/A5069550444",
+      "total_career_works": 298,
+      "total_career_citations": 6356,
+      "nuclear_ai_safety_vvuq_works_curated": 102,
+      "retrieved_date": "2026-11-26"
+    },
+    "pillars": [
+      {
+        "id": "pillar_1_namac",
+        "short": "I. NAMAC & Discrepancy Checkers",
+        "title": "Nearly Autonomous Management & Control (NAMAC) and Reasoning-Based Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "summary": "Three-layer autonomous reactor operation architecture pairing Diagnosis Digital Twins, Prognosis Digital Twins, and Strategy Assessment with an independent Reasoning-Based / Generative-AI Discrepancy Checker that cross-checks recommendations against conservation laws, sensor drift, and directional safety rules before actuation."
+      },
+      {
+        "id": "pillar_2_trust_ood",
+        "short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "title": "Quantitative Digital-Twin Trustworthiness, Out-of-Distribution (OOD) Detection & Data Coverage (FFCM)",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "summary": "Quantifies operational reliability of neural closures and digital twins under scarce accident data using Flow/State Feature Coverage Mapping (FFCM), out-of-distribution Mahalanobis/density bounds, dynamic model-agnostic reliability evaluation, and Bayesian Belief Network trustworthiness propagation."
+      },
+      {
+        "id": "pillar_3_genai_licensing",
+        "short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "title": "Generative & Multi-Agent AI for PIRT Formulation, NRC EMDAP Licensing & STPA Hazard Analysis",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "summary": "Evaluates and structures LLMs and multi-agent workflows for safety-critical nuclear knowledge abstraction: formulating Phenomena Identification and Ranking Tables (PIRT), structuring NRC Regulatory Guide 1.203 EMDAP licensing evidence, and performing System-Theoretic Process Analysis (STPA)."
+      },
+      {
+        "id": "pillar_4_dic_resha",
+        "short": "IV. Digital I&C Risk & RESHA Software CCF",
+        "title": "Safety-Related Digital I&C Risk Assessment, Redundancy-Guided STPA (RESHA) & Software CCF Defense",
+        "proximab_gate": "STPAFilter, PartitionWatchdog, DissimilarChannelComparator (FM-2.5, FM-3.3, FM-3.5)",
+        "summary": "DOE LWRS / INL / NC State integrated risk-assessment methodology (RESHA) tracing hardware and software Common-Cause Failures (CCF), Unsafe Control Actions, and Human-System Interface hazards across redundant safety-related digital instrumentation and control divisions."
+      },
+      {
+        "id": "pillar_5_pcmq_vvuq",
+        "short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "title": "Predictive Capability Maturity Quantification (PCMQ-BN), PRA-Driven Bayesian V&V & RISMC",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "summary": "Formalizes simulation validation under data scarcity and scale distortion as a quantitative Bayesian decision problem (PCMQ-BN), integrating CASL VERA credibility assessments, CSAU/EMDAP scaling analysis, and Risk-Informed Safety Margin Characterization (RISMC)."
+      },
+      {
+        "id": "pillar_6_sciml_hi2lo",
+        "short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "title": "Chang–Dinh SciML Framework Classification (Type I–V), Modular Bayesian UQ & Data-Driven Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "summary": "Establishes the five-type taxonomy for coupling machine learning with conservation equations (Type I black-box vs. Type II–V physics-evaluated/integrated closures), modular Bayesian inverse UQ for boiling/multiphase CFD, and High-to-Low (Hi2Lo) coarse-grid error-correcting thermal-hydraulic solvers."
+      }
+    ],
+    "works": [
+      {
+        "title": "Generative AI-based Agentic Framework for the Formulation of Phenomena Identification and Ranking Table for Advanced Reactor Application",
+        "year": 2026,
+        "citations": 0,
+        "venue": "SSRN Electronic Journal",
+        "authors": [
+          "Paridhi Athe",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2139/ssrn.6663737",
+        "doi": "https://doi.org/10.2139/ssrn.6663737",
+        "openalex_id": "https://openalex.org/W7156028125",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Multiagent AI Collaboration for Digital Twin Development and Assessment",
+        "year": 2025,
+        "citations": 2,
+        "venue": "Nuclear Plant Instrumentation, Control and Human-Machine Interface Technologies (NPIC&HMIT)",
+        "authors": [
+          "Paridhi Athe",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/xyz-46722",
+        "doi": "https://doi.org/10.13182/xyz-46722",
+        "openalex_id": "https://openalex.org/W4412720944",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "A Risk-Informed Approach to Trustworthiness Assessment in Digital Twins-Based Autonomous Control",
+        "year": 2025,
+        "citations": 0,
+        "venue": "Nuclear Plant Instrumentation, Control and Human-Machine Interface Technologies (NPIC&HMIT)",
+        "authors": [
+          "Nicholas Cittadino",
+          "Paridhi Athe",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/xyz-46885",
+        "doi": "https://doi.org/10.13182/xyz-46885",
+        "openalex_id": "https://openalex.org/W4412721046",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Challenge Problem 1: Preliminary Results of the Direct Numerical Simulation of Transient Flows",
+        "year": 2025,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Alexey Burbasov",
+          "USDOE Office of Nuclear Energy (NE), Nuclear Energy Advanced Modeling and Simulation (NEAMS)",
+          "USDOE Office of Science (SC)",
+          "Igor A. Bolotnov",
+          "Nam T. Dinh",
+          "Elia Merzari",
+          "Tri Nguyen",
+          "Rui Hu"
+        ],
+        "url": "https://doi.org/10.2172/3006720",
+        "doi": "https://doi.org/10.2172/3006720",
+        "openalex_id": "https://openalex.org/W7109944361",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "This report presents the first direct numerical simulations (DNS) of transient mixed convection in an idealized downcomer-like channel (Challenge Problem 1, Phase II). Using the GPU-accelerated NekRS solver, we modeled a sudden decay in driving pressure, mimicking loss-of-flow events, and tracked the resulting evolution of Reynolds number, boundary-layer structure, turbulence statistics, and heat-transfer metrics. Key findings include the systematic thicke…"
+      },
+      {
+        "title": "Trustworthiness modeling and evaluation for a nearly autonomous management and control system",
+        "year": 2024,
+        "citations": 18,
+        "venue": "Reliability Engineering & System Safety",
+        "authors": [
+          "Longcong Wang",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ress.2024.110008",
+        "doi": "https://doi.org/10.1016/j.ress.2024.110008",
+        "openalex_id": "https://openalex.org/W4391716265",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Uncertainty Quantification for Digital Twins in Thermal Energy Distribution System",
+        "year": 2024,
+        "citations": 9,
+        "venue": "Pacific Basin Nuclear Conference (PBNC)",
+        "authors": [
+          "Linyu Lin",
+          "Junyung Kim",
+          "Daniel Mikkelson",
+          "Václav Novotný",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/pbnc24-45046",
+        "doi": "https://doi.org/10.13182/pbnc24-45046",
+        "openalex_id": "https://openalex.org/W4404581425",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "An Integrated Framework for Risk Assessment of Safety-related Digital Instrumentation and Control Systems in Nuclear Power Plants: Methodology Advancement and Application",
+        "year": 2024,
+        "citations": 3,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Tate Shorthill",
+          "USDOE Office of Nuclear Energy (NE)",
+          "Edward Chen",
+          "Jisuk Kim",
+          "Congjian Wang",
+          "Paridhi Athe",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/2448420",
+        "doi": "https://doi.org/10.2172/2448420",
+        "openalex_id": "https://openalex.org/W4403015588",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": "This report documents activities performed by Idaho National Laboratory (INL) during fiscal year (FY) 2024 for the U.S. Department of Energy (DOE) Light Water Reactor Sustainability (LWRS) Program, Risk Informed Systems Analysis (RISA) Pathway, Digital Instrumentation and Control (DI&C) Risk Assessment project. The goal of the RISA Pathway is to optimize safety margins and minimize uncertainties to achieve economic efficiencies while maintaining high level…"
+      },
+      {
+        "title": "Knowledge representation to support EMDAP implementation in advanced reactor licensing applications",
+        "year": 2024,
+        "citations": 2,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Paridhi Athe",
+          "Nam T. Dinh",
+          "Abhinav Gupta"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2024.113526",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2024.113526",
+        "openalex_id": "https://openalex.org/W4401931493",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Using Generative AI to Implement the Discrepancy Checker for a Nearly Autonomous Management and Control System for Advanced Reactors",
+        "year": 2024,
+        "citations": 2,
+        "venue": "International Congress on Advances in Nuclear Power Plants (ICAPP)",
+        "authors": [
+          "Paridhi Athe",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/t130-44545",
+        "doi": "https://doi.org/10.13182/t130-44545",
+        "openalex_id": "https://openalex.org/W4402398839",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": "Developments related to generative artificial intelligence (AI) have brought a major breakthrough in AI. These developments are rapidly accelerating developments in different science and engineering applications. Nearly Autonomous Management and Control (NAMAC) system provides recommendations to the operator for maintaining the safety and performance of the reactor. The discrepancy checker (DC) is an important component of the NAMAC) system, whose goal is …"
+      },
+      {
+        "title": "Using Generative Pretrained Transformer to Perform System Theoretic Process Analysis for Digital Instrumentation and Control Systems",
+        "year": 2024,
+        "citations": 1,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "Paridhi Athe",
+          "Han Bao",
+          "Congjian Wang",
+          "Edward Chen",
+          "Tate Shorthill",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/t130-45945",
+        "doi": "https://doi.org/10.13182/t130-45945",
+        "openalex_id": "https://openalex.org/W7163634998",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Uncertainty Quantification for Multiphase Computational Fluid Dynamics Closure Relations with a Physics-Informed Bayesian Approach",
+        "year": 2023,
+        "citations": 19,
+        "venue": "Nuclear Technology",
+        "authors": [
+          "Yang Liu",
+          "Nam T. Dinh",
+          "Xiaodong Sun",
+          "Rui Hu"
+        ],
+        "url": "https://doi.org/10.1080/00295450.2022.2162792",
+        "doi": "https://doi.org/10.1080/00295450.2022.2162792",
+        "openalex_id": "https://openalex.org/W4321018323",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Multiphase Computational Fluid Dynamics (MCFD) based on the two-fluid model is considered a promising tool to model complex two-phase flow systems. MCFD simulation can predict local flow features without resolving interfacial information. As a result, the MCFD solver relies on closure relations to describe the interaction between the two phases. Those empirical or semi-mechanistic closure relations constitute a major source of uncertainty for MCFD predicti…"
+      },
+      {
+        "title": "Machine Learning from Rans And Les to Inform Coarse Grid Simulations",
+        "year": 2023,
+        "citations": 15,
+        "venue": "Progress in Nuclear Energy",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Nam T. Dinh",
+          "Victor Coppo Leite",
+          "Elia Merzari"
+        ],
+        "url": "https://doi.org/10.1016/j.pnucene.2023.104809",
+        "doi": "https://doi.org/10.1016/j.pnucene.2023.104809",
+        "openalex_id": "https://openalex.org/W4385541401",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Testing Generative Pre-trained Transformer for Knowledge Abstraction and Reasoning for Nuclear Reactor Design and Safety Applications",
+        "year": 2023,
+        "citations": 8,
+        "venue": "Illinois Digital Environment for Access to Learning and Scholarship (University of Illinois at Urbana-Champaign)",
+        "authors": [
+          "Paridhi Athe",
+          "Nam T. Dinh"
+        ],
+        "url": "https://hdl.handle.net/2142/121795",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W7220813324",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": "The decision regarding the adequacy of a Modeling and Simulation (M & S) tool is governed by different challenging factors. The M & S tools significantly vary in fidelity and scale of the simulation. Moreover, representative data for validating the adequacy of the code is scarce and limited. Therefore, standard procedures and methodologies, like, Code Scaling Applicability and Uncertainty (CSAU) and Evaluation Model Development and Assessment Process (EMDA…"
+      },
+      {
+        "title": "Direct Numerical Simulation of Low and Unitary Prandtl Number Fluids in Reactor Downcomer Geometry",
+        "year": 2023,
+        "citations": 7,
+        "venue": "Nuclear Technology",
+        "authors": [
+          "Cheng-Kai Tai",
+          "Tri Nguyen",
+          "Arsen S. Iskhakov",
+          "Elia Merzari",
+          "Nam T. Dinh",
+          "Igor A. Bolotnov"
+        ],
+        "url": "https://doi.org/10.1080/00295450.2023.2213286",
+        "doi": "https://doi.org/10.1080/00295450.2023.2213286",
+        "openalex_id": "https://openalex.org/W4380881864",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Mixed convection of low and unitary Prandtl fluids in a vertical passage is fundamental to passive heat removal in liquid metal and gas-cooled advanced reactor designs. Capturing the influence of buoyancy in flow and heat transfer in engineering analysis is hence a cornerstone to the safety of the next-generation reactor. However, accurate prediction of the mixed convection phenomenon has eluded current turbulence and heat transfer modeling approaches, yet…"
+      },
+      {
+        "title": "Data-Driven High-to-Low for Coarse Grid System Thermal Hydraulics",
+        "year": 2023,
+        "citations": 5,
+        "venue": "Nuclear Science and Engineering",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Victor Coppo Leite",
+          "Elia Merzari",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1080/00295639.2023.2180987",
+        "doi": "https://doi.org/10.1080/00295639.2023.2180987",
+        "openalex_id": "https://openalex.org/W4367175739",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "Traditional one-dimensional system thermal-hydraulic analysis has been widely applied in the nuclear industry for licensing purposes because of its numerical efficiency. However, such tools have inherently limited opportunities for modeling multiscale multidimensional flows in large reactor enclosures. Recent interest in three-dimensional coarse grid (CG) simulations has shown their potential in improving the predictive capability of system-level analysis.…"
+      },
+      {
+        "title": "Machine Learning in Nuclear Thermal Hydraulics, Part 2: Opportunities and Perspectives",
+        "year": 2023,
+        "citations": 5,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Bao, Han",
+          "Nam T. Dinh",
+          "Linyu Lin"
+        ],
+        "url": "https://www.osti.gov/servlets/purl/2203929",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4390172320",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "This paper summarizes the issues in nuclear thermal hydraulics (NTH), mainly from the three named aspects, and illustrates potential opportunities of machine learning (ML) applications in dealing with these issues. These issues are problems in simultaneously realizing computational efficiency and accuracy of system thermal hydraulic (STH) modeling and simulation, uncertainty in the scaling analysis for the best-estimate calculations of transient and accide…"
+      },
+      {
+        "title": "Data-Driven RANS Turbulence Closures for Forced Convection Flow in Reactor Downcomer Geometry",
+        "year": 2023,
+        "citations": 4,
+        "venue": "Nuclear Technology",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Cheng-Kai Tai",
+          "Igor A. Bolotnov",
+          "Tri Nguyen",
+          "Elia Merzari",
+          "Dillon R. Shaver",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1080/00295450.2023.2185056",
+        "doi": "https://doi.org/10.1080/00295450.2023.2185056",
+        "openalex_id": "https://openalex.org/W4324359887",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Recent progress in data-driven turbulence modeling has shown its potential to enhance or replace traditional equation-based Reynolds-averaged Navier-Stokes (RANS) turbulence models. This work utilizes invariant neural network (NN) architectures to model Reynolds stresses and turbulent heat fluxes in forced convection flows (when the models can be decoupled). As the considered flow is statistically one dimensional, the invariant NN architecture for the Reyn…"
+      },
+      {
+        "title": "Data-Driven RANS Turbulence Modeling of Mixed Convection in Reactor Downcomer Geometry",
+        "year": 2023,
+        "citations": 1,
+        "venue": "International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH)",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Cheng-Kai Tai",
+          "Igor A. Bolotnov",
+          "Nam T. Dinh",
+          "Elia Merzari"
+        ],
+        "url": "https://doi.org/10.13182/nureth20-40226",
+        "doi": "https://doi.org/10.13182/nureth20-40226",
+        "openalex_id": "https://openalex.org/W4388240901",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Knowledge Representation to Support EMDAP Implementation in Advanced Reactor Licensing Applications",
+        "year": 2023,
+        "citations": 1,
+        "venue": "International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH)",
+        "authors": [
+          "Paridhi Athe",
+          "Nam T. Dinh",
+          "Abhinav Gupta"
+        ],
+        "url": "https://doi.org/10.13182/nureth20-40865",
+        "doi": "https://doi.org/10.13182/nureth20-40865",
+        "openalex_id": "https://openalex.org/W4388241219",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Machine Learning from LES Data to Improve Coarse Grid RANS Simulations",
+        "year": 2023,
+        "citations": 1,
+        "venue": "International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH)",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Taylor E. Grubbs",
+          "Nam T. Dinh",
+          "Victor Coppo Leite",
+          "Elia Merzari"
+        ],
+        "url": "https://doi.org/10.13182/nureth20-40227",
+        "doi": "https://doi.org/10.13182/nureth20-40227",
+        "openalex_id": "https://openalex.org/W4388241017",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Application of Out-of-distribution Detection for Reliability Determination of Machine Learning Predictions",
+        "year": 2023,
+        "citations": 0,
+        "venue": "Illinois Digital Environment for Access to Learning and Scholarship (University of Illinois at Urbana-Champaign)",
+        "authors": [
+          "Edward Chen",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://hdl.handle.net/2142/121835",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W7220767627",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "Artificial intelligence (AI) and machine learning (ML), specifically neural networks, have garnered significant interest. However, the reliability of AI/ML models in safety relevant systems is still under debate. Reliability, is defined commonly as the ability of an item to perform as required, without failure, for a given time interval, under given conditions [1, 2]. As neural network-based AI/ML models are generic by construction, functionality cannot be…"
+      },
+      {
+        "title": "Assessing the Trustworthiness of a Digital Twin within the Nearly Autonomous Management and Control System",
+        "year": 2023,
+        "citations": 0,
+        "venue": "Illinois Digital Environment for Access to Learning and Scholarship (University of Illinois at Urbana-Champaign)",
+        "authors": [
+          "Taylor E. Grubbs",
+          "Addison Shuppy",
+          "Paridhi Athe",
+          "Tran Cao Son",
+          "Nam T. Dinh"
+        ],
+        "url": "https://hdl.handle.net/2142/121794",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W7220797883",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "Digital Twins have the capability to automate certain tasks and thereby improve the economics of advanced nuclear reactor operation and maintenance (O&M) activities. A key blocker to the acceptance of these technologies is the absence of a comprehensive framework for assessing the trustworthiness of digital twins. Due to the data-driven nature of Digital Twins, it is possible to harness the methods developed in the fields of Artificial Intelligence (AI) Sa…"
+      },
+      {
+        "title": "Coarse-Grid Data-Driven Navier-Stokes / Interface Capturing Model Development for Engineering-Scale Simulations",
+        "year": 2023,
+        "citations": 0,
+        "venue": "International Topical Meeting on Nuclear Reactor Thermal Hydraulics (NURETH)",
+        "authors": [
+          "Anna Iskhakova",
+          "Arsen S. Iskhakov",
+          "Yoshiyuki Kondo",
+          "Koichi Tanimoto",
+          "Nam T. Dinh",
+          "Igor A. Bolotnov"
+        ],
+        "url": "https://doi.org/10.13182/nureth20-40068",
+        "doi": "https://doi.org/10.13182/nureth20-40068",
+        "openalex_id": "https://openalex.org/W4388240969",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Computationally Efficient CFD Prediction of Two-phase Flow using Deep Learning and Validation Data",
+        "year": 2023,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Bao, Han",
+          "Jinyong Feng",
+          "Nam T. Dinh"
+        ],
+        "url": "https://www.osti.gov/biblio/2204702",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4390252600",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "These slides were prepared for a meeting with Department of Nuclear Engineering at NCSU. This meeting was held to discuss collaborations about machine learning applications for system thermal hydraulic simulations."
+      },
+      {
+        "title": "Dynamic Model Agnostic Reliability Evaluation of Machine-Learning Methods Integrated in Instrumentation & Control Systems",
+        "year": 2023,
+        "citations": 0,
+        "venue": "arXiv",
+        "authors": [
+          "Edward Chen",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.2308.05120",
+        "doi": "https://doi.org/10.48550/arxiv.2308.05120",
+        "openalex_id": "https://openalex.org/W4385774461",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "In recent years, the field of data-driven neural network-based machine learning (ML) algorithms has grown significantly and spurred research in its applicability to instrumentation and control systems. While they are promising in operational contexts, the trustworthiness of such algorithms is not adequately assessed. Failures of ML-integrated systems are poorly understood; the lack of comprehensive risk modeling can degrade the trustworthiness of these sys…"
+      },
+      {
+        "title": "Dynamic Model Agnostic Reliability Evaluation of Machine-Learning Models Integrated in Instrumentation & Control Systems",
+        "year": 2023,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Edward Chen",
+          "Nam T. Dinh",
+          "Han P. Bao"
+        ],
+        "url": "https://www.osti.gov/biblio/2203438",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4389524904",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "In recent years, the field of data-driven neural network-based machine learning (ML) algorithms has grown significantly and spurred research in its applicability to instrumentation and control systems. While they are promising in operational contexts, the trustworthiness of such algorithms is not adequately assessed. Failures of ML-integrated systems are poorly understood; the lack of comprehensive risk modeling can degrade the trustworthiness of these sys…"
+      },
+      {
+        "title": "Machine Learning in Nuclear Thermal Hydraulics",
+        "year": 2023,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Bao, Han",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://www.osti.gov/biblio/1969099",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4365461221",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "This presentation is prepared for \"OECD/NEA/CSNI Specialists Meeting on Transient Thermal-hydraulics in Water Cooled Nuclear Reactors\", which will be held in 9-10 June, 2021. A full-size paper has passed the review of PRS and LRS."
+      },
+      {
+        "title": "On the Formalization of Development and Assessment Process for Digital Twins in the Nearly Autonomous Management and Control System",
+        "year": 2023,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Lin, Linyu",
+          "Nam T. Dinh",
+          "Han P. Bao"
+        ],
+        "url": "https://www.osti.gov/biblio/1984489",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4389362377",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": "In recent years, the autonomous control system has been encouraged in advanced reactors for restoring economic viability, simplifying the operation and maintenance, and enabling remote-site power generations [1]. Since the reactor is expected to be operated for a long period of time with a limited number of individuals onsite, it is recommended that the autonomous control system should have access to very realistic models of the state of processes in the w…"
+      },
+      {
+        "title": "Risk Analysis of Various Design Architectures for High Safety-significant Safety-related Digital Instrumentation and Control Systems of Nuclear Power Plants during Accident Scenarios",
+        "year": 2023,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Bao, Han",
+          "Sai Zhang",
+          "Robert Youngblood",
+          "Shothill, Tate",
+          "Priyanka Pandit",
+          "Edward Chen",
+          "Jooyoung Park",
+          "Mihai  A. Diaconeasa"
+        ],
+        "url": "https://www.osti.gov/biblio/1986002",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4389399121",
+        "pillar_id": "pillar_4_dic_resha",
+        "pillar_short": "IV. Digital I&C Risk & RESHA Software CCF",
+        "proximab_gate": "STPAFilter, PartitionWatchdog, DissimilarChannelComparator (FM-2.5, FM-3.3, FM-3.5)",
+        "abstract_excerpt": "This report documents the plus-up activities performed by Idaho National Laboratory (INL) during Fiscal Year (FY) 2022 for the U.S. Department of Energy (DOE) Light Water Reactor Sustainability (LWRS) Program, Risk Informed Systems Analysis (RISA) Pathway, digital instrumentation and control (DI&C) risk assessment project. In FY 2019, the RISA Pathway initiated a project to develop a risk assessment strategy for delivering a strong technical basis to suppo…"
+      },
+      {
+        "title": "Development and assessment of prognosis digital twin in a NAMAC system",
+        "year": 2022,
+        "citations": 18,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Linyu Lin",
+          "Anil Gurgen",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2022.109439",
+        "doi": "https://doi.org/10.1016/j.anucene.2022.109439",
+        "openalex_id": "https://openalex.org/W4295872610",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Development and Assessment of a Reactor System Prognosis Model with Physics-Guided Machine Learning",
+        "year": 2022,
+        "citations": 14,
+        "venue": "SSRN Electronic Journal",
+        "authors": [
+          "Anil Gurgen",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2139/ssrn.4181235",
+        "doi": "https://doi.org/10.2139/ssrn.4181235",
+        "openalex_id": "https://openalex.org/W4297364272",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "An Integrated Framework for Risk Assessment of High Safety Significant Safety-related Digital Instrumentation and Control Systems in Nuclear Power Plants: Methodology and Demonstration",
+        "year": 2022,
+        "citations": 10,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Han Bao",
+          "Tate Shorthill",
+          "Edward Chen",
+          "Jooyoung Park",
+          "Sai Zhang",
+          "Athira Varma Jayakumar",
+          "Carl Elks",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/1924498",
+        "doi": "https://doi.org/10.2172/1924498",
+        "openalex_id": "https://openalex.org/W4321061474",
+        "pillar_id": "pillar_4_dic_resha",
+        "pillar_short": "IV. Digital I&C Risk & RESHA Software CCF",
+        "proximab_gate": "STPAFilter, PartitionWatchdog, DissimilarChannelComparator (FM-2.5, FM-3.3, FM-3.5)",
+        "abstract_excerpt": "This report documents the activities performed by Idaho National Laboratory (INL) during Fiscal Year (FY) 2022 for the U.S. Department of Energy (DOE) Light Water Reactor Sustainability (LWRS) Program, Risk Informed Systems Analysis (RISA) Pathway, digital instrumentation and control (DI&C) risk assessment project. In FY 2019, the RISA Pathway initiated a project to develop a risk assessment strategy for delivering a technical basis to support effective an…"
+      },
+      {
+        "title": "Data Coverage Assessment on Neural Network Based Digital Twins for Autonomous Control System",
+        "year": 2022,
+        "citations": 9,
+        "venue": "SSRN Electronic Journal",
+        "authors": [
+          "Longcong Wang",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2139/ssrn.4148551",
+        "doi": "https://doi.org/10.2139/ssrn.4148551",
+        "openalex_id": "https://openalex.org/W4309694147",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "A Perspective on Data-Driven Coarse Grid Modeling for System-Level Thermal Hydraulics",
+        "year": 2022,
+        "citations": 7,
+        "venue": "Nuclear Science and Engineering",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Cheng-Kai Tai",
+          "Igor A. Bolotnov",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1080/00295639.2022.2107864",
+        "doi": "https://doi.org/10.1080/00295639.2022.2107864",
+        "openalex_id": "https://openalex.org/W4294982999",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "In the future, advanced reactors are expected to play an important role in nuclear power. However, their development and deployment are hindered by the absence of reliable and efficient models for analysis of system thermal hydraulics (TH). For instance, mixing and thermal stratification in reactor enclosures cannot be captured by traditional one-dimensional system codes, yet usage of high-resolution solvers is computationally expensive. Recent development…"
+      },
+      {
+        "title": "Data-Driven Hi2Lo for Coarse-Grid System Thermal Hydraulic Modeling",
+        "year": 2022,
+        "citations": 5,
+        "venue": "Advances in Thermal Hydraulics (ATH)",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Nam T. Dinh",
+          "Victor Coppo Leite",
+          "Elia Merzari"
+        ],
+        "url": "https://doi.org/10.13182/t126-38048",
+        "doi": "https://doi.org/10.13182/t126-38048",
+        "openalex_id": "https://openalex.org/W4387919599",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Traditional 1D system thermal hydraulic analysis has been widely applied in nuclear industry for licensing purposes due to its numerical efficiency.However, such codes are inherently deficient for modeling of multiscale multidimensional flows.For such scenarios coarse-grid 3D simulations are useful due to the balance between the cost and the amount of information a modeler can extract from the results.At the same time, coarse grids do not allow to accurate…"
+      },
+      {
+        "title": "An adaptive knowledge-based data-driven approach for turbulence modeling using ensemble learning technique under complex flow configuration: 3D PWR sub-channel with DNS data",
+        "year": 2022,
+        "citations": 2,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Yangmo Zhu",
+          "Nam T. Dinh",
+          "Nadish Saini",
+          "Igor A. Bolotnov"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2022.111814",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2022.111814",
+        "openalex_id": "https://openalex.org/W4280546940",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Failure Mechanism Traceability and Application in Human System Interface of Nuclear Power Plants using RESHA",
+        "year": 2022,
+        "citations": 2,
+        "venue": "arXiv",
+        "authors": [
+          "Edward Chen",
+          "Han Bao",
+          "Tate Shorthill",
+          "Carl Elks",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.2205.12075",
+        "doi": "https://doi.org/10.48550/arxiv.2205.12075",
+        "openalex_id": "https://openalex.org/W4281562965",
+        "pillar_id": "pillar_4_dic_resha",
+        "pillar_short": "IV. Digital I&C Risk & RESHA Software CCF",
+        "proximab_gate": "STPAFilter, PartitionWatchdog, DissimilarChannelComparator (FM-2.5, FM-3.3, FM-3.5)",
+        "abstract_excerpt": "In recent years, there has been considerable effort to modernize existing and new nuclear power plants with digital instrumentation and control systems. However, there has also been considerable concern both by industry and regulatory bodies for the risk and consequence analysis of these systems. Of concern are digital common cause failures specifically due to software defects. These failures by the software can occur in both the control and monitoring of …"
+      },
+      {
+        "title": "Challenge Problem 1: Preliminary Model Development and Assessment of Flexible Heat Transfer Modeling Approaches",
+        "year": 2022,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Ralph Wiser",
+          "Emilio Baglietto",
+          "Arsen S. Iskhakov",
+          "Nam T. Dinh",
+          "Cheng-Kai Tai",
+          "Igor A. Bolotnov",
+          "Tri Nguyen",
+          "Elia Merzari"
+        ],
+        "url": "https://doi.org/10.2172/1881860",
+        "doi": "https://doi.org/10.2172/1881860",
+        "openalex_id": "https://openalex.org/W4292443682",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "This report presents the modeling progress of a university consortium studying flexible modeling for turbulent heat transfer. In the context of advanced nuclear reactor design, where challenges include non-unity Prandtl fluids, free and mixed convection, and transitional flow, computational fluid dynamics methods are underutilized due to low confidence in modeling approaches and high computational cost. This report evaluates the performance of engineering …"
+      },
+      {
+        "title": "Uncertainty quantification and software risk analysis for digital twins in the nearly autonomous management and control systems: A review",
+        "year": 2021,
+        "citations": 105,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Linyu Lin",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2021.108362",
+        "doi": "https://doi.org/10.1016/j.anucene.2021.108362",
+        "openalex_id": "https://openalex.org/W3164087269",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Uncertainty quantification for Multiphase-CFD simulations of bubbly flows: a machine learning-based Bayesian approach supported by high-resolution experiments",
+        "year": 2021,
+        "citations": 86,
+        "venue": "Reliability Engineering & System Safety",
+        "authors": [
+          "Yang Liu",
+          "Dewei Wang",
+          "Xiaodong Sun",
+          "Yang Liu",
+          "Nam T. Dinh",
+          "Rui Hu"
+        ],
+        "url": "https://doi.org/10.1016/j.ress.2021.107636",
+        "doi": "https://doi.org/10.1016/j.ress.2021.107636",
+        "openalex_id": "https://openalex.org/W3136004305",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Digital-twin-based improvements to diagnosis, prognosis, strategy assessment, and discrepancy checking in a nearly autonomous management and control system",
+        "year": 2021,
+        "citations": 39,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Pascal Rouxelin",
+          "Maria N. Avramova",
+          "Abhinav Gupta",
+          "Robert Youngblood",
+          "Jeffrey W. Lane",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2021.108715",
+        "doi": "https://doi.org/10.1016/j.anucene.2021.108715",
+        "openalex_id": "https://openalex.org/W3204576793",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Development of the Machine Learning-based Safety Significant Factor Inference Model for Diagnosis in Autonomous Control System",
+        "year": 2021,
+        "citations": 24,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Joomyung Lee",
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2021.108443",
+        "doi": "https://doi.org/10.1016/j.anucene.2021.108443",
+        "openalex_id": "https://openalex.org/W3174160836",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Advanced Transient Diagnostic with Ensemble Digital Twin Modeling",
+        "year": 2021,
+        "citations": 10,
+        "venue": "International Conference on Mathematics and Computational Methods Applied to Nuclear Science and Engineering (M&C)",
+        "authors": [
+          "Edward Chen",
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/xyz-33918",
+        "doi": "https://doi.org/10.13182/xyz-33918",
+        "openalex_id": "https://openalex.org/W4411166401",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "The use of machine learning (ML) model as digital-twins for reduced-order-modeling (ROM) in lieu of system codes has grown traction over the past few years. However, due to the complex and non-linear nature of nuclear reactor transients as well as the large range of tasks required, it is infeasible for a single ML model to generalize across all tasks. In this paper, we incorporate issue specific digital-twin ML models with ensembles to enhance the predicti…"
+      },
+      {
+        "title": "Review of Physics-based and Data-driven Multiscale Simulation Methods for Computational Fluid Dynamics and Nuclear Thermal Hydraulics",
+        "year": 2021,
+        "citations": 10,
+        "venue": "arXiv",
+        "authors": [
+          "Arsen S. Iskhakov",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.2102.01159",
+        "doi": "https://doi.org/10.48550/arxiv.2102.01159",
+        "openalex_id": "https://openalex.org/W3127302240",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Modeling of fluid flows requires corresponding adequate and effective approaches that would account for multiscale nature of the considered physics. Despite the tremendous growth of computational power in the past decades, modeling of fluid flows at engineering and system scales with a direct resolution of all scales is still infeasibly computationally expensive. As a result, several different physics-based methodologies were historically suggested in an a…"
+      },
+      {
+        "title": "Development and Assessment of Data-Driven Digital Twins in a Nearly Autonomous Management and Control System for Advanced Reactors",
+        "year": 2021,
+        "citations": 8,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Linyu Lin",
+          "Pascal Rouxelin",
+          "Paridhi Athe",
+          "Jeff Lane",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/1.0000482v",
+        "doi": "https://doi.org/10.1115/1.0000482v",
+        "openalex_id": "https://openalex.org/W4238172536",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "With the improvement of computer performance, machine learning, and digital systems, interest in autonomous systems has increased in a variety of fields from manufacturing to unmanned space, ground vehicles, and nuclear reactors. Comparing to the classical human-centered systems, the new autonomous systems require a human-automation collaboration framework. The objective is to achieve an accurate understanding and prediction of behaviors of the physical co…"
+      },
+      {
+        "title": "Assessment of the Predictive Capability of VERA—CS for CASL Challenge Problems",
+        "year": 2021,
+        "citations": 7,
+        "venue": "Journal of Verification Validation and Uncertainty Quantification",
+        "authors": [
+          "Paridhi Athe",
+          "Christopher Jones",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/1.4050248",
+        "doi": "https://doi.org/10.1115/1.4050248",
+        "openalex_id": "https://openalex.org/W3132053631",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "This paper describes the process for assessing the predictive capability of the Consortium for the advanced simulation of light-water reactors (CASL) virtual environment for reactor applications code suite (VERA—CS) for different challenge problems. The assessment process is guided by the two qualitative frameworks, i.e., phenomena identification and ranking table (PIRT) and predictive capability maturity model (PCMM). The capability and credibility of VER…"
+      },
+      {
+        "title": "Trusting Machine Learning in Nuclear Plant Control: A Reasoning-Based Discrepancy Checker",
+        "year": 2021,
+        "citations": 6,
+        "venue": "Nuclear Plant Instrumentation, Control and Human-Machine Interface Technologies (NPIC&HMIT)",
+        "authors": [
+          "Botros N. Hanna",
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Tran Cao Son",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/t124-34310",
+        "doi": "https://doi.org/10.13182/t124-34310",
+        "openalex_id": "https://openalex.org/W4242496161",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Enhancing the Operational Resilience of Advanced Reactors with Digital Twins by Recurrent Neural Networks",
+        "year": 2021,
+        "citations": 5,
+        "venue": "Resilience Week (RWS)",
+        "authors": [
+          "Linyu Lin",
+          "Joomyung Lee",
+          "Bikash Poudel",
+          "Timothy McJunkin",
+          "Nam T. Dinh",
+          "Vivek Agarwal"
+        ],
+        "url": "https://doi.org/10.1109/rws52686.2021.9611796",
+        "doi": "https://doi.org/10.1109/rws52686.2021.9611796",
+        "openalex_id": "https://openalex.org/W3216988942",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "Because of a lack of operation data during abnormal and accident scenarios, along with the existence of uncertainty in the evaluation model for transient and accident analysis, the established abnormal and emergency operating procedures can be biased in characterizing the reactor states and ensuring operational resilience. To improve state awareness and ensure operational flexibility for minimizing effects on the system due to anomaly, digital twin (DT) te…"
+      },
+      {
+        "title": "Systems-Theoretic Hazard Analysis of Digital Human-System Interface Relevant to Reactor Trip",
+        "year": 2021,
+        "citations": 3,
+        "venue": "Nuclear Plant Instrumentation, Control and Human-Machine Interface Technologies (NPIC&HMIT)",
+        "authors": [
+          "Edward Chen",
+          "Nam T. Dinh",
+          "Han Bao",
+          "Hongbin Zhang",
+          "Tate Shorthill"
+        ],
+        "url": "https://doi.org/10.13182/t124-34460",
+        "doi": "https://doi.org/10.13182/t124-34460",
+        "openalex_id": "https://openalex.org/W4237935370",
+        "pillar_id": "pillar_4_dic_resha",
+        "pillar_short": "IV. Digital I&C Risk & RESHA Software CCF",
+        "proximab_gate": "STPAFilter, PartitionWatchdog, DissimilarChannelComparator (FM-2.5, FM-3.3, FM-3.5)",
+        "abstract_excerpt": "Human-system interface is one of the key advanced design features applied to modern digital instrumentation and control systems of nuclear power plants. The conventional design is based on a compact workstation-based system within the control room. The compact workstation provides both a strategic operating environment while also a convenient display for plant status information necessary to the operator. The control environment is further enhanced through…"
+      },
+      {
+        "title": "Benchmarking an AI-Guided Reasoning-Based Operator Support System on the Three Mile Island Accident Scenario",
+        "year": 2021,
+        "citations": 2,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Botros N. Hanna",
+          "Tran Cao Son",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/1.0000378v",
+        "doi": "https://doi.org/10.1115/1.0000378v",
+        "openalex_id": "https://openalex.org/W4230295250",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "In the Nuclear Power Plant (NPP) control room, the operators’ performance under emergencies is impacted by the need to monitor many indicators on the control room boards, the limited time to interact with dynamic events and the weaknesses in operator’s knowledge. Recent research has been directed toward increasing the level of automation in the NPP system by employing modern AI techniques that support the operator’s decisions. In previous work, the authors…"
+      },
+      {
+        "title": "Development and Application of a Data-Driven Methodology for Validation of Risk-Informed Safety Margin Characterization Models",
+        "year": 2021,
+        "citations": 2,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "North Carolina State Univ., Raleigh, NC (United States)",
+          "Nam T. Dinh",
+          "Purdue Univ., West Lafayette, IN (United States)",
+          "Univ. of Michigan, Ann Arbor, MI (United States)",
+          "George Washington Univ., Washington, DC (United States)",
+          "Zachry Nuclear Engineering, Idaho Falls, ID (United States)",
+          "R.T. Sewell Associates, Louisville, Co (United States)",
+          "Abhinav Gupta"
+        ],
+        "url": "https://doi.org/10.2172/1776813",
+        "doi": "https://doi.org/10.2172/1776813",
+        "openalex_id": "https://openalex.org/W3203417762",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The document is the Final Technical Report for the Nuclear Energy University Program’s Integrated Research Project (IRP) on “Development and Application of a Data-Driven Methodology for Validation of Risk-Informed Safety Margin Characterization (RISMC) Models”. The project goal is to develop and demonstrate a data-driven methodology for validation of advanced computer models used in nuclear power plant safety analysis. Specifically, the advanced computer m…"
+      },
+      {
+        "title": "Development and Assessment of a Nearly Autonomous Management and Control System During a Single Loss of Flow Accident",
+        "year": 2021,
+        "citations": 2,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Pascal Rouxelin",
+          "Jeff Lane",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/1.0000462v",
+        "doi": "https://doi.org/10.1115/1.0000462v",
+        "openalex_id": "https://openalex.org/W4246002358",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "With the improvement of computer performance, machine learning, and digital systems, interest in autonomous systems has increased in a variety of fields from manufacturing to unmanned space, ground vehicles, and nuclear reactors. Comparing to the classical human-centered systems, the new autonomous systems require a human-automation collaboration framework and make use of simulation information. In this study, a Nearly Autonomous Management and Control (NA…"
+      },
+      {
+        "title": "Development of a Nearly Autonomous Management and Control (NAMAC) System for Advanced Reactors (Final Report for ARPA-E Project)",
+        "year": 2021,
+        "citations": 1,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/1866087",
+        "doi": "https://doi.org/10.2172/1866087",
+        "openalex_id": "https://openalex.org/W4386129270",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "The project formulates a technical basis for, and preliminary development of, a Nearly Autonomous Management and Control (NAMAC) system in advanced reactors. The system is intended to provide recommendations to operators during plant operation. The NAMAC system utilizes simulation-informed, data/knowledge-driven, AI-guided, plant-data-assimilated real-time operating procedures to effectively support the operator in risk-informed management of plant operati…"
+      },
+      {
+        "title": "Development and assessment of a nearly autonomous management and control system for advanced reactors",
+        "year": 2020,
+        "citations": 81,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Pascal Rouxelin",
+          "Maria N. Avramova",
+          "Abhinav Gupta",
+          "Robert Youngblood",
+          "Jeffrey W. Lane",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2020.107861",
+        "doi": "https://doi.org/10.1016/j.anucene.2020.107861",
+        "openalex_id": "https://openalex.org/W3089462276",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Computationally efficient CFD prediction of bubbly flow using physics-guided deep learning",
+        "year": 2020,
+        "citations": 61,
+        "venue": "International Journal of Multiphase Flow",
+        "authors": [
+          "Han Bao",
+          "Jinyong Feng",
+          "Nam T. Dinh",
+          "Hongbin Zhang"
+        ],
+        "url": "https://doi.org/10.1016/j.ijmultiphaseflow.2020.103378",
+        "doi": "https://doi.org/10.1016/j.ijmultiphaseflow.2020.103378",
+        "openalex_id": "https://openalex.org/W3032963877",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Deep learning interfacial momentum closures in coarse-mesh CFD two-phase flow simulation using validation data",
+        "year": 2020,
+        "citations": 41,
+        "venue": "International Journal of Multiphase Flow",
+        "authors": [
+          "Han Bao",
+          "Jinyong Feng",
+          "Nam T. Dinh",
+          "Hongbin Zhang"
+        ],
+        "url": "https://doi.org/10.1016/j.ijmultiphaseflow.2020.103489",
+        "doi": "https://doi.org/10.1016/j.ijmultiphaseflow.2020.103489",
+        "openalex_id": "https://openalex.org/W3092391589",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Using deep learning to explore local physical similarity for global-scale bridging in thermal-hydraulic simulation",
+        "year": 2020,
+        "citations": 38,
+        "venue": "Annals of Nuclear Energy",
+        "authors": [
+          "Han Bao",
+          "Nam T. Dinh",
+          "Linyu Lin",
+          "Robert Youngblood",
+          "Jeffrey W. Lane",
+          "Hongbin Zhang"
+        ],
+        "url": "https://doi.org/10.1016/j.anucene.2020.107684",
+        "doi": "https://doi.org/10.1016/j.anucene.2020.107684",
+        "openalex_id": "https://openalex.org/W3042902362",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Reynolds-Averaged Turbulence Modeling Using Deep Learning with Local Flow Features: An Empirical Approach",
+        "year": 2020,
+        "citations": 21,
+        "venue": "Nuclear Science and Engineering",
+        "authors": [
+          "Chih‐Wei Chang",
+          "Jun Fang",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1080/00295639.2020.1712928",
+        "doi": "https://doi.org/10.1080/00295639.2020.1712928",
+        "openalex_id": "https://openalex.org/W3004776482",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "Reynolds-Averaged Navier-Stoke (RANS) models offer an alternative avenue in predicting flow characteristics when the corresponding experiments are difficult to achieve due to geometry complexity, limited budget, or knowledge. RANS models require the knowledge of subgrid scale physics to solve conservation equations for mass, energy, and momentum. Mechanistic turbulence models, such as k-ε, are generally evaluated and calibrated for specific flow conditions…"
+      },
+      {
+        "title": "Enhancement of risk informed validation framework for external hazard scenario",
+        "year": 2020,
+        "citations": 17,
+        "venue": "Reliability Engineering & System Safety",
+        "authors": [
+          "Saran Srikanth Bodda",
+          "Abhinav Gupta",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ress.2020.107140",
+        "doi": "https://doi.org/10.1016/j.ress.2020.107140",
+        "openalex_id": "https://openalex.org/W3046180268",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "A Data-driven Approach for Turbulence Modeling",
+        "year": 2020,
+        "citations": 12,
+        "venue": "arXiv",
+        "authors": [
+          "Yangmo Zhu",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.2005.00426",
+        "doi": "https://doi.org/10.48550/arxiv.2005.00426",
+        "openalex_id": "https://openalex.org/W3023003095",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Data-driven turbulence modeling is a newly emerged research area in thermal hydraulics simulation of nuclear power plant (NPP). The most common CFD method used in NPP thermal hydraulics simulation is Reynolds-averaged Navier-Stokes (RANS) method, which still has acknowledged deficiencies not only in the calculation speed but also in the complexity of choosing turbulence model and parameters for different flow patterns. Data-driven turbulence modeling aims …"
+      },
+      {
+        "title": "Adequacy evaluation of smoothed particle hydrodynamics methods for simulating the external-flooding scenario",
+        "year": 2020,
+        "citations": 10,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Linyu Lin",
+          "Niels Montanari",
+          "Steven Ralph Prescott",
+          "Ramprasad Sampath",
+          "Han Bao",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2020.110720",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2020.110720",
+        "openalex_id": "https://openalex.org/W3036968042",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Predictive Capability Maturity Quantification Using Bayesian Network",
+        "year": 2020,
+        "citations": 7,
+        "venue": "Journal of Verification Validation and Uncertainty Quantification",
+        "authors": [
+          "Linyu Lin",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/1.4048465",
+        "doi": "https://doi.org/10.1115/1.4048465",
+        "openalex_id": "https://openalex.org/W3089454043",
+        "pillar_id": "pillar_3_genai_licensing",
+        "pillar_short": "III. Generative/Agentic AI for PIRT, EMDAP & STPA",
+        "proximab_gate": "PIRTGate, STPAFilter, Arena Governance AR01–AR08 (FM-1.4, FM-3.3)",
+        "abstract_excerpt": "In nuclear engineering, modeling and simulations (M&Ss) are widely applied to support risk-informed safety analysis. Since nuclear safety analysis has important implications, a convincing validation process is needed to assess simulation adequacy, i.e., the degree to which M&S tools can adequately represent the system quantities of interest. However, due to data gaps, validation becomes a decision-making process under uncertainties. Expert knowledge and ju…"
+      },
+      {
+        "title": "Benchmarking an AI-Guided Reasoning-Based Operator Support System on the Three Mile Island Accident Scenario",
+        "year": 2020,
+        "citations": 3,
+        "venue": "The Proceedings of the International Conference on Nuclear Engineering (ICONE)",
+        "authors": [
+          "Botros N. Hanna",
+          "Tran Cao Son",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1115/icone2020-16400",
+        "doi": "https://doi.org/10.1115/icone2020-16400",
+        "openalex_id": "https://openalex.org/W3093571616",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "In the Nuclear Power Plant (NPP) control room, the operators’ performance in emergencies is impacted by the need to monitor many indicators on the control room boards, the limited time to interact with dynamic events, and the incompleteness of the operator’s knowledge. Recent research has been directed toward increasing the level of automation in the NPP system by employing modern AI techniques that support the operator’s decisions. In previous work, the a…"
+      },
+      {
+        "title": "Development and Assessment of Data-Driven Digital Twins in a Nearly Autonomous Management and Control System for Advanced Reactors",
+        "year": 2020,
+        "citations": 3,
+        "venue": "The Proceedings of the International Conference on Nuclear Engineering (ICONE)",
+        "authors": [
+          "Linyu Lin",
+          "Pascal Rouxelin",
+          "Paridhi Athe",
+          "Nam T. Dinh",
+          "Jeffrey W. Lane"
+        ],
+        "url": "https://doi.org/10.1115/icone2020-16813",
+        "doi": "https://doi.org/10.1115/icone2020-16813",
+        "openalex_id": "https://openalex.org/W3094280606",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "A critical component of the autonomous control system is the implementation of digital twin (DT) for diagnosing the conditions and prognosing the future transients of physical components or systems. The objective is to achieve an accurate understanding and prediction of future behaviors of the physical components or systems and to guide operating decisions by an operator or an autonomous control system. With specific requirements in the functional, interfa…"
+      },
+      {
+        "title": "Development and Assessment of Physics-guided Machine Learning for Prognosis System",
+        "year": 2020,
+        "citations": 3,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "Linyu Lin",
+          "Nam T. Dinh",
+          "Anil Gurgen"
+        ],
+        "url": "https://doi.org/10.13182/t130-33503",
+        "doi": "https://doi.org/10.13182/t130-33503",
+        "openalex_id": "https://openalex.org/W3126286139",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Development and Assessment of a Nearly Autonomous Management and Control System During a Single Loss of Flow Accident",
+        "year": 2020,
+        "citations": 2,
+        "venue": "The Proceedings of the International Conference on Nuclear Engineering (ICONE)",
+        "authors": [
+          "Linyu Lin",
+          "Paridhi Athe",
+          "Pascal Rouxelin",
+          "Nam T. Dinh",
+          "Jeffrey W. Lane"
+        ],
+        "url": "https://doi.org/10.1115/icone2020-16908",
+        "doi": "https://doi.org/10.1115/icone2020-16908",
+        "openalex_id": "https://openalex.org/W3127850386",
+        "pillar_id": "pillar_1_namac",
+        "pillar_short": "I. NAMAC & Discrepancy Checkers",
+        "proximab_gate": "NAMACDiscrepancyCheckerGate, DissimilarChannelComparator, SimplexRuntimeMonitor (FM-2.5, FM-3.3, FM-3.6)",
+        "abstract_excerpt": "In this work, a Nearly Autonomous Management and Control (NAMAC) system is designed to diagnose the reactor state and provide recommendations to the operator for maintaining the safety and performance of the reactor. A three layer-hierarchical workflow is suggested to guide the design and development of the NAMAC system. The three layers in this workflow corresponds to knowledge base, digital twin developmental layer (for different NAMAC functions), and NA…"
+      },
+      {
+        "title": "Data Coverage Assessment on Machine-Learning based Digital Twin for Diagnosis in a Nearly Autonomous Management and Control System",
+        "year": 2020,
+        "citations": 1,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "Linyu Lin",
+          "Nam T. Dinh",
+          "Liangyu Wang"
+        ],
+        "url": "https://doi.org/10.13182/t130-33555",
+        "doi": "https://doi.org/10.13182/t130-33555",
+        "openalex_id": "https://openalex.org/W3128104352",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Development of a Data-driven Turbulence Model for 3d Thermal Stratification Simulation during Reactor Transients",
+        "year": 2020,
+        "citations": 0,
+        "venue": "arXiv",
+        "authors": [
+          "Yangmo Zhu",
+          "Nam T. Dinh",
+          "Rui Hu",
+          "Adam R. Kraus"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.2005.00415",
+        "doi": "https://doi.org/10.48550/arxiv.2005.00415",
+        "openalex_id": "https://openalex.org/W3022378362",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "SAM, a plant-level system analysis tool for advanced reactors (SFR, LFR, MSR/FHR) is under development at Argonne. As a modern system code, SAM aims to improve the predictions of 3D flows relevant to reactor safety during transient conditions. In order to fulfill this goal, one approach is to implement modeling of turbulent flow in SAM through establishing an embedded surrogate model for Reynolds stress/turbulence viscosity based on machine learning techni…"
+      },
+      {
+        "title": "Probing Interfacial Momentum Closures in Two-phase Bubbly Flow with Machine Learning-aided Methods",
+        "year": 2020,
+        "citations": 0,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "H. Bao",
+          "Jinyong Feng",
+          "H. Zhang",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.13182/t130-32371",
+        "doi": "https://doi.org/10.13182/t130-32371",
+        "openalex_id": "https://openalex.org/W3037450652",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Uncertainty quantification of two-phase flow and boiling heat transfer simulations through a data-driven modular Bayesian approach",
+        "year": 2019,
+        "citations": 69,
+        "venue": "International Journal of Heat and Mass Transfer",
+        "authors": [
+          "Yang Liu",
+          "Nam T. Dinh",
+          "Ralph C. Smith",
+          "Xiaodong Sun"
+        ],
+        "url": "https://doi.org/10.1016/j.ijheatmasstransfer.2019.04.075",
+        "doi": "https://doi.org/10.1016/j.ijheatmasstransfer.2019.04.075",
+        "openalex_id": "https://openalex.org/W2942938834",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "A data-driven framework for error estimation and mesh-model optimization in system-level thermal-hydraulic simulation",
+        "year": 2019,
+        "citations": 48,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Han Bao",
+          "Nam T. Dinh",
+          "Jeffrey W. Lane",
+          "Robert Youngblood"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2019.04.023",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2019.04.023",
+        "openalex_id": "https://openalex.org/W2918084335",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Validation and uncertainty quantification of multiphase-CFD solvers: A data-driven Bayesian framework supported by high-resolution experiments",
+        "year": 2019,
+        "citations": 43,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Yang Liu",
+          "Xiaodong Sun",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2019.110200",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2019.110200",
+        "openalex_id": "https://openalex.org/W2962997893",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Risk informed validation framework for external flooding scenario",
+        "year": 2019,
+        "citations": 19,
+        "venue": "Nuclear Engineering and Design",
+        "authors": [
+          "Saran Srikanth Bodda",
+          "Abhinav Gupta",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.nucengdes.2019.110377",
+        "doi": "https://doi.org/10.1016/j.nucengdes.2019.110377",
+        "openalex_id": "https://openalex.org/W2985901123",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Demonstration of a Data-Driven Approach for Error Estimation in Two-Phase Flow Simulation Using Coarse-Mesh CFD",
+        "year": 2019,
+        "citations": 1,
+        "venue": "Transactions of the American Nuclear Society",
+        "authors": [
+          "H. Bao",
+          "Nam T. Dinh",
+          "Jinyong Feng",
+          "Hu Zhang"
+        ],
+        "url": "https://doi.org/10.13182/t31051",
+        "doi": "https://doi.org/10.13182/t31051",
+        "openalex_id": "https://openalex.org/W2995429973",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "SCALING OF UNCERTAINTY IN VALIDATION OF FLOODING SIMULATIONS: AN ILLUSTRATIVE CASE STUDY",
+        "year": 2019,
+        "citations": 0,
+        "venue": "NCSU Libraries Repository (North Carolina State University Libraries)",
+        "authors": [
+          "Vaishnav Pragya",
+          "Abhinav Gupta",
+          "Nam T. Dinh"
+        ],
+        "url": "https://www.lib.ncsu.edu/resolver/1840.20/37984",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W3082100847",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Updated Verification and Validation Assessment for VERA",
+        "year": 2019,
+        "citations": 0,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "USDOE Office of Nuclear Energy (NE)",
+          "Christopher Jones",
+          "Patrick A. Mattie",
+          "Nam T. Dinh",
+          "Paridhi Athe",
+          "Lorie Moore"
+        ],
+        "url": "https://doi.org/10.2172/3002114",
+        "doi": "https://doi.org/10.2172/3002114",
+        "openalex_id": "https://openalex.org/W4416278898",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The Virtual Environment for Reactor Applications (VERA) code suite is assessed in terms of capability and credibility against the Consortium for Advanced Simulation of Light Water Reactors (CASL) Verification and Validation Plan (presented herein) in the context of three selected challenge problems: CRUD-Induced Power Shift (CIPS), Departure from Nucleate Boiling (DNB), and Pellet-Clad Interaction (PCI). Capability refers to evidence of required functional…"
+      },
+      {
+        "title": "Data-driven modeling for boiling heat transfer: Using deep neural networks and high-fidelity simulation results",
+        "year": 2018,
+        "citations": 168,
+        "venue": "Applied Thermal Engineering",
+        "authors": [
+          "Yang Liu",
+          "Nam T. Dinh",
+          "Yohei Sato",
+          "Bojan Ničeno"
+        ],
+        "url": "https://doi.org/10.1016/j.applthermaleng.2018.08.041",
+        "doi": "https://doi.org/10.1016/j.applthermaleng.2018.08.041",
+        "openalex_id": "https://openalex.org/W2887970844",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Classification of machine learning frameworks for data-driven thermal fluid models",
+        "year": 2018,
+        "citations": 117,
+        "venue": "International Journal of Thermal Sciences",
+        "authors": [
+          "Chih‐Wei Chang",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ijthermalsci.2018.09.002",
+        "doi": "https://doi.org/10.1016/j.ijthermalsci.2018.09.002",
+        "openalex_id": "https://openalex.org/W2784795157",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Validation and Uncertainty Quantification for Wall Boiling Closure Relations in Multiphase-CFD Solver",
+        "year": 2018,
+        "citations": 26,
+        "venue": "Nuclear Science and Engineering",
+        "authors": [
+          "Yang Liu",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1080/00295639.2018.1512790",
+        "doi": "https://doi.org/10.1080/00295639.2018.1512790",
+        "openalex_id": "https://openalex.org/W2892872807",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Two-fluid model-based multiphase computational fluid dynamics (MCFD) has been considered one of the most promising tools to investigate a two-phase flow and boiling system for engineering purposes. The MCFD solver requires closure relations to make the conservation equations solvable. The wall boiling closure relations, for example, provide predictions on wall superheat and heat partitioning. The accuracy of these closure relations significantly influences…"
+      },
+      {
+        "title": "Study of Data-Driven Mesh-Model Optimization in System Thermal-Hydraulic Simulation",
+        "year": 2018,
+        "citations": 9,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Robert Youngblood",
+          "Han P. Bao",
+          "Nam T. Dinh",
+          "Jeffrey Lane"
+        ],
+        "url": "https://www.osti.gov/biblio/1478769",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W4295184813",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Quantification of nuclear power plant safety risk requires a systematic and yet practical approach to identification of accident scenarios, assessment of their likelihood and consequences. Instrumental to this goal is risk-informed safety margin characterization (RISMC) framework, whose realization requires computationally robust and affordable methods for sufficiently accurate simulation of complex multi-dimensional physical phenomena, such as turbulent a…"
+      },
+      {
+        "title": "Reynolds-Averaged Turbulence Modeling Using Type I and Type II Machine Learning Frameworks with Deep Learning",
+        "year": 2018,
+        "citations": 4,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Chih‐Wei Chang",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.1804.01065",
+        "doi": "https://doi.org/10.48550/arxiv.1804.01065",
+        "openalex_id": "https://openalex.org/W2796194626",
+        "pillar_id": "pillar_2_trust_ood",
+        "pillar_short": "II. Trustworthiness, OOD & FFCM Coverage",
+        "proximab_gate": "FFCMCoverageAndOODGate, PCMQBayesianTrustworthinessGate (FM-1.6, FM-3.7)",
+        "abstract_excerpt": "Deep learning (DL)-based Reynolds stress with its capability to leverage values of large data can be used to close Reynolds-averaged Navier-Stoke (RANS) equations. Type I and Type II machine learning (ML) frameworks are studied to investigate data and flow feature requirements while training DL-based Reynolds stress. The paper presents a method, flow features coverage mapping (FFCM), to quantify the physics coverage of DL-based closures that can be used to…"
+      },
+      {
+        "title": "Updated Verification and Validation Assessment for VERA",
+        "year": 2018,
+        "citations": 1,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Sandia National Laboratories (SNL-NM), Albuquerque, NM (United States)",
+          "Christopher Jones",
+          "USDOE National Nuclear Security Administration (NNSA)",
+          "Adam C. Hetzler",
+          "Nam T. Dinh",
+          "Paridhi Athe",
+          "Matthew T. Sieger"
+        ],
+        "url": "https://doi.org/10.2172/1466526",
+        "doi": "https://doi.org/10.2172/1466526",
+        "openalex_id": "https://openalex.org/W2888885909",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The Virtual Environment for Reactor Applications (VERA) code suite is assessed in terms of capability and credibility against the Consortium for Advanced Simulation of Light Water Reactors (CASL) Verification and Validation Plan (presented herein) in the context of three selected challenge problems: CRUD-Induced Power Shift (CIPS), Departure from Nucleate Boiling (DNB), and Pellet-Clad Interaction (PCI). Capability refers to evidence of required functional…"
+      },
+      {
+        "title": "Design of Validation Experiments for Model Improvement of Dispersed Flow Film Boiling in COBRA-TF",
+        "year": 2018,
+        "citations": 0,
+        "venue": "Transactions American Geophysical Union",
+        "authors": [
+          "Xiaoqin Zhang",
+          "Yang Liu",
+          "Xiaodong Sun",
+          "Nam T. Dinh"
+        ],
+        "url": "https://epubs.ans.org/?a=44173",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W3012716319",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Probabilistic risk assessment based model validation method using Bayesian network",
+        "year": 2017,
+        "citations": 91,
+        "venue": "Reliability Engineering & System Safety",
+        "authors": [
+          "Shinyoung Kwag",
+          "Abhinav Gupta",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.ress.2017.09.013",
+        "doi": "https://doi.org/10.1016/j.ress.2017.09.013",
+        "openalex_id": "https://openalex.org/W2760459014",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "Coarse-Grid Computational Fluid Dynamic (CG-CFD) Error Prediction using Machine Learning",
+        "year": 2017,
+        "citations": 25,
+        "venue": "arXiv",
+        "authors": [
+          "Botros N. Hanna",
+          "Nam T. Dinh",
+          "Robert Youngblood",
+          "Igor A. Bolotnov"
+        ],
+        "url": "https://doi.org/10.48550/arxiv.1710.09105",
+        "doi": "https://doi.org/10.48550/arxiv.1710.09105",
+        "openalex_id": "https://openalex.org/W4297780285",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "Despite the progress in high performance computing, Computational Fluid Dynamics (CFD) simulations are still computationally expensive for many practical engineering applications such as simulating large computational domains and highly turbulent flows. One of the major reasons of the high expense of CFD is the need for a fine grid to resolve phenomena at the relevant scale, and obtain a grid-independent solution. The fine grid requirements often drive the…"
+      },
+      {
+        "title": "Sensitivity Analysis of Interfacial Momentum Closure Terms in Two Phase Flow and Boiling Simulations Using MCFD Solver",
+        "year": 2017,
+        "citations": 4,
+        "venue": "ASME Heat Transfer Summer Conference (HT)",
+        "authors": [
+          "Yang Liu",
+          "Chad Rollins",
+          "Nam T. Dinh",
+          "Hong Luo"
+        ],
+        "url": "https://doi.org/10.1115/ht2017-4963",
+        "doi": "https://doi.org/10.1115/ht2017-4963",
+        "openalex_id": "https://openalex.org/W2766391032",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "In this paper, a general workflow for the global Sensitivity Analysis (SA) has been proposed based on the coupling of VUQ toolkit DAKOTA and Multiphase Computational Fluid Dynamics (MCFD) solver boilEulerFoam. A surrogate model is first constructed based on sampling simulations from boilEulerFoam. This surrogate is based on Gaussian Processes Model (GPM) and is validated and proved to have good properties. The Morris Screening method is then applied based …"
+      },
+      {
+        "title": "Initial Verification and Validation Assessment for VERA",
+        "year": 2017,
+        "citations": 3,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Nam T. Dinh",
+          "Paridhi Athe",
+          "Christopher W. Jones",
+          "Adam C. Hetzler",
+          "Matthew T. Sieger"
+        ],
+        "url": "https://doi.org/10.2172/1409270",
+        "doi": "https://doi.org/10.2172/1409270",
+        "openalex_id": "https://openalex.org/W4233982199",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The Virtual Environment for Reactor Applications (VERA) code suite is assessed in terms of capability and credibility against the Consortium for Advanced Simulation of Light Water Reactors (CASL) Verification and Validation Plan (presented herein) in the context of three selected challenge problems: CRUD-Induced Power Shift (CIPS), Departure from Nucleate Boiling (DNB), and Pellet-Clad Interaction (PCI). Capability refers to evidence of required functional…"
+      },
+      {
+        "title": "CASL Verification and Validation Plan",
+        "year": 2016,
+        "citations": 5,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Sandia National Labs., Albuquerque, NM (United States)",
+          "Vincent A. Mousseau",
+          "USDOE Office of Nuclear Energy (NE)",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/1431322",
+        "doi": "https://doi.org/10.2172/1431322",
+        "openalex_id": "https://openalex.org/W2795792339",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "This report documents the Consortium for Advanced Simulation of LWRs (CASL) verification and validation plan. The document builds upon input from CASL subject matter experts, most notably the CASL Challenge Problem Product Integrators, CASL Focus Area leaders, and CASL code development and assessment teams. This document will be a living document that will track progress on CASL to do verification and validation for both the CASL codes (including MPACT, CT…"
+      },
+      {
+        "title": "A FRAMEWORK FOR ASSESSMENT OF SEVERE ACCIDENT MANAGEMENT EFFECTIVENESS IN NORDIC BWR PLANTS",
+        "year": 2014,
+        "citations": 14,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Pavel Kudinov",
+          "Sergey E. Galushin",
+          "Sergey Evgenyevich Yakush",
+          "Walter Villanueva",
+          "Viet-Anh Phung",
+          "Dmitry Grishchenko",
+          "Nam T. Dinh"
+        ],
+        "url": "http://www.diva-portal.org/smash/record.jsf?pid=diva2:803394",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W2137175947",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "In the case of severe accident in Nordic boiling water reactors (BWR), core melt is poured into a deep pool of water located under the reactor. The severe accident management (SAM) strategy involves complex and coupled physical phenomena of melt-coolant-structure interactions sensitive to the transient accident scenarios. Success of the strategy is contingent upon melt release conditions from the vessel which determine (i) if corium debris bed is coolable,…"
+      },
+      {
+        "title": "Statistical modeling support for calibration of a multiphysics model of subcooled boiling flows",
+        "year": 2013,
+        "citations": 3,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Anh Bui",
+          "Nam T. Dinh",
+          "Robert R. Nourgaliev",
+          "Brian J. Williams"
+        ],
+        "url": "http://www.osti.gov/scitech/biblio/22212871",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W2188928167",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "Nuclear reactor system analyses rely on multiple complex models which describe the physics of reactor neutronics, thermal hydraulics, structural mechanics, coolant physico-chemistry, etc. Such coupled multiphysics models require extensive calibration and validation before they can be used in practical system safety study and/or design/technology optimization. This paper presents an application of statistical modeling and Bayesian inference in calibrating a…"
+      },
+      {
+        "title": "Validation and Calibration of Nuclear Thermal Hydraulics Multiscale Multiphysics Models - Subcooled Flow Boiling Study",
+        "year": 2013,
+        "citations": 1,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "USDOE Office of Nuclear Energy (NE)",
+          "Anh Bui",
+          "Nam T. Dinh",
+          "Brian Williams"
+        ],
+        "url": "https://doi.org/10.2172/1110336",
+        "doi": "https://doi.org/10.2172/1110336",
+        "openalex_id": "https://openalex.org/W2293517252",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "In addition to validation data plan, development of advanced techniques for calibration and validation of complex multiscale, multiphysics nuclear reactor simulation codes are a main objective of the CASL VUQ plan. Advanced modeling of LWR systems normally involves a range of physico-chemical models describing multiple interacting phenomena, such as thermal hydraulics, reactor physics, coolant chemistry, etc., which occur over a wide range of spatial and t…"
+      },
+      {
+        "title": "Two-phase flow and heat transfer model calibration",
+        "year": 2013,
+        "citations": 0,
+        "venue": "University of North Texas Digital Library (University of North Texas)",
+        "authors": [
+          "Anh Bui",
+          "Nam T. Dinh",
+          "Robert R. Nourgaliev",
+          "Robert Youngblood"
+        ],
+        "url": "https://digital.library.unt.edu/ark:/67531/metadc844918/",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W2523245175",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "This paper presents a calibration and validation c"
+      },
+      {
+        "title": "CIPS Validation Data Plan",
+        "year": 2012,
+        "citations": 13,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "USDOE Office of Nuclear Energy (NE)",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/1044197",
+        "doi": "https://doi.org/10.2172/1044197",
+        "openalex_id": "https://openalex.org/W93910839",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "This report documents analysis, findings and recommendations resulted from a task 'CIPS Validation Data Plan (VDP)' formulated as an POR4 activity in the CASL VUQ Focus Area (FA), to develop a Validation Data Plan (VDP) for Crud-Induced Power Shift (CIPS) challenge problem, and provide guidance for the CIPS VDP implementation. The main reason and motivation for this task to be carried at this time in the VUQ FA is to bring together (i) knowledge of modern …"
+      },
+      {
+        "title": "Simulation and validation of the dynamics of liquid films evaporating on horizontal heater surfaces",
+        "year": 2012,
+        "citations": 7,
+        "venue": "Applied Thermal Engineering",
+        "authors": [
+          "Shengjie Gong",
+          "Weimin Ma",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1016/j.applthermaleng.2012.05.021",
+        "doi": "https://doi.org/10.1016/j.applthermaleng.2012.05.021",
+        "openalex_id": "https://openalex.org/W2005583733",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": ""
+      },
+      {
+        "title": "CASL Validation Data: An Initial Review",
+        "year": 2011,
+        "citations": 6,
+        "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+        "authors": [
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.2172/1017862",
+        "doi": "https://doi.org/10.2172/1017862",
+        "openalex_id": "https://openalex.org/W1516160003",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The study aims to establish a comprehensive view of “data” needed for supporting implementation of the Consortium of Advanced Simulation of LWRs (CASL). Insights from this review (and its continual refinement), together with other elements developed in CASL, should provide the foundation for developing the CASL Validation Data Plan (VDP). VDP is instrumental to the development and assessment of CASL simulation tools as predictive capability. Most important…"
+      },
+      {
+        "title": "Risk-Informed Safety Margin Characterization",
+        "year": 2009,
+        "citations": 26,
+        "venue": "The Proceedings of the International Conference on Nuclear Engineering (ICONE)",
+        "authors": [
+          "Stephen Hess",
+          "Nam T. Dinh",
+          "John P. Gaertner",
+          "Ronaldo Henriques Szilard"
+        ],
+        "url": "https://doi.org/10.1115/icone17-75064",
+        "doi": "https://doi.org/10.1115/icone17-75064",
+        "openalex_id": "https://openalex.org/W2078328530",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "The concept of safety margins has served as a fundamental principle in the design and operation of commercial nuclear power plants (NPPs). Defined as the minimum distance between a system’s “loading” and its “capacity”, plant design and operation is predicated on ensuring an adequate safety margin for safety-significant parameters (e.g., fuel cladding temperature, containment pressure, etc.) is provided over the spectrum of anticipated plant operating, tra…"
+      },
+      {
+        "title": "An approach to numerical simulation and analysis of molten corium coolability in a BWR lower head",
+        "year": 2008,
+        "citations": 7,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Chi Thanh Tran",
+          "Pavel Kudinov",
+          "Nam T. Dinh"
+        ],
+        "url": "https://www.oecd-nea.org/nsd/csni/cfd/workshops/XCFD4NRS/technical-sessions/ac/AC-04.pdf",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W595277731",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "The paper discusses an application of the Computational Fluid Dynamics (CFD) method to support the development and validation of a computationally-affordable method named Effective Convectivity Model (ECM) for simulation of turbulent natural convection heat transfer and phase changes in a decay-heated corium pool in the Boiling Water Reactor (BWR) lower head. The CFD method simulations enable detailed study of separate-effect phenomena of corium flows. Ins…"
+      },
+      {
+        "title": "An effective convectivity model for simulation of in-vessel core melt progression in a boiling water reactor",
+        "year": 2008,
+        "citations": 6,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Chi Thanh Tran",
+          "Nam T. Dinh"
+        ],
+        "url": "http://www.diva-portal.org/smash/record.jsf?pid=diva2:756816",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W372230707",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "The present paper is concerned with development and application of a so-called Effective Convectivity Model (ECM), which aims to provide a detailed, mechanistic description of heat transfer processes in a BWR lower plenum. The ECM is a Computational Fluid Dynamics (CFD)-like tool which employs a simpler and more effective approach to compute heat transfer by solving only energy conservation equation instead of solving the full set of Navier-Stokes and ener…"
+      },
+      {
+        "title": "European research on the corium issues within the SARNET network of excellence",
+        "year": 2008,
+        "citations": 3,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Christophe Journeau",
+          "T. Wiss",
+          "Jean-Michel Bonnet",
+          "E. Altstadt",
+          "E. Dufour",
+          "K. Atkhen",
+          "G. Bandini",
+          "Bertrand Spindler"
+        ],
+        "url": "https://publikationen.bibliothek.kit.edu/240072043",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W1506882683",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "Within SARNET, the corium topic covers all the behaviors of corium from early phase of core degradation to in or ex-vessel corium recovery with the exception of corium interaction with water, direct containment heating and fission product release. The corium topic regroups in three work packages the critical mass of competence required to improve significantly the corium behavior knowledge. The spirit of the SARNET networking is to share the knowledge, the…"
+      },
+      {
+        "title": "COOLABILITY ANALYSIS OF BOTTOM-FED DEBRIS BEDS IN A LWR SEVERE ACCIDENT",
+        "year": 2007,
+        "citations": 2,
+        "venue": "The Proceedings of the International Conference on Nuclear Engineering (ICONE)",
+        "authors": [
+          "Weimin Ma",
+          "Nam T. Dinh"
+        ],
+        "url": "https://doi.org/10.1299/jsmeicone.2007.15._icone1510_253",
+        "doi": "https://doi.org/10.1299/jsmeicone.2007.15._icone1510_253",
+        "openalex_id": "https://openalex.org/W2178580323",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "This paper investigates the potential effectiveness of natural circulation-driven coolability (NCDC) as a severe accident mitigative measure. The NCDC can particularly be useful in LWR plants which employ external cavity flooding. The main idea is to provide a simple design solution that facilitates bottom feeding of coolant into the debris bed, and uses steam production in the decay-heated debris bed to drive the two-phase flow natural circulation. We use…"
+      },
+      {
+        "title": "RELAP5 and TRACE codes comparison and validation under steady-state and transient conditions on the basis of NUPEC data",
+        "year": 2007,
+        "citations": 0,
+        "venue": "Technical Report / Preprint",
+        "authors": [
+          "Joanna Suchoszek",
+          "Francesco Cadinu",
+          "Tomasz Kozłowski",
+          "Nam T. Dinh"
+        ],
+        "url": "https://experts.illinois.edu/en/publications/relap5-and-trace-codes-comparison-and-validation-under-steady-sta",
+        "doi": "",
+        "openalex_id": "https://openalex.org/W368231961",
+        "pillar_id": "pillar_6_sciml_hi2lo",
+        "pillar_short": "VI. SciML Taxonomy (Type I–V) & Multiscale Hi2Lo",
+        "proximab_gate": "ChangDinhSciMLFrameworkGate, UnitGate, ThermoVerifier (FM-1.1, FM-1.2, FM-2.2)",
+        "abstract_excerpt": "One-dimensional system codes are one of the main tools for the safety analysis of nuclear power plants. For BWR applications, it is of particular interest to know the performance of system codes in predicting void fraction, pressure drops, and, possibly, critical power in a wide range of conditions. The BFBT (BWR Full-Scale Fine-Mesh Bundle Tests) Benchmark [1], based on the NUPEC experiments, allows an accurate evaluation of the capabilities of the therma…"
+      },
+      {
+        "title": "Heat Transfer Processes in Reactor Vessel Lower Plenum During Late Phase of In-Vessel Core Melt Progression",
+        "year": 2005,
+        "citations": 10,
+        "venue": "Kluwer Academic Publishers eBooks",
+        "authors": [
+          "Bal Raj Sehgal",
+          "V.A. Bui",
+          "Nam T. Dinh",
+          "Robert R. Nourgaliev"
+        ],
+        "url": "https://doi.org/10.1007/0-306-47088-8_5",
+        "doi": "https://doi.org/10.1007/0-306-47088-8_5",
+        "openalex_id": "https://openalex.org/W2139534393",
+        "pillar_id": "pillar_5_pcmq_vvuq",
+        "pillar_short": "V. PCMQ-BN, Bayesian VVUQ & Margin Characterization",
+        "proximab_gate": "PCMQBayesianTrustworthinessGate, ConvergenceGate, EvidenceLedger (FM-2.1, FM-2.3)",
+        "abstract_excerpt": "Late phase in-vessel core melt progression during the course of a hypothetical severe (melt-down) accident in a light water reactor (LWR) is considered, with particular emphasis on thermal processes occurring in the lower plenum of the reactor pressure vessel (RPV). The formation of a melt pool, from the initial state of a uniform composition, dried out, debris bed, is investigated. The objective of this work is to analyze the effects of various heat trans…"
+      }
+    ]
+  }
 }

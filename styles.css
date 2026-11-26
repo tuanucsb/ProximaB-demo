@@ -776,6 +776,14 @@ a {
     --label-6: "Know-Nothing Floor";
   }
 
+  .table-wrapper table.nam-table {
+    --label-2: "Year";
+    --label-3: "Research Pillar";
+    --label-4: "Venue";
+    --label-5: "Citations";
+    --label-6: "Link";
+  }
+
   .table-wrapper td:nth-child(2)::before {
     content: var(--label-2) ": ";
     font-weight: 700;

@@ -1080,6 +1080,282 @@ function initBrainAndLedger() {
 }
 
 // ============================================================================
+// 8. TAB 5: PROF. TRUC-NAM DINH NUCLEAR AI SAFETY LAB & 102-PAPER CORPUS
+// ============================================================================
+function initNamDinhLabAndCorpus() {
+  const scimlSel = document.getElementById("nd-sciml");
+  const ffcmIn = document.getElementById("nd-ffcm");
+  const pirtIn = document.getElementById("nd-pirt");
+  const discIn = document.getElementById("nd-disc");
+  const reactSel = document.getElementById("nd-react");
+
+  const vFfcm = document.getElementById("v-nd-ffcm");
+  const vPirt = document.getElementById("v-nd-pirt");
+  const vDisc = document.getElementById("v-nd-disc");
+  const gateList = document.getElementById("nd-gate-list");
+  const overallBadge = document.getElementById("nd-overall-badge");
+  const telemetry = document.getElementById("nd-telemetry");
+
+  function evalNamLab() {
+    const sciml = scimlSel.value;
+    const pCov = parseFloat(ffcmIn.value) / 100.0;
+    const pPirt = parseFloat(pirtIn.value) / 100.0;
+    const discK = parseFloat(discIn.value);
+    const reactPcm = parseFloat(reactSel.value);
+
+    vFfcm.textContent = `${Math.round(pCov * 100)}%`;
+    vPirt.textContent = `${Math.round(pPirt * 100)}%`;
+    vDisc.textContent = `${discK.toFixed(1)} K`;
+
+    const pSensor = Math.max(0.05, 1.0 - discK / 75.0);
+    const pVer = sciml === "type_i_unguarded" ? 0.35 : 0.96;
+    const scaleDistortion = 0.05;
+
+    const pModel = pPirt * pVer * (1.0 - 0.65 * scaleDistortion);
+    const pData = pCov * pSensor;
+    const posterior =
+      0.99 * pModel * pData +
+      0.12 * pModel * (1.0 - pData) +
+      0.08 * (1.0 - pModel) * pData +
+      0.01 * (1.0 - pModel) * (1.0 - pData);
+
+    const scimlOk = sciml !== "type_i_unguarded";
+    const ffcmOk = pCov >= 0.80;
+    const namacOk = discK <= 15.0 && reactPcm <= 0;
+    const simplexTrip = discK > 40.0;
+    const pcmqOk = posterior >= 0.80;
+
+    const gates = [
+      {
+        name: "ChangDinhSciMLFrameworkGate (Chang & Dinh 2018)",
+        ok: scimlOk,
+        detail: scimlOk
+          ? `${sciml.toUpperCase()} is coupled with mass/momentum/energy conservation equations.`
+          : "VETO (FM-2.2): Unguarded Type-I physics-separated black-box surrogate prohibited in safety transient.",
+      },
+      {
+        name: "FFCMCoverageAndOODGate (Wang, Lin & Dinh 2022; Chen et al. 2023)",
+        ok: ffcmOk,
+        detail: ffcmOk
+          ? `Query flow/state features inside validated FFCM training hull (${Math.round(pCov * 100)}% coverage).`
+          : `VETO (FM-1.6): Out-of-distribution extrapolation (${Math.round(pCov * 100)}% < 80% FFCM coverage).`,
+      },
+      {
+        name: "NAMACDiscrepancyCheckerGate (Lin et al. 2020/2021; Athe et al. 2024)",
+        ok: namacOk,
+        detail: simplexTrip
+          ? `SIMPLEX TRIP (FM-3.6): Diagnosis DT diverges by ${discK.toFixed(1)} K (> 40 K); revert to safe fallback.`
+          : reactPcm > 0
+          ? `VETO (FM-3.3): Recommended +${reactPcm} pcm positive reactivity during LOFA violates directional rule.`
+          : discK > 15.0
+          ? `VETO (FM-2.5): Sensor-to-Diagnosis-DT discrepancy ${discK.toFixed(1)} K exceeds 15.0 K bound.`
+          : `Sensor-DT discrepancy ${discK.toFixed(1)} K ≤ 15.0 K and directional reactivity rule (${reactPcm} pcm) satisfied.`,
+      },
+      {
+        name: "PCMQBayesianTrustworthinessGate (Lin & Dinh 2020; Wang, Lin & Dinh 2024)",
+        ok: pcmqOk,
+        detail: pcmqOk
+          ? `Posterior P(Trustworthy | E) = ${posterior.toFixed(3)} ≥ 0.800 qualification threshold.`
+          : `VETO: Posterior P(Trustworthy | E) = ${posterior.toFixed(3)} < 0.800 minimum credibility bound.`,
+      },
+    ];
+
+    const allOk = gates.every((g) => g.ok);
+    overallBadge.className = `badge ${allOk ? "badge-ok" : "badge-fail"}`;
+    overallBadge.textContent = allOk
+      ? `TRUSTWORTHY (P = ${posterior.toFixed(3)})`
+      : `VETOED (P = ${posterior.toFixed(3)})`;
+
+    gateList.innerHTML = "";
+    for (const g of gates) {
+      const row = document.createElement("div");
+      row.className = `gate-item ${g.ok ? "pass" : "fail"}`;
+      row.innerHTML = `
+        <div>
+          <strong>${g.name}</strong>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:0.15rem;"></div>
+        </div>
+        <span class="badge ${g.ok ? "badge-ok" : "badge-fail"}">${g.ok ? "PASS" : "VETO"}</span>
+      `;
+      row.querySelector("div > div").textContent = g.detail;
+      gateList.appendChild(row);
+    }
+
+    telemetry.textContent = [
+      `Model Adequacy Branch P(M_adeq) = PIRT(${pPirt.toFixed(2)}) × Ver(${pVer.toFixed(2)}) × Scale(0.968) = ${pModel.toFixed(3)}`,
+      `Data Reliability Branch P(D_rel) = FFCM(${pCov.toFixed(2)}) × Sensor(${pSensor.toFixed(2)})             = ${pData.toFixed(3)}`,
+      `Noisy-AND CPT Posterior P(Trustworthy | M_adeq, D_rel)                        = ${posterior.toFixed(4)}`,
+    ].join("\n");
+  }
+
+  [scimlSel, ffcmIn, pirtIn, discIn, reactSel].forEach((el) => {
+    el.addEventListener("input", evalNamLab);
+    el.addEventListener("change", evalNamLab);
+  });
+
+  document.querySelectorAll("[data-nam-preset]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const p = btn.dataset.namPreset;
+      if (p === "nominal") {
+        scimlSel.value = "type_ii";
+        ffcmIn.value = "96";
+        pirtIn.value = "97";
+        discIn.value = "4";
+        reactSel.value = "-120";
+      } else if (p === "type1") {
+        scimlSel.value = "type_i_unguarded";
+        ffcmIn.value = "92";
+        pirtIn.value = "95";
+        discIn.value = "5";
+        reactSel.value = "-120";
+      } else if (p === "ood") {
+        scimlSel.value = "type_ii";
+        ffcmIn.value = "34";
+        pirtIn.value = "95";
+        discIn.value = "8";
+        reactSel.value = "-120";
+      } else if (p === "uca") {
+        scimlSel.value = "type_ii";
+        ffcmIn.value = "90";
+        pirtIn.value = "94";
+        discIn.value = "48";
+        reactSel.value = "45";
+      }
+      evalNamLab();
+    });
+  });
+
+  evalNamLab();
+
+  // Populate 102-publication corpus table from data.json
+  fetch("./data.json")
+    .then((r) => r.json())
+    .then((payload) => {
+      const nd = payload.nam_dinh_research;
+      if (!nd) return;
+      const pillars = nd.pillars || [];
+      const works = nd.works || [];
+      const pillarSel = document.getElementById("nam-pillar-filter");
+      const searchIn = document.getElementById("nam-search");
+      const tbody = document.getElementById("nam-tbody");
+      const shownSpan = document.getElementById("nam-shown-count");
+      const dialog = document.getElementById("suite-dialog");
+      const dialogTitle = document.getElementById("suite-dialog-title");
+      const dialogBody = document.getElementById("suite-dialog-body");
+
+      for (const p of pillars) {
+        const cnt = works.filter((w) => w.pillar_id === p.id).length;
+        const opt = document.createElement("option");
+        opt.value = p.id;
+        opt.textContent = `${p.short} (${cnt} works)`;
+        pillarSel.appendChild(opt);
+      }
+
+      function openPaperModal(w) {
+        dialogTitle.textContent = `[${w.year}] ${w.title}`;
+        dialogBody.innerHTML = "";
+        const rows = [
+          ["Authors", (w.authors || []).join(", ")],
+          ["Venue / Source", w.venue],
+          ["Research Pillar", w.pillar_short],
+          ["ProximaB Executable Mapping", w.proximab_gate],
+          ["Citations (OpenAlex)", String(w.citations)],
+        ];
+        if (w.abstract_excerpt) {
+          rows.push(["Abstract Excerpt", w.abstract_excerpt]);
+        }
+        for (const [k, v] of rows) {
+          const d = document.createElement("div");
+          const st = document.createElement("strong");
+          st.textContent = `${k}: `;
+          const sp = document.createElement("span");
+          sp.style.color = "var(--muted)";
+          sp.textContent = v;
+          d.append(st, sp);
+          dialogBody.appendChild(d);
+        }
+        if (w.url) {
+          const linkDiv = document.createElement("div");
+          const a = document.createElement("a");
+          a.href = w.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = `Open Publication / DOI Record (${w.url}) ↗`;
+          linkDiv.appendChild(a);
+          dialogBody.appendChild(linkDiv);
+        }
+        dialog.showModal();
+      }
+
+      function renderPapers() {
+        const q = searchIn.value.trim().toLowerCase();
+        const pf = pillarSel.value;
+        const filtered = works.filter((w) => {
+          if (pf !== "all" && w.pillar_id !== pf) return false;
+          if (!q) return true;
+          const hay = `${w.title} ${w.year} ${w.venue} ${(w.authors || []).join(" ")} ${w.pillar_short} ${w.abstract_excerpt}`.toLowerCase();
+          return hay.includes(q);
+        });
+        shownSpan.textContent = String(filtered.length);
+        tbody.innerHTML = "";
+        for (const w of filtered) {
+          const tr = document.createElement("tr");
+          tr.style.cursor = "pointer";
+          tr.addEventListener("click", (ev) => {
+            if (ev.target.closest("a")) return;
+            openPaperModal(w);
+          });
+
+          const th = document.createElement("th");
+          th.scope = "row";
+          th.style.whiteSpace = "normal";
+          th.style.minInlineSize = "240px";
+          th.textContent = w.title;
+          const authSub = document.createElement("div");
+          authSub.style.fontSize = "0.72rem";
+          authSub.style.fontWeight = "400";
+          authSub.style.color = "var(--muted)";
+          authSub.textContent = (w.authors || []).slice(0, 4).join(", ") + ((w.authors || []).length > 4 ? " et al." : "");
+          th.appendChild(authSub);
+
+          const tdYr = document.createElement("td");
+          tdYr.className = "mono";
+          tdYr.textContent = String(w.year || "");
+
+          const tdPil = document.createElement("td");
+          const pb = document.createElement("span");
+          pb.className = "badge";
+          pb.textContent = w.pillar_short;
+          tdPil.appendChild(pb);
+
+          const tdVen = document.createElement("td");
+          tdVen.textContent = w.venue;
+
+          const tdCit = document.createElement("td");
+          tdCit.className = "mono";
+          tdCit.textContent = String(w.citations);
+
+          const tdLink = document.createElement("td");
+          const a = document.createElement("a");
+          a.href = w.url;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          a.textContent = "Source ↗";
+          tdLink.appendChild(a);
+
+          tr.append(th, tdYr, tdPil, tdVen, tdCit, tdLink);
+          tbody.appendChild(tr);
+        }
+      }
+
+      searchIn.addEventListener("input", renderPapers);
+      pillarSel.addEventListener("change", renderPapers);
+      renderPapers();
+    })
+    .catch(() => {});
+}
+
+// ============================================================================
 // BOOTSTRAP
 // ============================================================================
 initThemeToggle();
@@ -1090,3 +1366,4 @@ initBarrierSimulator();
 initGraderSandbox();
 initCatalogTable();
 initBrainAndLedger();
+initNamDinhLabAndCorpus();

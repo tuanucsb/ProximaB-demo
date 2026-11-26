@@ -74,6 +74,7 @@
         <button type="button" role="tab" id="tab-simulator" aria-selected="false">2. Live Physics Barrier Simulator</button>
         <button type="button" role="tab" id="tab-benchmarks" aria-selected="false">3. Trustworthy Benchmark Arena</button>
         <button type="button" role="tab" id="tab-brain" aria-selected="false">4. Controlled Change &amp; SHA-256 Ledger</button>
+        <button type="button" role="tab" id="tab-namdinh" aria-selected="false">5. Dr. Nam Dinh Nuclear AI Safety (102 Papers)</button>
       </div>
 
       <div class="tabpanels-stack">
@@ -301,6 +302,91 @@
                 </div>
                 <div id="ledger-blocks" class="ledger-chain"></div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TAB PANEL 5: PROF. TRUC-NAM (NAM T.) DINH NUCLEAR AI SAFETY CORPUS & LAB -->
+        <section role="tabpanel" id="panel-namdinh" aria-labelledby="tab-namdinh" hidden="until-found">
+          <div class="panel-inner">
+            <h2 class="section-title">Prof. Truc-Nam (Nam T.) Dinh — Nuclear AI Safety, NAMAC, PCMQ-BN &amp; SciML VVUQ</h2>
+            <p class="section-lead">
+              Synthesizing <strong>102 verified publications</strong> (OpenAlex <code>A5069550444</code> · NC State University / INL / DOE LWRS &amp; NEAMS · 6,356 career citations) into ProximaB's executable barrier stack: <strong>Chang–Dinh Type I–V SciML coupling</strong>, <strong>FFCM &amp; OOD coverage</strong>, <strong>NAMAC Reasoning-Based Discrepancy Checkers</strong>, <strong>PCMQ-BN Bayesian trustworthiness</strong>, and <strong>STPA/RESHA Digital I&amp;C hazard analysis</strong>.
+            </p>
+
+            <div class="preset-row" aria-label="NAMAC and PCMQ presets">
+              <button type="button" class="btn btn-primary" data-nam-preset="nominal">Valid NAMAC + Type-II Closure</button>
+              <button type="button" class="btn btn-danger" data-nam-preset="type1">Inject Unguarded Type-I Black-Box</button>
+              <button type="button" class="btn btn-danger" data-nam-preset="ood">Inject FFCM Out-of-Distribution State</button>
+              <button type="button" class="btn btn-danger" data-nam-preset="uca">Inject LOFA +45 pcm Discrepancy &amp; Simplex Trip</button>
+            </div>
+
+            <div class="two-col" style="margin-bottom:1.35rem;">
+              <div class="subcard">
+                <h3>Interactive NAMAC Discrepancy &amp; PCMQ-BN Trustworthiness Lab</h3>
+                <div class="control-group">
+                  <label for="nd-sciml"><span>Chang &amp; Dinh (2018) SciML Coupling Type</span></label>
+                  <select id="nd-sciml" class="select-field">
+                    <option value="type_ii">Type II — Physics-Evaluated Closure Inside PDE Conservation Solver</option>
+                    <option value="type_iv">Type IV — Data-Driven Hi2Lo Coarse-Grid Error-Correcting Closure</option>
+                    <option value="type_i_unguarded">Type I — Unguarded Physics-Separated Black-Box Surrogate</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <label for="nd-ffcm"><span>FFCM In-Domain Feature Coverage</span><span id="v-nd-ffcm">96%</span></label>
+                  <input id="nd-ffcm" type="range" min="15" max="100" step="1" value="96">
+                </div>
+                <div class="control-group">
+                  <label for="nd-pirt"><span>PIRT / EMDAP Phenomenon Completeness</span><span id="v-nd-pirt">97%</span></label>
+                  <input id="nd-pirt" type="range" min="40" max="100" step="1" value="97">
+                </div>
+                <div class="control-group">
+                  <label for="nd-disc"><span>Sensor vs. Diagnosis-DT Peak Temp Discrepancy</span><span id="v-nd-disc">4.0 K</span></label>
+                  <input id="nd-disc" type="range" min="0" max="65" step="1" value="4">
+                </div>
+                <div class="control-group">
+                  <label for="nd-react"><span>NAMAC Recommended Reactivity Action During LOFA</span></label>
+                  <select id="nd-react" class="select-field">
+                    <option value="-120">-120 pcm (Negative Insertion / Trim — Directional Rule Satisfied)</option>
+                    <option value="45">+45 pcm (Positive Insertion During LOFA — STPA UCA!)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="subcard">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:0.75rem;margin-bottom:0.75rem;">
+                  <h3 style="margin:0;">Executable ProximaB Gate Evaluation</h3>
+                  <span id="nd-overall-badge" class="badge badge-ok">TRUSTWORTHY (P = 0.892)</span>
+                </div>
+                <div id="nd-gate-list" class="gate-list"></div>
+                <h4 style="margin:0.95rem 0 0.4rem;">PCMQ-BN Bayesian Posterior Breakdown</h4>
+                <pre id="nd-telemetry" class="code-box"></pre>
+              </div>
+            </div>
+
+            <h3 style="margin:0 0 0.35rem;font-size:1rem;">Curated 102-Publication Research Corpus (Click Any Paper to Inspect Abstract &amp; Gate Mapping)</h3>
+            <div class="filter-bar">
+              <input type="search" id="nam-search" class="input-field" placeholder="Search title, co-author, concept, or venue (e.g. NAMAC, PCMQ, STPA, RESHA, EMDAP, Hi2Lo, Generative)...">
+              <select id="nam-pillar-filter" class="select-field">
+                <option value="all">All 6 Research Pillars (102 Verified Works)</option>
+              </select>
+            </div>
+
+            <div tabindex="0" role="region" aria-labelledby="nam-table-caption" class="table-wrapper">
+              <table class="nam-table">
+                <caption id="nam-table-caption">Showing <span id="nam-shown-count">102</span> publications by Prof. Truc-Nam (Nam T.) Dinh &amp; collaborators (retrieved via OpenAlex &amp; arXiv; check individual publisher/OSTI licenses before redistribution)</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Publication Title</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Research Pillar</th>
+                    <th scope="col">Venue / Source</th>
+                    <th scope="col">Citations</th>
+                    <th scope="col">DOI / Link</th>
+                  </tr>
+                </thead>
+                <tbody id="nam-tbody"></tbody>
+              </table>
             </div>
           </div>
         </section>
